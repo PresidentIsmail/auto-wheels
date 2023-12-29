@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import DesktopMenu from "./DesktopMenu";
+import NavItems from "./NavItems";
 import ContactButton from "./ContactButton";
 import HeaderInformation from "../HeaderInformation";
 
@@ -21,7 +21,11 @@ const Navbar: React.FC = () => {
             Auto Wheels &amp;{" "}
             <br className="inline-block sm:hidden md:inline-block" /> Exhaust
           </Link>
-          <DesktopMenu />
+
+          {/* Nav Items */}
+          <NavItems />
+
+          {/* Contact */}
           <ContactButton />
         </div>
       </div>
