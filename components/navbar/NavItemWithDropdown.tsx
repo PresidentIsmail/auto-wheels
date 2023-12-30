@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
-
 import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
-
 import { ChevronDown } from "lucide-react";
 
 interface NavItemWithDropDownProps {
@@ -13,85 +11,51 @@ interface NavItemWithDropDownProps {
 }
 
 const dropDownVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: -50,
-    // translate x half of the width of the dropdown
-    x: "-50%",
-  },
+  hidden: { opacity: 0, y: -50, x: "-50%" },
   visible: {
     opacity: 1,
     y: 8,
-    // keep the translate x to half of the width of the dropdown
     x: "-50%",
-    transition: {
-      duration: 0.25,
-      ease: "easeInOut",
-      // animate children after the dropdown is visible
-      when: "beforeChildren",
-    },
+    transition: { duration: 0.25, ease: "easeInOut", when: "beforeChildren" },
   },
   exit: {
     opacity: 0,
     y: -50,
-    // translate x half of the width of the dropdown
     x: "-50%",
-    transition: {
-      duration: 0.25,
-      ease: "easeInOut",
-    },
+    transition: { duration: 0.25, ease: "easeInOut" },
   },
 };
 
 const dropDownItemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      ease: "easeInOut",
-      duration: 0.1,
-    },
-  },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { ease: "easeInOut", duration: 0.1 } },
 };
 
 const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
   navItem,
 }) => {
   const navRef = useRef<HTMLLIElement | null>(null);
-
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
-  const toggleDropdownVisibility = useCallback(() => {
-    setDropdownVisibility(!isDropdownVisible);
-  }, [isDropdownVisible]);
+  // Simplified the toggle function
+  const toggleDropdownVisibility = () => setDropdownVisibility((prev) => !prev);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Close the dropdown if the user scrolls more than 100 pixels
       if (window.scrollY > 100 && isDropdownVisible) {
         toggleDropdownVisibility();
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isDropdownVisible]);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isDropdownVisible, toggleDropdownVisibility]);
-
+  // Only show dropdown if the user hovers over the nav item and the dropdown is not visible
   const handleMouseEnter = () => {
-    if (isDropdownVisible) {
-      return;
+    if (!isDropdownVisible) {
+      toggleDropdownVisibility();
     }
-    toggleDropdownVisibility();
-  };
-
-  const handleClick = () => {
-    toggleDropdownVisibility();
   };
 
   useOnClickOutside(navRef, () => {
@@ -106,7 +70,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
         onMouseEnter={handleMouseEnter}
-        onClick={handleClick}
+        onClick={toggleDropdownVisibility}
       >
         <span className="flex items-center gap-1 ">
           {navItem.label}
@@ -118,9 +82,8 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
         </span>
       </button>
 
-      {/* Dropdown */}
       <AnimatePresence>
-        {isDropdownVisible ? (
+        {isDropdownVisible && (
           <motion.nav
             variants={dropDownVariants}
             initial="hidden"
@@ -129,12 +92,10 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
             role="menu"
             className="absolute left-1/2 top-full grid w-max grid-cols-3  gap-2 rounded-md bg-special px-12 py-8 lg:grid-cols-4 lg:gap-4"
           >
-            {/* Dropdown Items */}
             {SERVICES_DATA.map((service) => (
               <motion.a
                 variants={dropDownItemVariants}
                 key={service.title}
-                // href={`/services/${service.title.toLowerCase()}`}
                 href={`#`}
                 role="menuitem"
                 className="flex w-full max-w-[224px] flex-col gap-2 rounded-md px-3 py-3 transition-colors hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none "
@@ -150,7 +111,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
               </motion.a>
             ))}
           </motion.nav>
-        ) : null}
+        )}
       </AnimatePresence>
     </li>
   );
