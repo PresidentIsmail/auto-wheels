@@ -9,8 +9,8 @@ import { ChevronDown } from "lucide-react";
 
 interface NavItemWithDropDownProps {
   navItem: (typeof NAV_ITEMS)[number];
-  toggleServicesDropdown: () => void;
-  showServicesDropdown: boolean;
+  toggleDropdownVisibility: () => void;
+  isDropdownVisible: boolean;
 }
 
 const dropDownVariants: Variants = {
@@ -59,21 +59,36 @@ const dropDownItemVariants: Variants = {
 
 const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
   navItem,
-  toggleServicesDropdown,
-  showServicesDropdown,
+  toggleDropdownVisibility,
+  isDropdownVisible,
 }) => {
+  const onHoverOpenDropdown = () => {
+    if (isDropdownVisible) {
+      return;
+    }
+    toggleDropdownVisibility();
+  };
+
+  const onClickCloseDropdown = () => {
+    if (!isDropdownVisible) {
+      return;
+    }
+    toggleDropdownVisibility();
+  };
+
   return (
     <li>
       <button
         aria-haspopup="true"
-        aria-expanded={showServicesDropdown}
-        onClick={toggleServicesDropdown}
+        aria-expanded={isDropdownVisible}
+        onMouseEnter={onHoverOpenDropdown}
+        onClick={onClickCloseDropdown}
       >
         <span className="flex items-center gap-1 ">
           {navItem.label}
           <ChevronDown
             className={`${
-              showServicesDropdown ? "rotate-180 transform" : ""
+              isDropdownVisible ? "rotate-180 transform" : ""
             } transition-transform duration-300`}
           />
         </span>
@@ -81,7 +96,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
 
       {/* Dropdown */}
       <AnimatePresence>
-        {showServicesDropdown ? (
+        {isDropdownVisible ? (
           <motion.nav
             variants={dropDownVariants}
             initial="hidden"

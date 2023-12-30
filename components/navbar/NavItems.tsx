@@ -1,7 +1,7 @@
 "use client";
 
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback } from "react";
 
 import { NAV_ITEMS } from "@/constants";
 
@@ -9,15 +9,15 @@ import NavItem from "./NavItem";
 import NavItemWithDropdown from "./NavItemWithDropdown";
 
 const NavItems: React.FC = () => {
-  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
   const navRef = useRef<HTMLUListElement | null>(null);
 
-  const toggleServicesDropdown = useCallback(() => {
-    setShowServicesDropdown(!showServicesDropdown);
-  }, [showServicesDropdown]);
+  const toggleDropdownVisibility = useCallback(() => {
+    setDropdownVisibility(!isDropdownVisible);
+  }, [isDropdownVisible]);
 
-  useOnClickOutside(navRef, () => setShowServicesDropdown(false));
+  useOnClickOutside(navRef, () => setDropdownVisibility(false));
 
   return (
     <ul
@@ -30,8 +30,8 @@ const NavItems: React.FC = () => {
             <NavItemWithDropdown
               key={item.label}
               navItem={item}
-              toggleServicesDropdown={toggleServicesDropdown}
-              showServicesDropdown={showServicesDropdown}
+              toggleDropdownVisibility={toggleDropdownVisibility}
+              isDropdownVisible={isDropdownVisible}
             />
           );
         }
