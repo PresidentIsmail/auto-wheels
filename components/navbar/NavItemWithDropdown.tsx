@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 
 import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
@@ -62,17 +62,31 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
   toggleDropdownVisibility,
   isDropdownVisible,
 }) => {
-  const onHoverOpenDropdown = () => {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Close the dropdown if the user scrolls more than 100 pixels
+      if (window.scrollY > 100 && isDropdownVisible) {
+        toggleDropdownVisibility();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isDropdownVisible, toggleDropdownVisibility]);
+
+  const handleHover = () => {
     if (isDropdownVisible) {
       return;
     }
     toggleDropdownVisibility();
   };
 
-  const onClickCloseDropdown = () => {
-    if (!isDropdownVisible) {
-      return;
-    }
+  const handleClick = () => {
     toggleDropdownVisibility();
   };
 
@@ -81,8 +95,8 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
       <button
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
-        onMouseEnter={onHoverOpenDropdown}
-        onClick={onClickCloseDropdown}
+        onMouseEnter={handleHover}
+        onClick={handleClick}
       >
         <span className="flex items-center gap-1 ">
           {navItem.label}
