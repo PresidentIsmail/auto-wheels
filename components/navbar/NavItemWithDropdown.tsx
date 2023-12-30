@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 
 import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
+import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { ChevronDown } from "lucide-react";
 
 interface NavItemWithDropDownProps {
   navItem: (typeof NAV_ITEMS)[number];
-  toggleDropdownVisibility: () => void;
-  isDropdownVisible: boolean;
 }
 
 const dropDownVariants: Variants = {
@@ -59,9 +58,14 @@ const dropDownItemVariants: Variants = {
 
 const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
   navItem,
-  toggleDropdownVisibility,
-  isDropdownVisible,
 }) => {
+  const navRef = useRef<HTMLLIElement | null>(null);
+
+  const [isDropdownVisible, setDropdownVisibility] = useState(false);
+
+  const toggleDropdownVisibility = useCallback(() => {
+    setDropdownVisibility(!isDropdownVisible);
+  }, [isDropdownVisible]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,15 +75,15 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [isDropdownVisible, toggleDropdownVisibility]);
 
-  const handleHover = () => {
+  const handleMouseEnter = () => {
     if (isDropdownVisible) {
       return;
     }
@@ -90,12 +94,18 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
     toggleDropdownVisibility();
   };
 
+  useOnClickOutside(navRef, () => {
+    if (isDropdownVisible) {
+      toggleDropdownVisibility();
+    }
+  });
+
   return (
-    <li>
+    <li ref={navRef}>
       <button
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
-        onMouseEnter={handleHover}
+        onMouseEnter={handleMouseEnter}
         onClick={handleClick}
       >
         <span className="flex items-center gap-1 ">
