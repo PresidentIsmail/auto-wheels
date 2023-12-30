@@ -10,13 +10,13 @@ const Navbar: React.FC = () => {
     <nav>
       <HeaderInformation />
 
-      <div className="h-navbar-desktop bg-special relative">
-        <div className="flex master-container h-full items-center justify-between">
+      <div className="relative h-navbar-desktop bg-special">
+        <div className="master-container flex h-full items-center justify-between">
           {/* Business Name */}
           <Link
             href="/"
-            aria-label="Navigate to homepage - Auto Wheels and Exhaust"
-            className="capitalize font-black tracking-wide text-start text-xl md:text-lg lg:text-xl text-white"
+            aria-label="Auto Wheels & Exhaust"
+            className="text-start text-xl font-black capitalize tracking-wide text-white md:text-lg lg:text-xl"
           >
             Auto Wheels &amp;{" "}
             <br className="inline-block sm:hidden md:inline-block" /> Exhaust
