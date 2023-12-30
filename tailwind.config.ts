@@ -146,6 +146,7 @@ const config = {
       height: {
         "navbar-desktop": "var(--navbar-desktop-height)",
         "navbar-mobile": "var(--navbar-mobile-height)",
+        "header-info": "var(--header-info-height)",
       },
     },
   },

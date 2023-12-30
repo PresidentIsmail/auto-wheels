@@ -8,11 +8,11 @@ const googleMapsLink =
 
 const HeaderInformation: React.FC = () => {
   return (
-    <header className="bg-brand sm:h-[40px]">
-      <div className="flex h-full py-1.5 sm:py-0 master-container justify-between text-white font-light">
+    <header className="sm:h-header-info bg-brand">
+      <div className="master-container flex h-full justify-between py-1.5 font-light text-white sm:py-0">
         {/* hours */}
         <div
-          className="flex gap-x-2 items-center text-sm "
+          className="flex items-center gap-x-2 text-sm "
           role="contentinfo"
           aria-label="Business hours"
         >
@@ -26,7 +26,7 @@ const HeaderInformation: React.FC = () => {
 
         {/* contact (seen until md) */}
         <div
-          className="flex gap-x-2 items-center md:hidden text-sm"
+          className="flex items-center gap-x-2 text-sm md:hidden"
           role="contentinfo"
           aria-label="Phone number"
         >
@@ -36,7 +36,7 @@ const HeaderInformation: React.FC = () => {
 
         {/* location (seen after md)*/}
         <address
-          className="hidden md:flex text-sm "
+          className="hidden text-sm md:flex "
           role="contentinfo"
           aria-label="Location"
         >
@@ -44,7 +44,7 @@ const HeaderInformation: React.FC = () => {
             href={googleMapsLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex gap-x-2 items-center"
+            className="flex items-center gap-x-2"
           >
             <MapPin className="h-4 w-4" aria-hidden />
             <p>23 Nelson Mandela Dr, Mahikeng</p>
