@@ -21,7 +21,7 @@ const NavItems: React.FC = () => {
 
   return (
     <ul
-      className="text-white/80 gap-x-8 hidden md:flex text-sm lg:text-base"
+      className="hidden gap-x-8 text-sm text-white/80 md:flex lg:text-base"
       ref={navRef}
     >
       {NAV_ITEMS.map((item) => {
