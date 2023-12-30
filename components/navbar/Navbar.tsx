@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
           {/* Business Name */}
           <Link
             href="/"
-            aria-label="Home"
+            aria-label="Navigate to homepage - Auto Wheels and Exhaust"
             className="capitalize font-black tracking-wide text-start text-xl md:text-lg lg:text-xl text-white"
           >
             Auto Wheels &amp;{" "}

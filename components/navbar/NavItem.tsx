@@ -7,13 +7,9 @@ import { NAV_ITEMS } from "@/constants";
 
 interface NavItemProps {
   navItem: (typeof NAV_ITEMS)[number];
-  toggleServicesDropdown: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({
-  navItem,
-  toggleServicesDropdown,
-}) => {
+const NavItem: React.FC<NavItemProps> = ({ navItem }) => {
   // Implement component logic here
 
   return (

@@ -21,7 +21,7 @@ const NavItems: React.FC = () => {
 
   return (
     <ul
-      className="hidden gap-x-8 text-sm text-white/80 md:flex lg:text-base"
+      className="hidden gap-x-8 text-sm text-white md:flex lg:text-base"
       ref={navRef}
     >
       {NAV_ITEMS.map((item) => {
@@ -39,7 +39,6 @@ const NavItems: React.FC = () => {
           <NavItem
             key={item.label}
             navItem={item}
-            toggleServicesDropdown={toggleServicesDropdown}
           />
         );
       })}
