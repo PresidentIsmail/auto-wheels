@@ -1,14 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
-import { MapPin, Phone, Clock } from "lucide-react";
+import { BUSINESS_ADDRESS_ON_GOOGLE_MAPS } from "@/constants";
 
-const googleMapsLink =
-  "https://www.google.com/maps/place/Auto+Wheels+%26+Exhausts/@-25.8632276,25.6459493,17z/data=!3m1!4b1!4m6!3m5!1s0x1ea2cac697680bb7:0x2ad30578d491e15a!8m2!3d-25.8632276!4d25.6459493!16s%2Fg%2F1pzr6fdt5?entry=ttu";
+import { MapPin, Phone, Clock } from "lucide-react";
 
 const HeaderInformation: React.FC = () => {
   return (
-    <header className="sm:h-header-info bg-brand">
+    <header className="bg-brand sm:h-header-info">
       <div className="master-container flex h-full justify-between py-1.5 font-light text-white sm:py-0">
         {/* hours */}
         <div
@@ -41,7 +40,7 @@ const HeaderInformation: React.FC = () => {
           aria-label="Location"
         >
           <Link
-            href={googleMapsLink}
+            href={BUSINESS_ADDRESS_ON_GOOGLE_MAPS}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-x-2"
