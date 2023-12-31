@@ -117,6 +117,14 @@ export const SERVICES_DATA: Service[] = [
   },
 ];
 
+// Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
+export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
+  a.label.localeCompare(b.label)
+);
+
+
+
+
 export const BUSINESS_TELEPHONE_NUMBER = "0183817456";
 export const BUSINESS_WORKING_HOURS = [
   "Mon-Fri : 07:00 - 17:00",

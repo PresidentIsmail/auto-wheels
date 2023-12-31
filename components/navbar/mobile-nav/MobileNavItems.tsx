@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from "react";
 
-import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
+import { NAV_ITEMS, SERVICES_DATA_SORTED } from "@/constants";
 
 import { ChevronLeft } from "lucide-react";
 import MobileNavItem from "./MobileNavItem";
@@ -105,7 +105,7 @@ const ServicesDropdown: React.FC = () => {
   return (
     <ul className="flex flex-col gap-y-2">
       <h2 className="text-white p-2 text-start w-full mb-3 text-2xl font-medium">Services</h2>
-      {SERVICES_DATA.map((item) => (
+      {SERVICES_DATA_SORTED.map((item) => (
         <li
           key={item.label}
           className="w-full border-b border-b-grayBorder text-base font-semibold capitalize text-white/80"
