@@ -7,7 +7,6 @@ import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
 
 import { ChevronRight } from "lucide-react";
 
-
 type LinkItemProps = {
   type: "link";
   navItem: (typeof NAV_ITEMS)[number] | (typeof SERVICES_DATA)[number];
@@ -26,7 +25,7 @@ const MobileNavItem: React.FC<MobileNavItemProps> = (props) => {
     return (
       <Link
         href={"#"}
-        className="flex w-full items-center gap-x-1.5 p-2 transition-colors hover:bg-white/10 focus-visible:bg-white/10 "
+        className="block w-full p-2 transition-colors hover:bg-white/10 focus-visible:bg-white/10 "
         aria-label={props.navItem.label}
       >
         {props.navItem.label}
