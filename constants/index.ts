@@ -26,10 +26,7 @@ type Service = {
   label: string;
   services: string[];
   href: string;
-  icon?: string;
 };
-
-const ICONS_PATH = "/icons";
 
 export const SERVICES_DATA: Service[] = [
   {
@@ -40,7 +37,6 @@ export const SERVICES_DATA: Service[] = [
       "Brake inspection",
     ],
     href: "/brake-services",
-    icon: `${ICONS_PATH}/brakes.png`,
   },
   {
     label: "Tires and Wheels",
