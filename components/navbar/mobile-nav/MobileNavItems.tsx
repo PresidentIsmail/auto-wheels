@@ -54,14 +54,14 @@ const MobileNavItems: React.FC = () => {
           </>
         ) : (
           // Services Dropdown
-          <div className="flex flex-col gap-y-12">
+          <div className="flex flex-col ">
             <button
               onClick={toggleDropdownVisibility}
-              className="flex w-full items-center gap-x-1 p-2 text-white transition-colors hover:bg-white/10 focus-visible:bg-white/10"
+              className="flex w-full gap-x-1 p-1 text-white transition-colors mb-7 -ms-1"
               aria-label="Go Back"
             >
-              <ChevronLeft className="-translate-y-[1px]" />
-              <span>Back</span>
+              <ChevronLeft className="-translate-y-[1px] " />
+              <span className="ps-3 text-start">Back</span>
             </button>
 
             <ServicesDropdown />
@@ -104,10 +104,11 @@ const NavigationItems: React.FC<NavigationItemsProps> = ({
 const ServicesDropdown: React.FC = () => {
   return (
     <ul className="flex flex-col gap-y-2">
+      <h2 className="text-white p-2 text-start w-full mb-3 text-2xl font-medium">Services</h2>
       {SERVICES_DATA.map((item) => (
         <li
           key={item.label}
-          className="w-full border-b border-b-grayBorder text-base font-semibold capitalize text-white"
+          className="w-full border-b border-b-grayBorder text-base font-semibold capitalize text-white/80"
         >
           <MobileNavItem type="link" navItem={item} />
         </li>
