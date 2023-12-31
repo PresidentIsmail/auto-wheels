@@ -9,7 +9,7 @@ const testPromoVideoPath = "/videos/test-promo-video.mp4";
 const Hero = () => {
   return (
     <section
-      className="min-h-hero-mobile md:min-h-hero-desktop flex h-full overflow-hidden
+      className="h-hero-mobile md:h-hero-desktop flex overflow-hidden
       border-b-[1px] border-b-grayBorder
     "
     >
