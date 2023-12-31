@@ -10,9 +10,13 @@ import {
   useScroll,
 } from "framer-motion";
 
+import { BUSINESS_TELEPHONE_NUMBER } from "@/constants";
+
+import { Phone } from "lucide-react";
 import NavItems from "./NavItems";
-import ContactButton from "./ContactButton";
-import HeaderInformation from "../HeaderInformation";
+import HeaderInformation from "../ui/HeaderInformation";
+import { Button } from "../ui/button";
+
 const MobileNavItems = Dynamic(() => import("./mobile-nav/MobileNavItems"), {
   ssr: false,
 });
@@ -74,7 +78,16 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <ContactButton />
+          <Button asChild>
+            <Link
+              href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
+              aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
+              className="hidden md:flex gap-x-2"
+            >
+              <Phone className="h-4 w-4 xl:h-5 xl:w-5" />
+              Call Us
+            </Link>
+          </Button>
         </div>
       </div>
     </motion.nav>

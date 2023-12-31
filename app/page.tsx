@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
+import Hero from "@/components/hero-section/Hero";
 
 export default function Home() {
   return (
@@ -8,10 +9,10 @@ export default function Home() {
         className="
         mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))] 
         flex 
-        min-h-[200vh] flex-col items-center bg-neutral-400 md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
+        min-h-[200vh] flex-col items-center bg-white md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))] w-full relative
       "
       >
-        <h1 className="mt-[100px] ">Wassup Big Dog</h1>
+        <Hero />
       </main>
     </>
   );

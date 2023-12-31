@@ -37,6 +37,10 @@
     --navbar-desktop-height: 70px;
     --navbar-mobile-height: 60px;
     --header-info-height: 40px;
+
+    /* hero-desktop-height that is 80vh - (--navbar-desktop-height + --header-info-height) */
+    --hero-desktop-height: calc(80vh - (var(--navbar-desktop-height) + var(--header-info-height)));
+    --hero-mobile-height: calc(80vh - (var(--navbar-mobile-height) + var(--header-info-height)));
   }
 
   .dark {
