@@ -39,7 +39,7 @@ const MobileNavItems: React.FC = () => {
       </SheetTrigger>
       <SheetContent
         showCloseIcon={!isDropdownVisible}
-        className="flex flex-col justify-between border-l-grayBorder bg-special px-[32px] pt-[48px]"
+        className="flex flex-col justify-between overflow-y-scroll border-l-grayBorder bg-special px-[32px] pt-[48px]"
       >
         {!isDropdownVisible ? (
           // Navigation Items
