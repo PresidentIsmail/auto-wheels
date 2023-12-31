@@ -43,7 +43,7 @@ const MobileNavItems: React.FC = () => {
       </SheetTrigger>
       <SheetContent
         showCloseIcon={!isDropdownVisible}
-        className="flex flex-col justify-between border-l-grayBorder bg-special px-[32px] pt-[40px]"
+        className="flex flex-col justify-between border-l-grayBorder bg-special px-[32px] pt-[48px]"
       >
         {!isDropdownVisible ? (
           // Navigation Items
@@ -110,10 +110,10 @@ const ServicesDropdown: React.FC = () => {
     <ul className="flex flex-col gap-y-2">
       {SERVICES_DATA.map((item) => (
         <li
-          key={item.title}
-          className="w-full py-2 text-lg font-semibold capitalize text-white"
+          key={item.label}
+          className="w-full border-b border-b-grayBorder text-base font-semibold capitalize text-white"
         >
-          <span>{item.title}</span>
+          <MobileNavItem type="link" navItem={item} />
         </li>
       ))}
     </ul>
