@@ -10,12 +10,8 @@ import ContactInfo from "./CantactInfo";
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
   SheetFooter,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -34,7 +30,7 @@ const MobileNavItems: React.FC = () => {
     <Sheet>
       <SheetTrigger
         onClick={closeDropdown}
-        className="flex flex-col items-end justify-center p-2 text-white transition-colors hover:bg-white/10 focus-visible:bg-white/10"
+        className="flex flex-col items-end justify-center p-2 text-white transition-colors hover:bg-white/10 focus-visible:bg-white/10 md:hidden"
         aria-label="Toggle Navigation"
       >
         <div className="mb-1 h-0.5 w-6 bg-white"></div>
