@@ -34,6 +34,8 @@
 
     --radius: 0.5rem;
 
+    --lg-clip-path: ellipse(85% 100% at center top);
+    --sm-clip-path: ellipse(100% 95% at center top);
     --navbar-desktop-height: 70px;
     --navbar-mobile-height: 60px;
     --header-info-height: 40px;
@@ -45,6 +47,20 @@
     --hero-mobile-height: calc(
       90vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
     );
+  }
+
+  @media (max-width: 1023px) {
+    /* Apply sm-clip-path for screens below lg */
+    :root {
+      --clip-path: var(--sm-clip-path);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* Apply lg-clip-path for lg screens and above */
+    :root {
+      --clip-path: var(--lg-clip-path);
+    }
   }
 
   .dark {
