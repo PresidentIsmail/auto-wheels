@@ -21,11 +21,15 @@ const Statistic: React.FC<StatisticProps> = ({
 
   return (
     <div className="flex flex-col gap-y-2" {...props} ref={ref}>
-      <h3 className="border-l-[3px] border-l-brand pl-4 text-2xl font-bold md:text-3xl">
+      <span className="sr-only">{value}</span>
+      <p
+        className="border-l-[3px] border-l-brand pl-4 text-2xl font-bold md:text-3xl"
+        aria-hidden
+      >
         {isInView && <CountUp start={1} end={value} duration={duration} />}
-      </h3>
+      </p>
 
-      <p className="pl-5 text-xs text-[#92959a] md:text-sm">{label}</p>
+      <p className="pl-5 text-xs text-slate-500 md:text-sm">{label}</p>
     </div>
   );
 };
