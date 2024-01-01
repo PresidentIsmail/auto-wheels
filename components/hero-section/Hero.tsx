@@ -13,6 +13,7 @@ const Hero = () => {
       className="flex max-h-[var(--hero-mobile-height)] w-full overflow-x-hidden border-b-[1px] border-b-grayBorder
        lg:h-hero-desktop
     "
+      aria-label="Hero section"
     >
       <div className="flex flex-1 ">
         <div className="grid grid-rows-5 gap-x-4 lg:grid-cols-5 lg:grid-rows-1">

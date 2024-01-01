@@ -68,7 +68,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-col gap-y-6 lg:mt-0">
+      <div className="mt-12 flex flex-col gap-y-2 lg:mt-0 lg:gap-y-4">
         {/* Description */}
         <SlideInContent direction="slideRight" delay={1}>
           <p className="text-sm font-medium text-[#323236] md:text-base">
@@ -79,13 +79,31 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         </SlideInContent>
 
         {/* Start Ratings */}
-        {/* <div className="flex items-center gap-x-1 ">
-          <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" />
-          <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" />
-          <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" />
-          <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" />
-          <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" />
-        </div> */}
+        <SlideInContent direction="slideRight" delay={1.25}>
+          <div className="flex items-center gap-x-1 ">
+            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
+            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
+            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
+            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
+            {/* last start should be only 60% filled */}
+            <Star
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden
+              style={{ clipPath: "inset(0 40% 0 0)" }}
+            />
+
+            {/* review from google */}
+            {/* review from google */}
+            <p className="ml-1 text-xs font-medium text-[#323236] md:text-sm">
+              4.6 (<span className="text-[#4285F4]">G</span>
+              <span className="text-[#DB4437]">o</span>
+              <span className="text-[#F4B400]">o</span>
+              <span className="text-[#4285F4]">g</span>
+              <span className="text-[#0F9D58]">l</span>
+              <span className="text-[#DB4437]">e</span>
+              <span>&nbsp;Reviews</span>)
+            </p>
+          </div>
+        </SlideInContent>
       </div>
     </section>
   );
