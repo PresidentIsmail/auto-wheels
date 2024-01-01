@@ -43,7 +43,7 @@ const defaultAnimationVariants: Variants = {
 const AnimatedText: React.FC<AnimatedTextProps> = ({
   text,
   element: Element,
-  animateOnce: once,
+  animateOnce: once = true,
   className,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
