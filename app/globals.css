@@ -40,7 +40,7 @@
 
     /* hero-desktop-height that is 80vh - (--navbar-desktop-height + --header-info-height) */
     --hero-desktop-height: calc(
-      80vh - calc(var(--navbar-desktop-height) + var(--header-info-height))
+      85vh - calc(var(--navbar-desktop-height) + var(--header-info-height))
     );
     --hero-mobile-height: calc(
       90vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
