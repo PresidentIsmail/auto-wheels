@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar/Navbar";
 import Hero from "@/components/hero-section/Hero";
-import Statistics from "@/components/ui/Statistics";
+import Statistics from "@/components/ui/statistic-section/Statistics";
 
 export default function Home() {
   return (
