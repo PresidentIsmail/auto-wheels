@@ -4,25 +4,26 @@ import HeroCopy from "./HeroCopy";
 import VideoLoader from "../VideoLoader";
 
 const promoVideoPath = "/videos/promo-video-1.mp4";
+const promoVideoTwoPath = "/videos/promo-video-2.webm";
 const testPromoVideoPath = "/videos/test-promo-video.mp4";
 
 const Hero = () => {
   return (
     <section
-      className="h-hero-mobile md:h-hero-desktop flex overflow-hidden
-      border-b-[1px] border-b-grayBorder
+      className="flex max-h-[var(--hero-mobile-height)] w-full overflow-x-hidden border-b-[1px] border-b-grayBorder
+       lg:h-hero-desktop
     "
     >
-      <div className="flex flex-1 px-[100px]">
-        <div className="grid grid-cols-3 gap-x-4">
+      <div className="flex flex-1 ">
+        <div className="grid grid-rows-5 gap-x-4 lg:grid-cols-5 lg:grid-rows-1">
           {/* Hero Copy */}
-          <HeroCopy className="" />
+          <HeroCopy className="order-2 col-span-2 row-span-3 ps-4 lg:order-1" />
 
           {/* Promo Video */}
-          <div className="relative col-span-2">
-            <div className="absolute bottom-auto left-0 right-auto top-0 h-full w-[115%] overflow-hidden">
+          <div className="relative order-1 col-span-3 row-span-2 h-auto lg:order-2">
+            <div className="absolute left-auto h-full w-[200%] overflow-hidden lg:w-[150%]">
               <VideoLoader
-                mp4={testPromoVideoPath}
+                webm={promoVideoTwoPath}
                 videoTitle="Promotional video"
                 imageSrc={undefined}
                 className="absolute inset-0 h-full w-full object-cover object-center"

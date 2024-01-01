@@ -78,11 +78,11 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <Button asChild>
+          <Button variant={"secondary"} asChild>
             <Link
               href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
               aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
-              className="hidden md:flex gap-x-2"
+              className="hidden gap-x-2 md:flex"
             >
               <Phone className="h-4 w-4 xl:h-5 xl:w-5" />
               Call Us

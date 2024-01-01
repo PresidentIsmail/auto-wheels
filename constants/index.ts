@@ -1,3 +1,12 @@
+export const BUSINESS_TELEPHONE_NUMBER = "0183817456";
+export const BUSINESS_WORKING_HOURS = [
+  "Mon-Fri : 07:00 - 17:00",
+  "Sat: 08:00 - 13:00",
+];
+export const BUSINESS_ADDRESS = "23 Nelson Mandela Dr, Mahikeng";
+export const BUSINESS_ADDRESS_ON_GOOGLE_MAPS =
+  "https://www.google.com/maps/place/Auto+Wheels+%26+Exhausts/@-25.8632276,25.6459493,17z/data=!3m1!4b1!4m6!3m5!1s0x1ea2cac697680bb7:0x2ad30578d491e15a!8m2!3d-25.8632276!4d25.6459493!16s%2Fg%2F1pzr6fdt5?entry=ttu";
+
 type NavItem = {
   label: string;
   href: string;
@@ -119,17 +128,29 @@ export const SERVICES_DATA: Service[] = [
 
 // Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
 export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
-  a.label.localeCompare(b.label)
+  a.label.localeCompare(b.label),
 );
 
 
-
-
-export const BUSINESS_TELEPHONE_NUMBER = "0183817456";
-export const BUSINESS_WORKING_HOURS = [
-  "Mon-Fri : 07:00 - 17:00",
-  "Sat: 08:00 - 13:00",
+export const AUTO_WHEELS_STATS = [
+  {
+    label: "Vehicles Serviced Monthly",
+    value: 100,
+  },
+  {
+    label: "Quality Tires Installed Yearly",
+    value: 1000,
+  },
+  {
+    label: "Satisfied Customers Weekly",
+    value: 100,
+  },
+  {
+    label: "Square Feet of State-of-the-Art Service Facilities",
+    value: 6000,
+  },
+  {
+    label: "Successful Repairs Completed Weekly",
+    value: 200,
+  },
 ];
-export const BUSINESS_ADDRESS = "23 Nelson Mandela Dr, Mahikeng";
-export const BUSINESS_ADDRESS_ON_GOOGLE_MAPS =
-  "https://www.google.com/maps/place/Auto+Wheels+%26+Exhausts/@-25.8632276,25.6459493,17z/data=!3m1!4b1!4m6!3m5!1s0x1ea2cac697680bb7:0x2ad30578d491e15a!8m2!3d-25.8632276!4d25.6459493!16s%2Fg%2F1pzr6fdt5?entry=ttu";
