@@ -35,7 +35,8 @@
     --radius: 0.5rem;
 
     --lg-clip-path: ellipse(85% 100% at center top);
-    --sm-clip-path: ellipse(100% 95% at center top);
+    --sm-clip-path: ellipse(105% 100% at center top);
+    /* --sm-clip-path: ellipse(100% 95% at center top); */
     --navbar-desktop-height: 70px;
     --navbar-mobile-height: 60px;
     --header-info-height: 40px;
