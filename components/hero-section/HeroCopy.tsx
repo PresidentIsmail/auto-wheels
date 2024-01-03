@@ -18,16 +18,14 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
   return (
     <section
       className={cn(
-        "col-span-1 mt-4 flex max-w-prose flex-col items-start pb-4 pe-6 lg:justify-between lg:pb-6",
+        "mt-4 flex flex-col items-start pb-4  lg:justify-around ",
         className,
       )}
       {...props}
     >
-      <div className="flex flex-col gap-y-6 lg:gap-y-12">
+      {/* Heading and Buttons */}
+      <div className="flex max-w-prose flex-col gap-y-6 lg:gap-y-12">
         {/* Heading */}
-        {/* <h1 className="text-[32px] font-extrabold leading-tight md:text-5xl xl:text-6xl">
-          Welcome to Auto Wheels & Exhaust
-        </h1> */}
         <AnimatedText
           element="h1"
           text="Welcome to Auto Wheels & Exhaust"
@@ -68,7 +66,8 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-col gap-y-2 lg:mt-0 lg:gap-y-4">
+      {/* Description and Ratings*/}
+      <div className="mt-12 flex max-w-prose flex-col gap-y-2 lg:mt-0 lg:gap-y-4">
         {/* Description */}
         <SlideInContent direction="slideRight" delay={1}>
           <p className="text-sm font-medium text-[#323236] md:text-base">
@@ -78,16 +77,29 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
           </p>
         </SlideInContent>
 
-        {/* Start Ratings */}
+        {/* Ratings */}
         <SlideInContent direction="slideRight" delay={1.25}>
           <div className="flex items-center gap-x-1 ">
-            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
-            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
-            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
-            <Star className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden />
+            <Star
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
+              aria-hidden
+            />
+            <Star
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
+              aria-hidden
+            />
+            <Star
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
+              aria-hidden
+            />
+            <Star
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
+              aria-hidden
+            />
             {/* last start should be only 60% filled */}
             <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]" aria-hidden
+              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
+              aria-hidden
               style={{ clipPath: "inset(0 40% 0 0)" }}
             />
 
