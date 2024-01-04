@@ -5,10 +5,15 @@ import tireBg from "@/public/images/tyre-bg-01.webp";
 
 import { Info } from "lucide-react";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import TireSelectionInput from "./TireSelectionInput";
 
 const TireSelection: React.FC = () => {
   return (
@@ -31,12 +36,15 @@ const TireSelection: React.FC = () => {
           </h2>
         </header>
 
-        <section className="w-full bg-[#323236]/80 p-2">
-          <h3 className="text-2xl font-bold md:text-3xl">
-            Tell us your tire size
-          </h3>
+        <section className="flex w-full flex-col gap-y-6 bg-[#323236]/80 p-2">
+          <div className="">
+            <h3 className="text-2xl font-bold md:text-3xl">
+              Tell us your tire size
+            </h3>
+            <TireSizePopover />
+          </div>
 
-          <TireSizePopover />
+          <TireSelectionInput />
         </section>
       </article>
     </section>
@@ -60,23 +68,17 @@ const Overlay: React.FC = () => (
 );
 
 const TireSizePopover: React.FC = () => (
-  <Popover>
-    <PopoverTrigger
-      className="decoration-white/80 underline-offset-2 hover:underline"
-      aria-haspopup="true"
-      aria-controls="popover-content"
-    >
+  <Dialog>
+    <DialogTrigger className="decoration-white/80 underline-offset-2 hover:underline">
       <p className="text-xs font-normal italic text-white/80 ">
         <span className="inline-block translate-y-[3px]">
           <Info className="h-4 w-4" />
         </span>{" "}
         Need help with your tire size?
       </p>
-    </PopoverTrigger>
-    <PopoverContent id="popover-content">
-      Place content for the popover here.
-    </PopoverContent>
-  </Popover>
+    </DialogTrigger>
+    <DialogContent>Place content for the Dialog here.</DialogContent>
+  </Dialog>
 );
 
 export default TireSelection;
