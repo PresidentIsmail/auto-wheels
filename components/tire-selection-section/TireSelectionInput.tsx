@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { tireData } from "@/data/TireData";
 
@@ -10,8 +10,12 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
 const TireSelectionInput: React.FC = () => {
+  // Create a reference to the input element
+  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState<string>("");
   const [suggestions, setSuggestions] = useState<number[]>([]);
+  // Add a new state variable for the selected suggestion
+  const [selectedSuggestion, setSelectedSuggestion] = useState(0);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -25,9 +29,40 @@ const TireSelectionInput: React.FC = () => {
     setSuggestions(matchingWidths);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Check if the down arrow key was pressed
+    if (event.key === "ArrowDown") {
+      // Move to the next suggestion, or loop back to the start if we're at the end
+      setSelectedSuggestion(
+        (prevSelectedSuggestion) =>
+          (prevSelectedSuggestion + 1) % suggestions.length,
+      );
+      event.preventDefault();
+    }
+    // Check if the up arrow key was pressed
+    else if (event.key === "ArrowUp") {
+      // Move to the previous suggestion, or loop back to the end if we're at the start
+      setSelectedSuggestion(
+        (prevSelectedSuggestion) =>
+          (prevSelectedSuggestion - 1 + suggestions.length) %
+          suggestions.length,
+      );
+      event.preventDefault();
+    }
+    // Check if the enter key was pressed
+    else if (event.key === "Enter" && suggestions.length > 0) {
+      // Select the current suggestion
+      setInputValue(suggestions[selectedSuggestion].toString());
+      setSuggestions([]);
+      event.preventDefault();
+    }
+
+    console.log(selectedSuggestion);
+  };
+
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log("handleSearch called");
     event.preventDefault();
-    // Handle the search logic based on the selected width (inputValue)
     console.log(`Searching for width: ${inputValue}`);
   };
 
@@ -35,6 +70,11 @@ const TireSelectionInput: React.FC = () => {
     // Set the selected width from suggestions
     setInputValue(width.toString());
     setSuggestions([]);
+
+    // Focus on input
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   const handleClearInput = () => {
@@ -43,11 +83,12 @@ const TireSelectionInput: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex w-full items-end">
+    <form onSubmit={handleSearch} className="relative flex w-full items-end">
       <div className="grid max-w-sm items-center gap-1.5">
         <Label htmlFor="width">Width</Label>
         <div className="relative">
           <Input
+            ref={inputRef}
             autoComplete="off"
             type="number"
             name="width"
@@ -55,12 +96,14 @@ const TireSelectionInput: React.FC = () => {
             min="0"
             value={inputValue}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             placeholder="eg: 195"
             className="border-[2px] border-grayBorder bg-transparent text-white"
           />
           {/* Clear Input */}
           {inputValue.length > 0 && (
             <Button
+              type="button"
               onClick={handleClearInput}
               size={"icon"}
               variant={"ghost"}
