@@ -3,23 +3,26 @@
 import React, { useRef, useState } from "react";
 
 import { tireData, DEFAULT_TIRE_WIDTHS } from "@/data/TireData";
+import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { Search, X } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import Suggestions from "./Suggestions";
 
 const TIRE_DIAMETER = 14;
 const INITIAL_SUGGESTIONS = tireData[TIRE_DIAMETER].widths;
 
 const TireSelectionInput: React.FC = () => {
-  // Create a reference to the input element
   const inputRef = useRef<HTMLInputElement>(null);
+  const suggestionsRef = useRef<HTMLUListElement>(null);
+
   const [inputValue, setInputValue] = useState<string>("");
   const [inputFocused, setInputFocused] = useState(false);
   const [suggestions, setSuggestions] = useState<number[]>(DEFAULT_TIRE_WIDTHS);
   // Add a new state variable for the selected suggestion
-  const [selectedSuggestion, setSelectedSuggestion] = useState(0);
+  const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -31,65 +34,71 @@ const TireSelectionInput: React.FC = () => {
     );
 
     setSuggestions(matchingWidths);
+
+    // Highlight the first suggestion
+    if (matchingWidths.length > 0) {
+      setSelectedSuggestion(0);
+    } else {
+      setSelectedSuggestion(-1);
+    }
+  };
+
+  const handleArrowDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Move to the next suggestion, or loop back to the start if we're at the end
+    setSelectedSuggestion((prevSelectedSuggestion) => {
+      const newIndex = (prevSelectedSuggestion + 1) % suggestions.length;
+      setInputValue(suggestions[newIndex].toString());
+      return newIndex;
+    });
+
+    event.preventDefault();
+  };
+
+  const handleArrowUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Move to the previous suggestion, or loop back to the end if we're at the start
+    setSelectedSuggestion((prevSelectedSuggestion) => {
+      const newIndex =
+        (prevSelectedSuggestion - 1 + suggestions.length) % suggestions.length;
+      setInputValue(suggestions[newIndex].toString());
+      return newIndex;
+    });
+    event.preventDefault();
+  };
+
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Select the current suggestion
+    setInputValue(suggestions[selectedSuggestion].toString());
+    setSuggestions([]);
+    event.preventDefault();
+  };
+
+  const handleEscape = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    // Clear the suggestions
+    setSuggestions([]);
+    event.preventDefault();
+
+    // Return focus to the input field
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    // Check if the down arrow key was pressed
-    if (event.key === "ArrowDown") {
-      // Move to the next suggestion, or loop back to the start if we're at the end
-      setSelectedSuggestion((prevSelectedSuggestion) => {
-        return (prevSelectedSuggestion + 1) % suggestions.length;
-      });
-
-      setInputValue(suggestions[selectedSuggestion].toString());
-      event.preventDefault();
-    }
-    // Check if the up arrow key was pressed
-    if (event.key === "ArrowUp") {
-      // Move to the previous suggestion, or loop back to the end if we're at the start
-      setSelectedSuggestion(
-        (prevSelectedSuggestion) =>
-          (prevSelectedSuggestion - 1 + suggestions.length) %
-          suggestions.length,
-      );
-
-      setInputValue(suggestions[selectedSuggestion].toString());
-      event.preventDefault();
-    }
-
-    // Check if the enter key was pressed
-    if (event.key === "Enter" && suggestions.length > 0) {
-      // Select the current suggestion
-      setInputValue(suggestions[selectedSuggestion].toString());
-      setSuggestions([]);
-      event.preventDefault();
-    }
-
-    // Check if the escape key was pressed
-    if (event.key === "Escape") {
-      // Clear the suggestions
-      setSuggestions([]);
-      event.preventDefault();
-    }
-
-    // Check if the tab key was pressed
-    if (event.key === "Tab") {
-      // Select the current suggestion
-      setInputValue(suggestions[selectedSuggestion].toString());
-      setSuggestions([]);
-    }
- 
+    if (event.key === "ArrowDown") handleArrowDown(event);
+    if (event.key === "ArrowUp") handleArrowUp(event);
+    if (event.key === "Enter") handleEnter(event);
+    if (event.key === "Escape") handleEscape(event);
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log("handleSearch called");
     event.preventDefault();
     console.log(`Searching for width: ${inputValue}`);
   };
 
-  const handleSuggestionClick = (width: number) => {
+  const handleSuggestionClick = (event: React.MouseEvent, width: number) => {
     // Set the selected width from suggestions
     setInputValue(width.toString());
+
     setSuggestions([]);
 
     // Focus on input
@@ -100,18 +109,23 @@ const TireSelectionInput: React.FC = () => {
 
   const handleClearInput = () => {
     setInputValue("");
-    setSuggestions([]);
+    // set suggestiond to default
+    setSuggestions(INITIAL_SUGGESTIONS);
+    // Focus on input
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
-  // function that checks if the nuer input is valid after losing focus
-  // const handleBlur = () => {
-
-
+  // Close suggestions when clicking outside
+  useOnClickOutside(suggestionsRef, () => setInputFocused(false));
 
   return (
     <form onSubmit={handleSearch} className="relative flex w-full items-end">
       <div className="grid max-w-sm items-center gap-1.5">
-        <Label htmlFor="width" className="translate-x-[4px]">Width</Label>
+        <Label htmlFor="width" className="translate-x-[4px]">
+          Width
+        </Label>
         <div className="relative">
           <Input
             ref={inputRef}
@@ -124,9 +138,16 @@ const TireSelectionInput: React.FC = () => {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             onFocus={() => setInputFocused(true)}
-            onBlur={() => setInputFocused(false)}
+            // onBlur={() => setSuggestions([])}
             placeholder="eg: 195"
             className="border-[2px] border-grayBorder bg-transparent text-white"
+            role="combobox"
+            aria-expanded={inputFocused && suggestions.length > 0}
+            aria-activedescendant={
+              selectedSuggestion >= 0
+                ? `suggestion-${selectedSuggestion}`
+                : undefined
+            }
           />
           {/* Clear Input */}
           {inputValue.length > 0 && (
@@ -136,6 +157,7 @@ const TireSelectionInput: React.FC = () => {
               size={"icon"}
               variant={"ghost"}
               className="absolute right-1 top-1/2 h-max w-max -translate-y-1/2 p-1.5 hover:bg-white/10 hover:text-white"
+              aria-label="Clear input"
             >
               <X className="h-4 w-4 text-white" />
             </Button>
@@ -143,27 +165,12 @@ const TireSelectionInput: React.FC = () => {
 
           {/* Suggestions */}
           {inputFocused && suggestions.length > 0 && (
-            <ul
-              className="absolute left-0 right-0 top-full z-20 mt-4 flex h-max max-h-52 max-w-sm flex-col rounded-md border border-grayBorder text-white"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 50% 100%, #323236, #252529)",
-              }}
-            >
-              {suggestions.map((width, index) => (
-                <li
-                  key={index}
-                  className={`cursor-pointer p-2 hover:bg-[#323236] hover:text-white ${
-                    index === selectedSuggestion
-                      ? "bg-[#323236] text-white"
-                      : ""
-                  }`}
-                  onClick={() => handleSuggestionClick(width)}
-                >
-                  {width}
-                </li>
-              ))}
-            </ul>
+            <Suggestions
+              ref={suggestionsRef}
+              suggestions={suggestions}
+              selectedSuggestion={selectedSuggestion}
+              handleSuggestionClick={handleSuggestionClick}
+            />
           )}
         </div>
       </div>
