@@ -2,18 +2,22 @@
 
 import React, { useRef, useState } from "react";
 
-import { tireData } from "@/data/TireData";
+import { tireData, DEFAULT_TIRE_WIDTHS } from "@/data/TireData";
 
 import { Search, X } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
+const TIRE_DIAMETER = 14;
+const INITIAL_SUGGESTIONS = tireData[TIRE_DIAMETER].widths;
+
 const TireSelectionInput: React.FC = () => {
   // Create a reference to the input element
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<number[]>([]);
+  const [inputFocused, setInputFocused] = useState(false);
+  const [suggestions, setSuggestions] = useState<number[]>(DEFAULT_TIRE_WIDTHS);
   // Add a new state variable for the selected suggestion
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
 
@@ -22,7 +26,7 @@ const TireSelectionInput: React.FC = () => {
     setInputValue(input);
 
     // Filter available widths based on user input
-    const matchingWidths = tireData[14].widths.filter((width) =>
+    const matchingWidths = tireData[TIRE_DIAMETER].widths.filter((width) =>
       width.toString().startsWith(input),
     );
 
@@ -33,31 +37,48 @@ const TireSelectionInput: React.FC = () => {
     // Check if the down arrow key was pressed
     if (event.key === "ArrowDown") {
       // Move to the next suggestion, or loop back to the start if we're at the end
-      setSelectedSuggestion(
-        (prevSelectedSuggestion) =>
-          (prevSelectedSuggestion + 1) % suggestions.length,
-      );
+      setSelectedSuggestion((prevSelectedSuggestion) => {
+        return (prevSelectedSuggestion + 1) % suggestions.length;
+      });
+
+      setInputValue(suggestions[selectedSuggestion].toString());
       event.preventDefault();
     }
     // Check if the up arrow key was pressed
-    else if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp") {
       // Move to the previous suggestion, or loop back to the end if we're at the start
       setSelectedSuggestion(
         (prevSelectedSuggestion) =>
           (prevSelectedSuggestion - 1 + suggestions.length) %
           suggestions.length,
       );
+
+      setInputValue(suggestions[selectedSuggestion].toString());
       event.preventDefault();
     }
+
     // Check if the enter key was pressed
-    else if (event.key === "Enter" && suggestions.length > 0) {
+    if (event.key === "Enter" && suggestions.length > 0) {
       // Select the current suggestion
       setInputValue(suggestions[selectedSuggestion].toString());
       setSuggestions([]);
       event.preventDefault();
     }
 
-    console.log(selectedSuggestion);
+    // Check if the escape key was pressed
+    if (event.key === "Escape") {
+      // Clear the suggestions
+      setSuggestions([]);
+      event.preventDefault();
+    }
+
+    // Check if the tab key was pressed
+    if (event.key === "Tab") {
+      // Select the current suggestion
+      setInputValue(suggestions[selectedSuggestion].toString());
+      setSuggestions([]);
+    }
+ 
   };
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -82,10 +103,15 @@ const TireSelectionInput: React.FC = () => {
     setSuggestions([]);
   };
 
+  // function that checks if the nuer input is valid after losing focus
+  // const handleBlur = () => {
+
+
+
   return (
     <form onSubmit={handleSearch} className="relative flex w-full items-end">
       <div className="grid max-w-sm items-center gap-1.5">
-        <Label htmlFor="width">Width</Label>
+        <Label htmlFor="width" className="translate-x-[4px]">Width</Label>
         <div className="relative">
           <Input
             ref={inputRef}
@@ -97,6 +123,8 @@ const TireSelectionInput: React.FC = () => {
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
             placeholder="eg: 195"
             className="border-[2px] border-grayBorder bg-transparent text-white"
           />
@@ -112,19 +140,24 @@ const TireSelectionInput: React.FC = () => {
               <X className="h-4 w-4 text-white" />
             </Button>
           )}
+
           {/* Suggestions */}
-          {suggestions.length > 0 && (
+          {inputFocused && suggestions.length > 0 && (
             <ul
-              className="absolute left-0 right-0 top-full mt-4 flex max-w-sm flex-col rounded-md border border-grayBorder text-white"
+              className="absolute left-0 right-0 top-full z-20 mt-4 flex h-max max-h-52 max-w-sm flex-col rounded-md border border-grayBorder text-white"
               style={{
-                backgroundColor:
+                backgroundImage:
                   "radial-gradient(circle at 50% 100%, #323236, #252529)",
               }}
             >
               {suggestions.map((width, index) => (
                 <li
                   key={index}
-                  className="cursor-pointer p-2 hover:bg-[#323236] hover:text-white"
+                  className={`cursor-pointer p-2 hover:bg-[#323236] hover:text-white ${
+                    index === selectedSuggestion
+                      ? "bg-[#323236] text-white"
+                      : ""
+                  }`}
                   onClick={() => handleSuggestionClick(width)}
                 >
                   {width}
