@@ -20,12 +20,8 @@ const TireSelection: React.FC = () => {
     <section
       aria-label="Section for selecting the tire size for your vehicle"
       className="relative min-h-[500px] w-full pb-24 text-white lg:pb-0"
-      style={{
-        clipPath: "var(--clip-path)",
-      }}
     >
-      <BackgroundImage />
-      <Overlay />
+      <BackgroundImageWithOverlay />
 
       {/* Content */}
       <article className="master-container relative z-10 flex flex-col gap-y-6">
@@ -51,20 +47,27 @@ const TireSelection: React.FC = () => {
   );
 };
 
-const BackgroundImage: React.FC = () => (
-  <Image
-    src={tireBg}
-    alt="Tire Selection Background"
-    fill
-    sizes="100vw"
-    quality={70}
-    placeholder="blur"
-    className="absolute left-0 top-0 z-0 h-full w-full object-cover object-center brightness-[25%]"
-  />
-);
-
-const Overlay: React.FC = () => (
-  <div className="absolute left-0 top-0 z-0 h-full w-full bg-brand opacity-[5%]" />
+const BackgroundImageWithOverlay: React.FC = () => (
+  <>
+    <Image
+      src={tireBg}
+      alt="Tire Selection Background"
+      fill
+      sizes="100vw"
+      quality={70}
+      placeholder="blur"
+      className="absolute left-0 top-0 z-0 h-full w-full object-cover object-center brightness-[25%]"
+      style={{
+        clipPath: "var(--clip-path)",
+      }}
+    />
+    <div
+      className="absolute left-0 top-0 z-0 h-full w-full bg-brand opacity-[5%]"
+      style={{
+        clipPath: "var(--clip-path)",
+      }}
+    />
+  </>
 );
 
 const TireSizePopover: React.FC = () => (
