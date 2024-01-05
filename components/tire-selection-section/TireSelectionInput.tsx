@@ -138,7 +138,6 @@ const TireSelectionInput: React.FC = () => {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             onFocus={() => setInputFocused(true)}
-            // onBlur={() => setSuggestions([])}
             placeholder="eg: 195"
             className="border-[2px] border-grayBorder bg-transparent text-white"
             role="combobox"
@@ -151,16 +150,7 @@ const TireSelectionInput: React.FC = () => {
           />
           {/* Clear Input */}
           {inputValue.length > 0 && (
-            <Button
-              type="button"
-              onClick={handleClearInput}
-              size={"icon"}
-              variant={"ghost"}
-              className="absolute right-1 top-1/2 h-max w-max -translate-y-1/2 p-1.5 hover:bg-white/10 hover:text-white"
-              aria-label="Clear input"
-            >
-              <X className="h-4 w-4 text-white" />
-            </Button>
+            <ClearInputButton handleClearInput={handleClearInput} />
           )}
 
           {/* Suggestions */}
@@ -184,6 +174,24 @@ const TireSelectionInput: React.FC = () => {
         Search <Search className="ml-2 h-4 w-4 text-brand" />
       </Button>
     </form>
+  );
+};
+
+// seperate component for the clear button
+const ClearInputButton: React.FC<{ handleClearInput: () => void }> = ({
+  handleClearInput,
+}) => {
+  return (
+    <Button
+      type="button"
+      onClick={handleClearInput}
+      size={"icon"}
+      variant={"ghost"}
+      className="absolute right-1 top-1/2 h-max w-max -translate-y-1/2 p-1.5 hover:bg-white/10 hover:text-white"
+      aria-label="Clear input"
+    >
+      <X className="h-4 w-4 text-white" />
+    </Button>
   );
 };
 
