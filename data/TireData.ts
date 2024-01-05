@@ -13,7 +13,7 @@ export const tireData: TireSizeData = {
     profiles: [60, 65, 70],
   },
   14: {
-    widths: [185, 195, 205],
+    widths: [175, 185, 195, 205, 215],
     profiles: [65, 70, 75],
   },
   15: {
@@ -45,3 +45,14 @@ export const tireData: TireSizeData = {
     profiles: [45, 50, 55],
   },
 };
+
+// common tire widths
+export const DEFAULT_TIRE_WIDTHS = [
+  155, 165, 175, 185, 195, 205, 215, 225, 235, 245, 255, 265, 275,
+];
+
+// common tire profiles
+export const DEFAULT_TIRE_PROFILES = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85];
+
+// common tire diameters
+export const DEFAULT_TIRE_DIAMETERS = [13, 14, 15, 16, 17, 18, 19, 20, 21];
