@@ -5,12 +5,13 @@ import React, { useRef, useState } from "react";
 import { tireData, DEFAULT_TIRE_WIDTHS } from "@/data/TireData";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Suggestions from "./Suggestions";
 import ClearInputButton from "./ClearInputButton";
+import ErrorMessage from "./ErrorMessage";
 
 const TIRE_DIAMETER = 14;
 const INITIAL_SUGGESTIONS = tireData[TIRE_DIAMETER].widths;
@@ -22,8 +23,10 @@ const TireSelectionInput: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [inputFocused, setInputFocused] = useState(false);
   const [suggestions, setSuggestions] = useState<number[]>(DEFAULT_TIRE_WIDTHS);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   // Add a new state variable for the selected suggestion
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -85,9 +88,9 @@ const TireSelectionInput: React.FC = () => {
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "ArrowDown") handleArrowDown(event);
-    if (event.key === "ArrowUp") handleArrowUp(event);
-    if (event.key === "Enter") handleEnter(event);
+    if (event.key === "ArrowDown" && showSuggestions) handleArrowDown(event);
+    if (event.key === "ArrowUp" && showSuggestions) handleArrowUp(event);
+    if (event.key === "Enter" && showSuggestions) handleEnter(event);
     if (event.key === "Escape") handleEscape(event);
   };
 
@@ -100,7 +103,8 @@ const TireSelectionInput: React.FC = () => {
     // Set the selected width from suggestions
     setInputValue(width.toString());
 
-    setSuggestions([]);
+    // close suggestions
+    setShowSuggestions(false);
 
     // Focus on input
     if (inputRef.current) {
@@ -118,8 +122,23 @@ const TireSelectionInput: React.FC = () => {
     }
   };
 
+  const handleFocus = () => {
+    setInputFocused(true);
+    setShowSuggestions(true);
+  };
+
+  // if the user inputs a number that is not in the list of suggestions after leaving focus, show an error message
+  const handleBlur = () => {
+    if (!suggestions.includes(Number(inputValue)) && inputValue.length > 0) {
+      setErrorMessage("Size not available.");
+      console.log(suggestions);
+    } else {
+      setErrorMessage(null);
+    }
+  };
+
   // Close suggestions when clicking outside
-  useOnClickOutside(suggestionsRef, () => setInputFocused(false));
+  useOnClickOutside(suggestionsRef, () => setShowSuggestions(false));
 
   return (
     <form onSubmit={handleSearch} className="relative flex w-full items-end">
@@ -138,11 +157,12 @@ const TireSelectionInput: React.FC = () => {
             value={inputValue}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            onFocus={() => setInputFocused(true)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             placeholder="eg: 195"
             className="border-[2px] border-grayBorder bg-transparent text-white"
             role="combobox"
-            aria-expanded={inputFocused && suggestions.length > 0}
+            aria-expanded={inputFocused && showSuggestions}
             aria-activedescendant={
               selectedSuggestion >= 0
                 ? `suggestion-${selectedSuggestion}`
@@ -155,7 +175,7 @@ const TireSelectionInput: React.FC = () => {
           )}
 
           {/* Suggestions */}
-          {inputFocused && suggestions.length > 0 && (
+          {showSuggestions && suggestions.length > 0 && (
             <Suggestions
               ref={suggestionsRef}
               suggestions={suggestions}
@@ -163,6 +183,9 @@ const TireSelectionInput: React.FC = () => {
               handleSuggestionClick={handleSuggestionClick}
             />
           )}
+
+          {/* Error Message */}
+          {errorMessage && <ErrorMessage message={errorMessage} />}
         </div>
       </div>
 
