@@ -10,6 +10,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Suggestions from "./Suggestions";
+import ClearInputButton from "./ClearInputButton";
 
 const TIRE_DIAMETER = 14;
 const INITIAL_SUGGESTIONS = tireData[TIRE_DIAMETER].widths;
@@ -174,24 +175,6 @@ const TireSelectionInput: React.FC = () => {
         Search <Search className="ml-2 h-4 w-4 text-brand" />
       </Button>
     </form>
-  );
-};
-
-// seperate component for the clear button
-const ClearInputButton: React.FC<{ handleClearInput: () => void }> = ({
-  handleClearInput,
-}) => {
-  return (
-    <Button
-      type="button"
-      onClick={handleClearInput}
-      size={"icon"}
-      variant={"ghost"}
-      className="absolute right-1 top-1/2 h-max w-max -translate-y-1/2 p-1.5 hover:bg-white/10 hover:text-white"
-      aria-label="Clear input"
-    >
-      <X className="h-4 w-4 text-white" />
-    </Button>
   );
 };
 
