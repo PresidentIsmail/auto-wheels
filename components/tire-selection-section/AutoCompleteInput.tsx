@@ -139,10 +139,6 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   // Close suggestions when clicking outside of the input or suggestions
   useOnClickOutside([inputContainer], () => setShowSuggestions(false));
 
-  // log suggestions in useEffect
-  // useEffect(() => {
-  //   console.log(suggestions);
-  // }, [suggestions]);
 
   return (
     <div className="grid max-w-sm items-center gap-1.5">
