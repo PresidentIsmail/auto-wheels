@@ -1,50 +1,53 @@
 // AutoCompleteInput.tsx
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import ClearInputButton from "./ClearInputButton";
 import Suggestions from "./Suggestions";
 import ErrorMessage from "./ErrorMessage";
 
-interface AutoCompleteInputProps {
-  data: number[];
+interface AutoCompleteInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  inputValue: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  suggestionData: number[];
+  label: string;
   placeholder: string;
-  id: string;
 }
 
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
-  data,
+  inputValue,
+  setInputValue,
+  suggestionData,
+  label,
   placeholder,
-  id,
+  ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLUListElement>(null);
+  const inputContainer = useRef<HTMLDivElement>(null);
 
-  const [inputValue, setInputValue] = useState<string>("");
-  const [inputFocused, setInputFocused] = useState(false);
-  const [suggestions, setSuggestions] = useState<number[]>(data);
+  const [suggestions, setSuggestions] = useState<number[]>(suggestionData);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
-
-    // if empty, set suggestions to default
-    if (input.length === 0) {
-      setSuggestions(data);
-    }
-
     setInputValue(input);
 
+    // Show suggestions if there is no input
+    if (input.length === 0) setShowSuggestions(true);
+
     // Filter available widths based on user input
-    const matchingWidths = data.filter((width) =>
-      width.toString().startsWith(input),
+    const matchingWidths = suggestionData.filter((number) =>
+      number.toString().includes(input),
     );
 
-    setSuggestions(matchingWidths);
+    setSuggestions((prevSuggestions) => matchingWidths);
 
     // Highlight the first suggestion
     if (matchingWidths.length > 0) {
@@ -106,22 +109,14 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
   const handleSuggestionClick = (event: React.MouseEvent, width: number) => {
     // Set the selected width from suggestions
-    setInputValue((prev) => {
-      // close suggestions
-      setShowSuggestions(false);
-      return width.toString();
-    });
+    setInputValue(width.toString());
 
-    // Focus on input
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    // Close suggestions
+    setShowSuggestions(false);
   };
 
   const handleClearInput = () => {
     setInputValue("");
-    // set suggestiond to default
-    setSuggestions(data);
     // Focus on input
     if (inputRef.current) {
       inputRef.current.focus();
@@ -129,63 +124,71 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   };
 
   const handleFocus = () => {
-    setInputFocused(true);
     setShowSuggestions(true);
   };
 
   // if the user inputs a number that is not in the list of suggestions after leaving focus, show an error message
   const handleBlur = () => {
     if (!suggestions.includes(Number(inputValue)) && inputValue.length > 0) {
-      setErrorMessage("Size not available.");
-      console.log(suggestions);
+      setErrorMessage("Size is not available.");
     } else {
       setErrorMessage(null);
     }
   };
 
-  // Close suggestions when clicking outside
-  useOnClickOutside(suggestionsRef, () => setShowSuggestions(false));
+  // Close suggestions when clicking outside of the input or suggestions
+  useOnClickOutside([inputContainer], () => setShowSuggestions(false));
+
+  // log suggestions in useEffect
+  // useEffect(() => {
+  //   console.log(suggestions);
+  // }, [suggestions]);
 
   return (
-    <div className="relative">
-      <Input
-        ref={inputRef}
-        autoComplete="off"
-        type="number"
-        id={id}
-        min="0"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        placeholder={placeholder}
-        className="border-[2px] border-grayBorder bg-transparent text-white"
-        role="combobox"
-        aria-expanded={inputFocused && showSuggestions}
-        aria-activedescendant={
-          selectedSuggestion >= 0
-            ? `suggestion-${selectedSuggestion}`
-            : undefined
-        }
-      />
-      {/* Clear Input */}
-      {inputValue.length > 0 && (
-        <ClearInputButton handleClearInput={handleClearInput} />
-      )}
-
-      {/* Suggestions */}
-      {showSuggestions && suggestions.length > 0 && (
-        <Suggestions
-          ref={suggestionsRef}
-          suggestions={suggestions}
-          selectedSuggestion={selectedSuggestion}
-          handleSuggestionClick={handleSuggestionClick}
+    <div className="grid max-w-sm items-center gap-1.5">
+      <Label htmlFor={label} className="translate-x-[4px] capitalize">
+        {label}
+      </Label>
+      <div className="relative" ref={inputContainer}>
+        <Input
+          ref={inputRef}
+          autoComplete="off"
+          type="number"
+          id={label}
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          placeholder={placeholder}
+          className="border-[2px] border-grayBorder bg-transparent text-white"
+          role="combobox"
+          aria-expanded={showSuggestions}
+          aria-activedescendant={
+            selectedSuggestion >= 0
+              ? `suggestion-${selectedSuggestion}`
+              : undefined
+          }
+          {...props}
         />
-      )}
+        {/* Clear Input */}
+        {inputValue.length > 0 && (
+          <ClearInputButton handleClearInput={handleClearInput} />
+        )}
 
-      {/* Error Message */}
-      {errorMessage && <ErrorMessage message={errorMessage} />}
+        {/* Suggestions */}
+        {showSuggestions && suggestions.length > 0 && (
+          <Suggestions
+            ref={suggestionsRef}
+            suggestions={suggestions}
+            selectedSuggestion={selectedSuggestion}
+            handleSuggestionClick={handleSuggestionClick}
+          />
+        )}
+
+        {/* Error Message */}
+        {errorMessage && <ErrorMessage message={errorMessage} />}
+      </div>
     </div>
   );
 };
