@@ -2,7 +2,12 @@
 
 import React, { useRef, useState } from "react";
 
-import { tireData, DEFAULT_TIRE_WIDTHS } from "@/data/TireData";
+import {
+  tireData,
+  DEFAULT_TIRE_WIDTHS,
+  DEFAULT_TIRE_PROFILES,
+  DEFAULT_TIRE_DIAMETERS,
+} from "@/data/TireData";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { Search } from "lucide-react";
@@ -94,11 +99,6 @@ const TireSelectionInput: React.FC = () => {
     if (event.key === "Escape") handleEscape(event);
   };
 
-  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(`Searching for width: ${inputValue}`);
-  };
-
   const handleSuggestionClick = (event: React.MouseEvent, width: number) => {
     // Set the selected width from suggestions
     setInputValue(width.toString());
@@ -135,6 +135,11 @@ const TireSelectionInput: React.FC = () => {
     } else {
       setErrorMessage(null);
     }
+  };
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(`Searching for width: ${inputValue}`);
   };
 
   // Close suggestions when clicking outside
