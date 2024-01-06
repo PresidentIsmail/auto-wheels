@@ -32,7 +32,7 @@ const TireSelection: React.FC = () => {
           </h2>
         </header>
 
-        <section className="flex w-full flex-col gap-y-6 bg-[#323236]/80 p-2">
+        <section className="flex w-full rounded-md flex-col gap-y-8 bg-[#323236]/80 px-4 py-8">
           <div className="">
             <h3 className="text-2xl font-bold md:text-3xl">
               Tell us your tire size
