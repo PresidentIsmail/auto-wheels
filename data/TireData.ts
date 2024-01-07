@@ -54,19 +54,56 @@ export const tireData: TireSizeData = {
   },
 };
 
-// common tire widths. unique widths from tireData
-let uniqueWidths = new Set<number>();
-for (let tireSize in tireData) {
-  tireData[tireSize].widths.forEach((width) => uniqueWidths.add(width));
-}
-export const DEFAULT_TIRE_WIDTHS = Array.from(uniqueWidths).sort();
+export type TireSize = {
+  width: number;
+  profile: number;
+  diameter: number;
+};
+
+export const tireSizes: TireSize[] = [
+  { width: 155, profile: 80, diameter: 13 },
+  { width: 165, profile: 70, diameter: 13 },
+  { width: 175, profile: 65, diameter: 13 },
+  { width: 185, profile: 60, diameter: 13 },
+  { width: 175, profile: 70, diameter: 14 },
+  { width: 185, profile: 65, diameter: 14 },
+  { width: 195, profile: 60, diameter: 14 },
+  { width: 205, profile: 55, diameter: 14 },
+  { width: 185, profile: 65, diameter: 15 },
+  { width: 195, profile: 60, diameter: 15 },
+  { width: 205, profile: 55, diameter: 15 },
+  { width: 215, profile: 50, diameter: 15 },
+  { width: 195, profile: 60, diameter: 16 },
+  { width: 205, profile: 55, diameter: 16 },
+  { width: 215, profile: 50, diameter: 16 },
+  { width: 225, profile: 45, diameter: 16 },
+  { width: 205, profile: 65, diameter: 17 },
+  { width: 215, profile: 50, diameter: 17 },
+  { width: 225, profile: 45, diameter: 17 },
+  { width: 235, profile: 40, diameter: 17 },
+  { width: 215, profile: 50, diameter: 18 },
+  { width: 225, profile: 45, diameter: 18 },
+  { width: 235, profile: 40, diameter: 18 },
+  { width: 245, profile: 35, diameter: 18 },
+  { width: 225, profile: 35, diameter: 19 },
+  { width: 235, profile: 35, diameter: 19 },
+  { width: 245, profile: 35, diameter: 19 },
+  { width: 255, profile: 35, diameter: 19 },
+  { width: 225, profile: 30, diameter: 20 },
+  { width: 235, profile: 30, diameter: 20 },
+  { width: 245, profile: 30, diameter: 20 },
+  { width: 255, profile: 30, diameter: 20 },
+];
+
+// Extract all widths from the array
+const allWidths = tireSizes.map((tireSize) => tireSize.width);
+// Use Set to eliminate duplicates
+export const DEFAULT_TIRE_WIDTHS = [...new Set(allWidths)].sort();
 
 // common tire profiles
-let uniqueProfiles = new Set<number>();
-for (let tireSize in tireData) {
-  tireData[tireSize].profiles.forEach((profile) => uniqueProfiles.add(profile));
-}
-export const DEFAULT_TIRE_PROFILES = Array.from(uniqueProfiles).sort();
+const allProfiles = tireSizes.map((tireSize) => tireSize.profile);
+export const DEFAULT_TIRE_PROFILES = [...new Set(allProfiles)].sort();
 
 // common tire diameters
-export const DEFAULT_TIRE_DIAMETERS = Object.keys(tireData).sort();
+const allDiameters = tireSizes.map((tireSize) => tireSize.diameter);
+export const DEFAULT_TIRE_DIAMETERS = [...new Set(allDiameters)].sort();
