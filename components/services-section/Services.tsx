@@ -11,7 +11,7 @@ const Services: FC = () => {
       aria-label="Services"
       id="services"
       role="region"
-      className="master-container grid gap-x-8 gap-y-16 pt-16 sm:grid-cols-2 lg:pt-[72px] xl:grid-cols-3"
+      className="master-container grid gap-x-8 gap-y-12 pt-16 sm:grid-cols-2 lg:pt-[72px] xl:grid-cols-3"
     >
       {/* Heading */}
       <header className="flex w-full flex-col gap-y-3 md:gap-y-4">

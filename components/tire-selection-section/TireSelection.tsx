@@ -2,17 +2,18 @@ import React from "react";
 import Image from "next/image";
 
 import tireBg from "@/public/images/tyre-bg-01.webp";
+import tireSizeGuide from "@/public/images/tyre-size-guide-01.png";
 
-import { Info } from "lucide-react";
+import { Info, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
+  DialogHeader,
+  DialogClose,
+  DialogFooter,
 } from "@/components/ui/dialog";
-
+import { Button } from "../ui/button";
 import TireSelectionInput from "./TireSelectionInput";
 
 const TireSelection: React.FC = () => {
@@ -80,7 +81,30 @@ const TireSizePopover: React.FC = () => (
         Need help with your tire size?
       </p>
     </DialogTrigger>
-    <DialogContent>Place content for the Dialog here.</DialogContent>
+    <DialogContent
+      showCloseIcon={false}
+      className=" max-w-xs rounded-lg border bg-card text-card-foreground shadow-sm sm:max-w-md md:max-w-lg"
+    >
+      <Image
+        src={tireSizeGuide}
+        alt="Tire Size Guide"
+        quality={100}
+        placeholder="blur"
+        className="rounded-lg border"
+      />
+
+      <DialogFooter className="w-full sm:flex-col">
+        <DialogClose asChild>
+          <Button
+            type="button"
+            variant="default"
+            className="rounded-md md:w-max"
+          >
+            Close <X className="ml-1 h-4 w-4" aria-hidden />
+          </Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogContent>
   </Dialog>
 );
 
