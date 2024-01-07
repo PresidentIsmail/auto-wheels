@@ -153,38 +153,40 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   useOnClickOutside([inputContainer], () => setShowSuggestions(false));
 
   return (
-    <div className="grid w-full items-center gap-1.5 sm:max-w-sm">
+    <div className="grid w-full items-center gap-2 sm:max-w-sm">
       <Label htmlFor={label} className="translate-x-[4px] capitalize">
         {label}
       </Label>
       <div className="relative" ref={inputContainer}>
-        <Input
-          ref={inputRef}
-          autoComplete="off"
-          type="number"
-          // required
-          id={label}
-          value={inputValue}
-          onClick={() => setShowSuggestions(true)}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder={placeholder}
-          className="border-[2px] border-grayBorder bg-transparent text-white"
-          role="combobox"
-          aria-expanded={showSuggestions}
-          aria-activedescendant={
-            selectedSuggestion >= 0
-              ? `suggestion-${selectedSuggestion}`
-              : undefined
-          }
-          {...props}
-        />
-        {/* Clear Input */}
-        {inputValue.length > 0 && (
-          <ClearInputButton handleClearInput={handleClearInput} />
-        )}
+        <div className="relative">
+          <Input
+            ref={inputRef}
+            autoComplete="off"
+            type="number"
+            required
+            id={label}
+            value={inputValue}
+            onClick={() => setShowSuggestions(true)}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder={placeholder}
+            className="border-[1px] border-grayBorder bg-[#212121] text-white placeholder:text-muted-foreground"
+            role="combobox"
+            aria-expanded={showSuggestions}
+            aria-activedescendant={
+              selectedSuggestion >= 0
+                ? `suggestion-${selectedSuggestion}`
+                : undefined
+            }
+            {...props}
+          />
+          {/* Clear Input */}
+          {inputValue.length > 0 && (
+            <ClearInputButton handleClearInput={handleClearInput} />
+          )}
+        </div>
 
         {/* Suggestions */}
         {showSuggestions && suggestions.length > 0 && (

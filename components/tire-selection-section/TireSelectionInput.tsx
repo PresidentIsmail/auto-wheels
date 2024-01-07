@@ -126,7 +126,7 @@ const TireSelectionInput: React.FC = () => {
   return (
     <form
       onSubmit={handleSearch}
-      className="relative flex w-full flex-col gap-x-6 gap-y-4 sm:flex-row sm:gap-y-0"
+      className="relative flex w-full flex-col items-start gap-x-6 gap-y-4 sm:flex-row sm:gap-y-0"
     >
       {/* Width Input */}
       <AutoCompleteInput
@@ -163,7 +163,7 @@ const TireSelectionInput: React.FC = () => {
         type="submit"
         disabled={submitting || disableSearch}
         variant={"outline"}
-        className="mt-4 h-10 w-full rounded-md border-[2px] hover:bg-white/10 hover:text-white sm:ml-8 sm:min-w-28 sm:max-w-28 lg:min-w-36 lg:max-w-36"
+        className="mt-4 h-10 w-full rounded-md border-[1px] bg-[#212121] hover:bg-[#212121]/30 hover:text-white sm:ml-8 sm:min-w-28 sm:max-w-28 md:translate-y-1 lg:min-w-36 lg:max-w-36"
       >
         {submitting ? (
           <Loader className="h-4 w-4 animate-spin" />

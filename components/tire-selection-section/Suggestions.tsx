@@ -2,6 +2,8 @@ import React from "react";
 
 import { Button } from "../ui/button";
 
+import "./Suggestions.css";
+
 interface SuggestionsProps {
   suggestions: number[];
   selectedSuggestion: number;
@@ -18,9 +20,8 @@ const Suggestions = React.forwardRef<HTMLUListElement, SuggestionsProps>(
     return (
       <ul
         ref={ref}
-        className={`absolute bottom-full left-0 right-0 z-20 mb-4 h-max max-h-64 w-full  max-w-sm divide-y divide-grayBorder border divide-opacity-100 overflow-y-auto rounded-md border-grayBorder
-        bg-[#212121] text-sm text-white shadow-lg
-        md:top-full  md:mb-0 md:mt-4`}
+        className={`custom-scrollbar absolute bottom-full left-0 right-0 z-20 mb-2 h-max max-h-64 w-full  max-w-sm divide-y divide-grayBorder divide-opacity-100 overflow-y-auto rounded-lg border border-grayBorder
+        bg-[#09090b] py-2 text-sm text-white shadow-[0_3px_10px_rgb(255,255,255,0.2)] md:top-full md:mb-0 md:mt-2`}
       >
         {suggestions.map((width, index) => (
           <li className="flex w-full" key={index}>
@@ -28,9 +29,9 @@ const Suggestions = React.forwardRef<HTMLUListElement, SuggestionsProps>(
               type="button"
               variant={"ghost"}
               onClick={(event) => handleSuggestionClick(event, width)}
-              className={`w-full cursor-pointer justify-start rounded-none p-3 font-normal hover:bg-white/10 hover:text-white md:p-2.5 ${
+              className={`w-full cursor-pointer justify-start rounded-none p-3 font-normal hover:bg-[rgba(255,255,255,0.2)] hover:text-white md:p-2.5 ${
                 index === selectedSuggestion
-                  ? "bg-[#323236] font-medium text-white"
+                  ? "bg-[rgba(255,255,255,0.2)] font-medium"
                   : ""
               }`}
               id={`suggestion-${index}`}
