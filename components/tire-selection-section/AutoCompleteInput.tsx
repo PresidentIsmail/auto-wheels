@@ -153,7 +153,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   useOnClickOutside([inputContainer], () => setShowSuggestions(false));
 
   return (
-    <div className="grid max-w-sm items-center gap-1.5">
+    <div className="grid w-full items-center gap-1.5 sm:max-w-sm">
       <Label htmlFor={label} className="translate-x-[4px] capitalize">
         {label}
       </Label>
@@ -162,9 +162,10 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
           ref={inputRef}
           autoComplete="off"
           type="number"
-          required
+          // required
           id={label}
           value={inputValue}
+          onClick={() => setShowSuggestions(true)}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={handleFocus}
