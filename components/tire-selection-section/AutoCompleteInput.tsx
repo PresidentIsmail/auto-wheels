@@ -31,7 +31,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   ...props
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const suggestionsRef = useRef<HTMLUListElement>(null);
+  // const suggestionsRef = useRef<HTMLUListElement>(null);
   const inputContainer = useRef<HTMLDivElement>(null);
 
   const [suggestions, setSuggestions] = useState<number[]>(suggestionData);
@@ -193,7 +193,6 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         {/* Suggestions */}
         {showSuggestions && suggestions.length > 0 && (
           <Suggestions
-            ref={suggestionsRef}
             suggestions={suggestions}
             selectedSuggestion={selectedSuggestion}
             handleSuggestionClick={handleSuggestionClick}

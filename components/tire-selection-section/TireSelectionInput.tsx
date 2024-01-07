@@ -102,7 +102,6 @@ const TireSelectionInput: React.FC = () => {
     ];
 
     setDiameterSuggestions(uniqueFilteredDiameters);
-    console.log("filteredDiameters", uniqueFilteredDiameters);
   }, [widthInput, profileInput]);
 
   const resetInputs = () => {
