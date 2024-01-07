@@ -42,7 +42,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
     }
   };
 
-  useOnClickOutside(navRef, () => {
+  useOnClickOutside([navRef], () => {
     if (isDropdownVisible) {
       toggleDropdownVisibility();
     }
