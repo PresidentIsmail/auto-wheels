@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 
-import type { TireSize } from "@/data/TireData";
 import {
   tireSizes,
   DEFAULT_TIRE_WIDTHS,
