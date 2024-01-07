@@ -35,6 +35,15 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   const [selectedSuggestion, setSelectedSuggestion] = useState(-1);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  /* 
+  This way, the `AutoCompleteInput` component will correctly update its state
+  and re-render when the `suggestionData` prop changes, without needing to 
+  create a new component on every render.
+  */
+  useEffect(() => {
+    setSuggestions(suggestionData);
+  }, [suggestionData]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
     setInputValue(input);
@@ -138,7 +147,6 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 
   // Close suggestions when clicking outside of the input or suggestions
   useOnClickOutside([inputContainer], () => setShowSuggestions(false));
-
 
   return (
     <div className="grid max-w-sm items-center gap-1.5">
