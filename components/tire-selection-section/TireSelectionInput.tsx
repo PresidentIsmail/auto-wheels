@@ -18,6 +18,7 @@ const TireSelectionInput: React.FC = () => {
   const [profileInput, setProfileInput] = useState("");
   const [diameterInput, setDiameterInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [disableSearch, setDisableSearch] = useState(false);
 
   const [widthSuggestions, setWidthSuggestions] =
     useState<number[]>(DEFAULT_TIRE_WIDTHS);
@@ -131,6 +132,7 @@ const TireSelectionInput: React.FC = () => {
       <AutoCompleteInput
         inputValue={widthInput}
         setInputValue={setWidthInput}
+        setDisableSearch={setDisableSearch}
         label="Width"
         placeholder="e.g. 205"
         suggestionData={widthSuggestions}
@@ -140,6 +142,7 @@ const TireSelectionInput: React.FC = () => {
       <AutoCompleteInput
         inputValue={profileInput}
         setInputValue={setProfileInput}
+        setDisableSearch={setDisableSearch}
         label="Profile"
         placeholder="e.g. 55"
         suggestionData={profileSuggestions}
@@ -149,6 +152,7 @@ const TireSelectionInput: React.FC = () => {
       <AutoCompleteInput
         inputValue={diameterInput}
         setInputValue={setDiameterInput}
+        setDisableSearch={setDisableSearch}
         label="Diameter"
         placeholder="e.g. 16"
         suggestionData={diameterSuggestions}
@@ -157,7 +161,7 @@ const TireSelectionInput: React.FC = () => {
       {/* Search Button */}
       <Button
         type="submit"
-        disabled={submitting}
+        disabled={submitting || disableSearch}
         variant={"outline"}
         className="ml-8 h-10 w-28 rounded-md border-[2px] hover:bg-white/10 hover:text-white"
       >

@@ -13,6 +13,7 @@ interface AutoCompleteInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setDisableSearch: React.Dispatch<React.SetStateAction<boolean>>;
   suggestionData: number[];
   label: string;
   placeholder: string;
@@ -21,6 +22,7 @@ interface AutoCompleteInputProps
 const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   inputValue,
   setInputValue,
+  setDisableSearch,
   suggestionData,
   label,
   placeholder,
@@ -140,8 +142,10 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   const handleBlur = () => {
     if (!suggestions.includes(Number(inputValue)) && inputValue.length > 0) {
       setErrorMessage("Size is not available.");
+      setDisableSearch(true);
     } else {
       setErrorMessage(null);
+      setDisableSearch(false);
     }
   };
 
@@ -158,6 +162,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
           ref={inputRef}
           autoComplete="off"
           type="number"
+          required
           id={label}
           value={inputValue}
           onChange={handleInputChange}
