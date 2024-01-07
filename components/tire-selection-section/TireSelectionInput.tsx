@@ -104,13 +104,22 @@ const TireSelectionInput: React.FC = () => {
     console.log("filteredDiameters", uniqueFilteredDiameters);
   }, [widthInput, profileInput]);
 
+  const resetInputs = () => {
+    setWidthInput("");
+    setProfileInput("");
+    setDiameterInput("");
+  };
+
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(
-      `{ width: ${widthInput}, profile: ${profileInput}, diameter: ${14} }`,
+      `{ width: ${widthInput}, profile: ${profileInput}, diameter: ${diameterInput} }`,
     );
+
     setSubmitting(false);
+    resetInputs();
   };
 
   return (
