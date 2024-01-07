@@ -26,13 +26,13 @@ const TireSelection: React.FC = () => {
       {/* Content */}
       <article className="master-container relative z-10 flex flex-col gap-y-6">
         {/* Header */}
-        <header className="pt-6">
+        <header className="pt-6 lg:pt-8">
           <h2 className="text-2xl font-extrabold sm:text-3xl md:text-4xl lg:text-5xl">
             Find the Perfect Tires for Your Vehicle.
           </h2>
         </header>
 
-        <section className="flex w-full rounded-md flex-col gap-y-8 bg-[#323236]/80 px-4 py-8">
+        <section className="flex w-full flex-col gap-y-8 rounded-none bg-[#323236]/80 px-4 py-8 relative">
           <div className="">
             <h3 className="text-2xl font-bold md:text-3xl">
               Tell us your tire size

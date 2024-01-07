@@ -19,6 +19,7 @@ const TireSelectionInput: React.FC = () => {
   const [diameterInput, setDiameterInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [disableSearch, setDisableSearch] = useState(false);
+  const [inputsComplete, setInputsComplete] = useState(0);
 
   const [widthSuggestions, setWidthSuggestions] =
     useState<number[]>(DEFAULT_TIRE_WIDTHS);
@@ -28,6 +29,13 @@ const TireSelectionInput: React.FC = () => {
   const [diameterSuggestions, setDiameterSuggestions] = useState<number[]>(
     DEFAULT_TIRE_DIAMETERS,
   );
+
+  // Update inputsComplete state when any of the inputs change
+  useEffect(() => {
+    const inputs = [widthInput, profileInput, diameterInput];
+    const inputsComplete = inputs.filter((input) => input !== "").length;
+    setInputsComplete(inputsComplete);
+  }, [widthInput, profileInput, diameterInput]);
 
   // Filter width suggestions based on entered profile and diameter
   useEffect(() => {
@@ -123,56 +131,68 @@ const TireSelectionInput: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSearch}
-      className="relative flex w-full flex-col items-start gap-x-6 gap-y-4 sm:flex-row sm:gap-y-0"
-    >
-      {/* Width Input */}
-      <AutoCompleteInput
-        inputValue={widthInput}
-        setInputValue={setWidthInput}
-        setDisableSearch={setDisableSearch}
-        label="Width"
-        placeholder="e.g. 205"
-        suggestionData={widthSuggestions}
-      />
-
-      {/* Profile Input */}
-      <AutoCompleteInput
-        inputValue={profileInput}
-        setInputValue={setProfileInput}
-        setDisableSearch={setDisableSearch}
-        label="Profile"
-        placeholder="e.g. 55"
-        suggestionData={profileSuggestions}
-      />
-
-      {/* Diameter Input */}
-      <AutoCompleteInput
-        inputValue={diameterInput}
-        setInputValue={setDiameterInput}
-        setDisableSearch={setDisableSearch}
-        label="Diameter"
-        placeholder="e.g. 16"
-        suggestionData={diameterSuggestions}
-      />
-
-      {/* Search Button */}
-      <Button
-        type="submit"
-        disabled={submitting || disableSearch}
-        variant={"outline"}
-        className="mt-4 h-10 w-full rounded-md border-[1px] bg-[#212121] hover:bg-[#212121]/30 hover:text-white sm:ml-8 sm:min-w-28 sm:max-w-28 md:translate-y-1 lg:min-w-36 lg:max-w-36"
+    <>
+      <form
+        onSubmit={handleSearch}
+        className="relative flex w-full flex-col items-start gap-x-6 gap-y-4 sm:flex-row sm:gap-y-0"
       >
-        {submitting ? (
-          <Loader className="h-4 w-4 animate-spin" />
-        ) : (
-          <>
-            Search <Search className="ml-2 h-4 w-4 text-brand" />
-          </>
-        )}
-      </Button>
-    </form>
+        {/* Width Input */}
+        <AutoCompleteInput
+          inputValue={widthInput}
+          setInputValue={setWidthInput}
+          setDisableSearch={setDisableSearch}
+          label="Width"
+          placeholder="e.g. 205"
+          suggestionData={widthSuggestions}
+        />
+
+        {/* Profile Input */}
+        <AutoCompleteInput
+          inputValue={profileInput}
+          setInputValue={setProfileInput}
+          setDisableSearch={setDisableSearch}
+          label="Profile"
+          placeholder="e.g. 55"
+          suggestionData={profileSuggestions}
+        />
+
+        {/* Diameter Input */}
+        <AutoCompleteInput
+          inputValue={diameterInput}
+          setInputValue={setDiameterInput}
+          setDisableSearch={setDisableSearch}
+          label="Diameter"
+          placeholder="e.g. 16"
+          suggestionData={diameterSuggestions}
+        />
+
+        {/* Search Button */}
+        <Button
+          type="submit"
+          disabled={submitting || disableSearch}
+          variant={"outline"}
+          className="mt-4 h-10 w-full rounded-md border-[1px] bg-[#212121] hover:bg-[#212121]/30 hover:text-white sm:ml-8 sm:min-w-28 sm:max-w-28 md:translate-y-1 lg:min-w-36 lg:max-w-36"
+        >
+          {submitting ? (
+            <Loader className="h-4 w-4 animate-spin" />
+          ) : (
+            <>
+              Search <Search className="ml-2 h-4 w-4 text-brand" />
+            </>
+          )}
+        </Button>
+      </form>
+
+      {/* Progress Indicator will fill when inputs are being filled*/}
+      <div className="absolute bottom-0 left-0 z-10 h-[3px] bg-grayBorder w-full" />
+      <div
+        className="absolute bottom-0 left-0 z-10 h-[3px] bg-brand"
+        style={{
+          width: `${(inputsComplete / 3) * 100}%`,
+          transition: "width 0.2s ease-in-out",
+        }}
+      />
+    </>
   );
 };
 

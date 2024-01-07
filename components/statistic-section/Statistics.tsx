@@ -7,7 +7,7 @@ import Statistic from "./Statistic";
 const Statistics: React.FC = () => {
   return (
     <section
-      className="master-container pb-[72px] pt-10 lg:pb-[120px]"
+      className="master-container pb-[64px] pt-10 md:pb-[72px]"
       aria-label="Statistics Section"
     >
       <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-3 md:gap-y-10 lg:grid-cols-5">
