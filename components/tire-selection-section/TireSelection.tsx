@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import tireBg from "@/public/images/tyre-bg-01.webp";
-import tireSizeGuide from "@/public/images/tyre-size-guide-01.png";
+import tireSizeGuide from "@/public/images/tyre-size-guide-01.webp";
 
 import { Info, X } from "lucide-react";
 import {
