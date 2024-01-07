@@ -1,10 +1,11 @@
-import React from "react";
+import { FC } from "react";
 
 import { top5AutoRepairServices } from "@/data/servicesData";
 
 import ServiceItem from "@/components/services-section/ServiceItem";
+import AnimatedText from "../AnimatedText";
 
-const Services: React.FC = () => {
+const Services: FC = () => {
   return (
     <section
       aria-label="Services"
@@ -15,17 +16,23 @@ const Services: React.FC = () => {
       {/* Heading */}
       <header className="flex w-full flex-col gap-y-3 md:gap-y-4">
         {/* subtitle */}
-        <h3 className="text-xs font-bold uppercase text-[#92959a] md:text-sm">
-          Services
-        </h3>
+        <AnimatedText
+          text="Services"
+          element="h3"
+          className="text-xs font-bold uppercase text-[#92959a] md:text-sm"
+          duration={0.075}
+        />
         {/* title */}
-        <h2 className="text-3xl font-bold tracking-tight text-[#222020] md:text-4xl lg:text-5xl">
-          Explore our auto repair services in detail
-        </h2>
+        <AnimatedText
+          text="Explore our auto repair services in detail"
+          element="h2"
+          className="text-3xl font-bold tracking-tight text-[#222020] md:text-4xl lg:text-5xl"
+          duration={0.075}
+        />
       </header>
 
       {/* Services */}
-      {top5AutoRepairServices.map((service) => (
+      {top5AutoRepairServices.map((service, index) => (
         <ServiceItem key={service.heading} service={service} />
       ))}
     </section>

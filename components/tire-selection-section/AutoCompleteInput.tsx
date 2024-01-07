@@ -175,13 +175,6 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
             onBlur={handleBlur}
             placeholder={placeholder}
             className="border-[1px] border-grayBorder bg-[#212121] text-white placeholder:text-muted-foreground"
-            role="combobox"
-            aria-expanded={showSuggestions}
-            aria-activedescendant={
-              selectedSuggestion >= 0
-                ? `suggestion-${selectedSuggestion}`
-                : undefined
-            }
             {...props}
           />
           {/* Clear Input */}

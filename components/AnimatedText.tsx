@@ -21,6 +21,7 @@ interface AnimatedTextProps {
   element: AllowedElements;
   className?: string;
   animateOnce?: boolean;
+  duration?: number;
 }
 
 const defaultAnimationVariants: Variants = {
@@ -45,6 +46,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   element: Element,
   animateOnce: once = true,
   className,
+  duration = 0.05,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { amount: 0.5, once });
@@ -59,7 +61,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
         aria-hidden
         initial="initial"
         animate={isInView ? "animate" : "initial"}
-        transition={{ staggerChildren: 0.1 }}
+        transition={{ staggerChildren: duration }}
       >
         {text.split(" ").map((word, wordIndex) => (
           <span key={wordIndex} className="inline-block">

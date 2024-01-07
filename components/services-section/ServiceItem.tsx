@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { top5AutoRepairServices } from "@/data/servicesData";
 
@@ -19,10 +20,8 @@ interface ServiceItemProps {
 }
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => {
-  // Implement the component logic here
-
   return (
-    <Card>
+    <Card role="article">
       <CardHeader>
         {/* icon */}
         <Image
@@ -44,9 +43,16 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => {
         <Button
           variant={"outline"}
           className="group rounded-md hover:bg-black/10"
+          asChild
         >
-          Learn More
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand" />
+          <Link
+            href={"#"}
+            role="button"
+            aria-label="Learn more about our services"
+          >
+            Learn More
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand" />
+          </Link>
         </Button>
       </CardFooter>
     </Card>
