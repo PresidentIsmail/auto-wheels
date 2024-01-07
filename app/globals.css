@@ -53,7 +53,7 @@
   @media (max-width: 1023px) {
     /* Apply sm-clip-path for screens below lg */
     :root {
-      --clip-path: var(--sm-clip-path);
+      /* --clip-path: var(--sm-clip-path); */
     }
   }
 
