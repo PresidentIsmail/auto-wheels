@@ -1,13 +1,15 @@
-// AutoCompleteInput.tsx
 import React, { useRef, useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import ClearInputButton from "./ClearInputButton";
-import Suggestions from "./Suggestions";
-import ErrorMessage from "./ErrorMessage";
+// import Suggestions from "./Suggestions";
+// import ErrorMessage from "./ErrorMessage";
+const Suggestions = dynamic(() => import("./Suggestions"));
+const ErrorMessage = dynamic(() => import("./ErrorMessage"));
 
 interface AutoCompleteInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
