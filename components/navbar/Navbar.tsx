@@ -44,7 +44,16 @@ const Navbar: React.FC = () => {
     const previous = scrollY.getPrevious();
     const delta = latest - previous;
 
-    if (delta > 0 && latest > 100) {
+    // Check if the tire-selection section is in the viewport
+    const tireSelectionSection = document.querySelector("#tire-selection");
+    const rect = tireSelectionSection?.getBoundingClientRect();
+
+    const isInViewport =
+      rect && rect.top <= window.innerHeight && rect.bottom >= (window.innerHeight / 4);
+
+    if (isInViewport && latest > 100) {
+      setNavbarVisibility(false);
+    } else if (delta > 0 && latest > 100) {
       setNavbarVisibility(false);
     } else {
       setNavbarVisibility(true);

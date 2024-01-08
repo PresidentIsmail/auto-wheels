@@ -19,6 +19,7 @@ import TireSelectionInput from "./TireSelectionInput";
 const TireSelection: React.FC = () => {
   return (
     <section
+    id="tire-selection"
       aria-label="Section for selecting the tire size for your vehicle"
       className="relative  w-full pb-16 pt-8 text-white lg:pb-32"
     >
