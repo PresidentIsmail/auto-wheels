@@ -48,7 +48,7 @@ const Carousel = ({ className, children }: Props) => {
     }
 
     scrollContainerRef.current.scrollBy({
-      left: window.innerWidth * 0.25,
+      left: scrollContainerRef.current.scrollWidth * 0.5,
       behavior: "smooth",
     });
   }, []);
@@ -60,7 +60,7 @@ const Carousel = ({ className, children }: Props) => {
     }
 
     scrollContainerRef.current.scrollBy({
-      left: window.innerWidth * -0.25,
+      left: scrollContainerRef.current.scrollWidth * -0.5,
       behavior: "smooth",
     });
   }, []);
@@ -69,7 +69,7 @@ const Carousel = ({ className, children }: Props) => {
     <div className={cn("relative", className)}>
       <ul
         ref={scrollContainerRef}
-        className=" flex gap-x-2 overflow-y-hidden overflow-x-scroll py-1 pe-8"
+        className=" me-8 flex gap-x-8 overflow-y-hidden overflow-x-scroll py-1"
         style={{
           scrollSnapType: "x mandatory",
           scrollPadding: "0 24px",

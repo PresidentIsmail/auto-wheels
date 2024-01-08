@@ -20,13 +20,13 @@ interface PromoCardProps {
 const PromoCard: React.FC<PromoCardProps> = ({ promo }) => {
   return (
     <Card
-      className="w-[400px] shrink-0 bg-transparent"
+      className="w-full max-w-[400px] bg-transparent md:shrink-0"
       style={{
         scrollSnapAlign: "start",
         scrollMargin: "0 10px",
       }}
     >
-      <CardHeader>
+      <CardHeader className="p-4 md:p-6">
         {/* promo img */}
         <div className="relative aspect-[3/2]">
           <Image
@@ -39,7 +39,7 @@ const PromoCard: React.FC<PromoCardProps> = ({ promo }) => {
           />
         </div>
       </CardHeader>
-      <CardContent className="">
+      <CardContent className="p-4 pt-0 md:p-6 md:pt-0">
         {/* learn more btn */}
         <Button
           variant={"outline"}

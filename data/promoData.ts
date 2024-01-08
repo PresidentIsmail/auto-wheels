@@ -3,13 +3,13 @@ import promoTwo from "@/public/images/promo-02.webp";
 
 export const promoData = [
   {
-    id: crypto.randomUUID(),
+    id: 1,
     image: promoOne,
     title: "Promo 1",
     link: "#",
   },
   {
-    id: crypto.randomUUID(),
+    id: 10,
     image: promoTwo,
     title: "Promo 2",
     link: "#",

@@ -18,7 +18,7 @@ const ANIMATION_DURATION = 0.05;
 const Promotions: React.FC = () => {
   return (
     <section
-      className="relative flex overflow-hidden border border-black py-16 lg:py-[72px]"
+      className="relative flex flex-col overflow-hidden border border-black py-16 md:flex-row lg:py-[72px]"
       style={{
         background:
           "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), #E71D00",
@@ -28,14 +28,14 @@ const Promotions: React.FC = () => {
       <BackgroundImageWithOverlay />
 
       {/* Content */}
-      <div className="master-container z-10 w-1/2 shrink-0">
+      <div className="master-container z-10 shrink-0 text-center md:w-1/2 md:ps-8 md:text-start">
         {/* Heading */}
-        <header className="relative z-10 flex flex-col gap-y-3 md:gap-y-8 ">
+        <header className="relative z-10 flex flex-col items-center gap-y-6 md:items-start md:gap-y-8 ">
           {/* subtitle */}
           <AnimatedText
             text="promotions"
             element="h3"
-            className="text-xs font-bold uppercase text-[#92959a] md:text-sm"
+            className=" text-xs font-bold uppercase text-[#92959a] md:text-sm"
             duration={ANIMATION_DURATION}
           />
           <div className="flex flex-col gap-y-4">
@@ -57,7 +57,7 @@ const Promotions: React.FC = () => {
           {/* View all promos btn */}
           <Button
             variant={"outline"}
-            className="group w-max rounded-md text-white hover:bg-white/10 hover:text-white"
+            className="group hidden w-max rounded-md text-white hover:bg-white/10 hover:text-white md:block"
             asChild
           >
             <Link href={"#"} role="button" aria-label="View all promotions">
@@ -68,14 +68,19 @@ const Promotions: React.FC = () => {
         </header>
       </div>
 
-      {/* Promos */}
-      {/* <div className="relative z-10 flex shrink-0 flex-grow gap-8"> */}
-      <Carousel className="w-1/2 shrink-0">
+      {/* Promos - standard display */}
+      <div className="master-container mt-12 flex w-full flex-col items-center justify-center gap-y-8 md:hidden">
+        {promoData.map((promo) => (
+          <PromoCard key={promo.title} promo={promo} />
+        ))}
+      </div>
+
+      {/* Promos on large screens - displayed in a carousel */}
+      <Carousel className="hidden w-[40%] min-w-[410px] shrink-0 md:block lg:w-1/2">
         {promoData.map((promo) => (
           <PromoCard key={promo.title} promo={promo} />
         ))}
       </Carousel>
-      {/* </div> */}
     </section>
   );
 };
