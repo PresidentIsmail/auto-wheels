@@ -101,7 +101,7 @@ const BackgroundImageWithOverlay: React.FC = () => (
       className="absolute left-0 top-0 z-0 hidden h-full md:block"
       style={{
         background:
-          "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), lightgray 50% / cover no-repeat",
       }}
     />
   </div>
@@ -124,7 +124,7 @@ const BackgroundImageWithOverlayMobile: React.FC = () => (
         className="absolute left-0 top-0 z-0 h-full md:hidden"
         style={{
           background:
-            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), lightgray 50% / cover no-repeat",
         }}
       />
     </div>
@@ -144,7 +144,7 @@ const BackgroundImageWithOverlayMobile: React.FC = () => (
         className="absolute left-0 top-0 z-0 h-full md:hidden"
         style={{
           background:
-            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), lightgray 50% / cover no-repeat",
         }}
       />
     </div>
@@ -164,7 +164,7 @@ const BackgroundImageWithOverlayMobile: React.FC = () => (
         className="absolute left-0 top-0 z-0 h-full md:hidden"
         style={{
           background:
-            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), lightgray 50% / cover no-repeat",
         }}
       />
     </div>

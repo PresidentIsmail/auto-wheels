@@ -5,9 +5,10 @@ import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import ClearInputButton from "./ClearInputButton";
+// import ClearInputButton from "./ClearInputButton";
 // import Suggestions from "./Suggestions";
 // import ErrorMessage from "./ErrorMessage";
+const ClearInputButton = dynamic(() => import("./ClearInputButton"));
 const Suggestions = dynamic(() => import("./Suggestions"));
 const ErrorMessage = dynamic(() => import("./ErrorMessage"));
 
