@@ -32,6 +32,7 @@ const PromoCard: React.FC<PromoCardProps> = ({ promo }) => {
           <Image
             src={promo.image}
             alt={promo.title}
+            quality={100}
             fill
             placeholder="blur"
             sizes="350px"

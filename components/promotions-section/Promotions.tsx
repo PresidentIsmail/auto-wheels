@@ -26,6 +26,7 @@ const Promotions: React.FC = () => {
     >
       {/* background image */}
       <BackgroundImageWithOverlay />
+      <BackgroundImageWithOverlayMobile />
 
       {/* Content */}
       <div className="master-container z-10 shrink-0 text-center md:w-1/2 md:ps-8 md:text-start">
@@ -47,7 +48,7 @@ const Promotions: React.FC = () => {
               duration={ANIMATION_DURATION}
             />
             {/* description */}
-            <p className="max-w-prose text-sm font-medium tracking-wide text-white/80">
+            <p className="max-w-prose text-sm font-medium tracking-wide text-white/90">
               Discover our exclusive specials and deals, seasonal offers, and
               bundle packages available to keep your car running smoothly all
               year round.
@@ -57,19 +58,19 @@ const Promotions: React.FC = () => {
           {/* View all promos btn */}
           <Button
             variant={"outline"}
-            className="group hidden w-max rounded-md text-white hover:bg-white/10 hover:text-white md:block"
+            className="group hidden w-max rounded-md border-white text-white hover:bg-white/10 hover:text-white md:flex"
             asChild
           >
             <Link href={"#"} role="button" aria-label="View all promotions">
               View all promotions
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:scale-125 group-hover:text-brand" />
             </Link>
           </Button>
         </header>
       </div>
 
       {/* Promos - standard display */}
-      <div className="master-container mt-12 flex w-full flex-col items-center justify-center gap-y-8 md:hidden">
+      <div className="master-container relative mt-12 flex w-full flex-col items-center justify-center gap-y-8 md:hidden">
         {promoData.map((promo) => (
           <PromoCard key={promo.title} promo={promo} />
         ))}
@@ -86,7 +87,7 @@ const Promotions: React.FC = () => {
 };
 
 const BackgroundImageWithOverlay: React.FC = () => (
-  <div className="absolute top-1/2 z-0 h-[60%] w-[70%] -translate-y-1/2">
+  <div className="absolute top-1/2 z-0 hidden h-[60%] w-[70%] -translate-y-1/2 md:block">
     <Image
       src={dealsBg}
       alt="Promotions Section Background"
@@ -94,7 +95,7 @@ const BackgroundImageWithOverlay: React.FC = () => (
       sizes="(max-width: 768px) 0vw, (min-width: 769px) 70vw"
       quality={70}
       placeholder="blur"
-      className="absolute left-0 top-0 z-0 hidden object-contain object-center opacity-70 md:block"
+      className="absolute left-0 top-0 z-0 hidden object-contain object-center opacity-90 md:block"
     />
     <div
       className="absolute left-0 top-0 z-0 hidden h-full md:block"
@@ -104,6 +105,70 @@ const BackgroundImageWithOverlay: React.FC = () => (
       }}
     />
   </div>
+);
+
+const BackgroundImageWithOverlayMobile: React.FC = () => (
+  <>
+    {/* Position to the top */}
+    <div className="absolute top-0 z-0 h-[15%] w-[100%] md:hidden">
+      <Image
+        src={dealsBg}
+        alt="Promotions Section Background"
+        fill
+        sizes="(max-width: 768px) 70vw, (min-width: 769px) 0vw"
+        quality={70}
+        placeholder="blur"
+        className="absolute left-0 top-0 z-0 object-contain object-center opacity-90 md:hidden"
+      />
+      <div
+        className="absolute left-0 top-0 z-0 h-full md:hidden"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+        }}
+      />
+    </div>
+
+    {/* Position to the middle */}
+    <div className="absolute top-1/2 z-0 h-[15%] w-[100%] -translate-y-1/2 md:hidden">
+      <Image
+        src={dealsBg}
+        alt="Promotions Section Background"
+        fill
+        sizes="(max-width: 768px) 70vw, (min-width: 769px) 0vw"
+        quality={70}
+        placeholder="blur"
+        className="z-0 object-contain object-center opacity-90 md:hidden"
+      />
+      <div
+        className="absolute left-0 top-0 z-0 h-full md:hidden"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+        }}
+      />
+    </div>
+
+    {/* Position to the bottom */}
+    <div className="absolute top-full z-0 h-[15%] w-[100%] -translate-y-full md:hidden">
+      <Image
+        src={dealsBg}
+        alt="Promotions Section Background"
+        fill
+        sizes="(max-width: 768px) 70vw, (min-width: 769px) 0vw"
+        quality={70}
+        placeholder="blur"
+        className="z-0 object-contain object-center opacity-90 md:hidden"
+      />
+      <div
+        className="absolute left-0 top-0 z-0 h-full md:hidden"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+        }}
+      />
+    </div>
+  </>
 );
 
 export default Promotions;

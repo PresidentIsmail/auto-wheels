@@ -87,7 +87,9 @@ const Carousel = ({ className, children }: Props) => {
             disabled={!scrollState.canScrollLeft}
             handleClick={scrollToPrevious}
             aria-label="previous slide"
-            className={`absolute left-0 top-full z-10 translate-y-1/2 `}
+            className={`absolute left-0 top-full z-10 translate-y-1/2 ${
+              !scrollState.canScrollLeft && "invisible"
+            }`}
           >
             <IoIosArrowBack className=" h-[80%] w-[80%] -translate-x-0.5" />
           </SliderButton>
@@ -99,7 +101,9 @@ const Carousel = ({ className, children }: Props) => {
             disabled={!scrollState.canScrollRight}
             handleClick={scrollToNext}
             aria-label="next slide"
-            className={`absolute left-16 top-full z-10 flex translate-y-1/2`}
+            className={`absolute left-16 top-full z-10 flex translate-y-1/2 ${
+              !scrollState.canScrollRight && "invisible"
+            }`}
           >
             <IoIosArrowForward className=" h-[80%] w-[80%] translate-x-0.5 transition-transform group-hover:scale-110" />
           </SliderButton>
