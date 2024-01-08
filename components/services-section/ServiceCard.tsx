@@ -15,11 +15,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 
-interface ServiceItemProps {
+interface ServiceCardProps {
   service: (typeof top5AutoRepairServices)[number];
 }
 
-const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
     <Card role="article">
       <CardHeader>
@@ -59,4 +59,4 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service }) => {
   );
 };
 
-export default ServiceItem;
+export default ServiceCard;

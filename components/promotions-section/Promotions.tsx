@@ -1,0 +1,104 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+import { promoData } from "@/data/promoData";
+
+import dealsBg from "@/public/images/deals.webp";
+import { ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
+import AnimatedText from "../AnimatedText";
+import PromoCard from "./PromoCard";
+import Carousel from "../carousel/Carousel";
+
+const ANIMATION_DURATION = 0.05;
+
+const Promotions: React.FC = () => {
+  return (
+    <section
+      className="relative flex overflow-hidden border border-black py-16 lg:py-[72px]"
+      style={{
+        background:
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), #E71D00",
+      }}
+    >
+      {/* background image */}
+      <BackgroundImageWithOverlay />
+
+      {/* Content */}
+      <div className="master-container z-10 w-1/2 shrink-0">
+        {/* Heading */}
+        <header className="relative z-10 flex flex-col gap-y-3 md:gap-y-8 ">
+          {/* subtitle */}
+          <AnimatedText
+            text="promotions"
+            element="h3"
+            className="text-xs font-bold uppercase text-[#92959a] md:text-sm"
+            duration={ANIMATION_DURATION}
+          />
+          <div className="flex flex-col gap-y-4">
+            {/* title */}
+            <AnimatedText
+              text="Special offers and promotions exclusively for you."
+              element="h2"
+              className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl"
+              duration={ANIMATION_DURATION}
+            />
+            {/* description */}
+            <p className="max-w-prose text-sm font-medium tracking-wide text-white/80">
+              Discover our exclusive specials and deals, seasonal offers, and
+              bundle packages available to keep your car running smoothly all
+              year round.
+            </p>
+          </div>
+
+          {/* View all promos btn */}
+          <Button
+            variant={"outline"}
+            className="group w-max rounded-md text-white hover:bg-white/10 hover:text-white"
+            asChild
+          >
+            <Link href={"#"} role="button" aria-label="View all promotions">
+              View all promotions
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand" />
+            </Link>
+          </Button>
+        </header>
+      </div>
+
+      {/* Promos */}
+      {/* <div className="relative z-10 flex shrink-0 flex-grow gap-8"> */}
+      <Carousel className="w-1/2 shrink-0">
+        {promoData.map((promo) => (
+          <PromoCard key={promo.title} promo={promo} />
+        ))}
+      </Carousel>
+      {/* </div> */}
+    </section>
+  );
+};
+
+const BackgroundImageWithOverlay: React.FC = () => (
+  <div className="absolute top-1/2 z-0 h-[60%] w-[70%] -translate-y-1/2">
+    <Image
+      src={dealsBg}
+      alt="Promotions Section Background"
+      fill
+      sizes="(max-width: 768px) 0vw, (min-width: 769px) 70vw"
+      quality={70}
+      placeholder="blur"
+      className="absolute left-0 top-0 z-0 hidden object-contain object-center opacity-70 md:block"
+    />
+    <div
+      className="absolute left-0 top-0 z-0 hidden h-full md:block"
+      style={{
+        background:
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), url(<path-to-image>), lightgray 50% / cover no-repeat",
+      }}
+    />
+  </div>
+);
+
+export default Promotions;

@@ -3,6 +3,7 @@ import Hero from "@/components/hero-section/Hero";
 import Statistics from "@/components/statistic-section/Statistics";
 import TireSelection from "@/components/tire-selection-section/TireSelection";
 import Services from "@/components/services-section/Services";
+import Promotions from "@/components/promotions-section/Promotions";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Statistics />
         <TireSelection />
         <Services />
+        <Promotions />
       </main>
     </>
   );

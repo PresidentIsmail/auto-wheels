@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { top5AutoRepairServices } from "@/data/servicesData";
 
-import ServiceItem from "@/components/services-section/ServiceItem";
+import ServiceCard from "@/components/services-section/ServiceCard";
 import AnimatedText from "../AnimatedText";
 
 const Services: FC = () => {
@@ -11,7 +11,7 @@ const Services: FC = () => {
       aria-label="Services"
       id="services"
       role="region"
-      className="master-container grid gap-x-8 gap-y-12 pt-16 sm:grid-cols-2 lg:pt-[72px] xl:grid-cols-3"
+      className="master-container grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:py-[72px] xl:grid-cols-3"
     >
       {/* Heading */}
       <header className="flex w-full flex-col gap-y-3 md:gap-y-4">
@@ -33,7 +33,7 @@ const Services: FC = () => {
 
       {/* Services */}
       {top5AutoRepairServices.map((service, index) => (
-        <ServiceItem key={service.heading} service={service} />
+        <ServiceCard key={service.heading} service={service} />
       ))}
     </section>
   );
