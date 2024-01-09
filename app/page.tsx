@@ -4,6 +4,7 @@ import Statistics from "@/components/statistic-section/Statistics";
 import TireSelection from "@/components/tire-selection-section/TireSelection";
 import Services from "@/components/services-section/Services";
 import Promotions from "@/components/promotions-section/Promotions";
+import Testimonials from "@/components/testimonials-section/Testimonial";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <TireSelection />
         <Services />
         <Promotions />
+        <Testimonials />
       </main>
     </>
   );

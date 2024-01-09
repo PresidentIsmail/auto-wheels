@@ -14,7 +14,7 @@ const Services: FC = () => {
       className="master-container grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:py-[72px] xl:grid-cols-3"
     >
       {/* Heading */}
-      <header className="flex w-full flex-col gap-y-3 md:gap-y-4">
+      <header className="flex w-full flex-col gap-y-6 md:gap-y-8">
         {/* subtitle */}
         <AnimatedText
           text="Services"
