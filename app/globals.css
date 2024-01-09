@@ -51,11 +51,11 @@
   }
 
   /* Hide scrollbar */
-  ul::-webkit-scrollbar {
+  .carousel-list::-webkit-scrollbar {
     display: none;
   }
 
-  ul {
+  .carousel-list {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     -webkit-overflow-scrolling: touch; /* iOS Safari */
