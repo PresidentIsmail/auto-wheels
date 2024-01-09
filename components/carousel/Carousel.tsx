@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Carousel = ({ className, children }: Props) => {
-  const scrollContainerRef = useRef<HTMLUListElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollState, setScrollState] = useState({
     canScrollLeft: false,
     canScrollRight: false,
@@ -67,7 +67,7 @@ const Carousel = ({ className, children }: Props) => {
 
   return (
     <div className={cn("relative", className)}>
-      <ul
+      <div
         ref={scrollContainerRef}
         className=" me-8 flex gap-x-8 overflow-y-hidden overflow-x-scroll py-1"
         style={{
@@ -77,7 +77,7 @@ const Carousel = ({ className, children }: Props) => {
         }}
       >
         {children}
-      </ul>
+      </div>
 
       {/* Previous and Next Buttons */}
       <div className="hidden  md:flex">
