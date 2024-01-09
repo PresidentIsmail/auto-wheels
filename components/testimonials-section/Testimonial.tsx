@@ -33,9 +33,15 @@ const Testimonials: React.FC = () => {
             duration={ANIMATION_DURATION}
           />
           {/* description */}
-          <p className="max-w-prose text-sm font-medium tracking-wide text-[#222020]/90">
+          {/* <p className="max-w-prose text-sm font-medium tracking-wide text-[#222020]/90">
             Read what our customers have to say about us.
-          </p>
+          </p> */}
+          <AnimatedText
+            text="Read what our customers have to say about us."
+            element="p"
+            className="max-w-prose text-sm font-medium tracking-wide text-[#222020]/90"
+            duration={ANIMATION_DURATION}
+          />
 
           {/* Quotes img to add detail */}
           {/* Top */}
