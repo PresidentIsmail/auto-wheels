@@ -7,10 +7,11 @@ import {
   BUSINESS_ADDRESS_ON_GOOGLE_MAPS,
 } from "@/constants";
 
-import { Phone, Star, MapPin } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { Button } from "../ui/button";
 import AnimatedText from "../AnimatedText";
 import SlideInContent from "../SlideInContent";
+import Stars from "../Stars";
 
 type HeroCopyProps = React.HTMLAttributes<HTMLDivElement>;
 // master-container flex w-[30%] flex-col items-start justify-between py-8
@@ -80,30 +81,9 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         {/* Ratings */}
         <SlideInContent direction="slideRight" delay={1.25}>
           <div className="flex items-center gap-x-1 ">
-            <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
-              aria-hidden
-            />
-            <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
-              aria-hidden
-            />
-            <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
-              aria-hidden
-            />
-            <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
-              aria-hidden
-            />
-            {/* last start should be only 60% filled */}
-            <Star
-              className="h-4 w-4 fill-[#f8b700] text-[#f8b700]"
-              aria-hidden
-              style={{ clipPath: "inset(0 40% 0 0)" }}
-            />
+            {/* stars */}
+            <Stars rating={4.6} />
 
-            {/* review from google */}
             {/* review from google */}
             <p className="ml-1 text-xs font-medium text-[#323236] md:text-sm">
               4.6 (<span className="text-[#4285F4]">G</span>

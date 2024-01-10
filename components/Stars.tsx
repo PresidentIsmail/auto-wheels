@@ -14,7 +14,7 @@ const Stars: React.FC<StarsProps> = ({ rating, className }) => {
   const partialStarFillPercentage = (rating - fullStars) * 100;
 
   return (
-    <div className={(cn("flex items-center gap-x-1"), className)}>
+    <div className={cn("flex items-center gap-x-1", className)}>
       {[...Array(fullStars)].map((_, i) => (
         <Star
           key={i}
