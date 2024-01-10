@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export function extractNumericPart(inputString: string): number | null {
   const numericMatch = inputString.match(/\d+/);
   if (numericMatch) {
@@ -8,5 +10,5 @@ export function extractNumericPart(inputString: string): number | null {
 
 // function that generates a random unique id using crypto.randonUUID()
 export function generateId(): string {
-  return crypto.randomUUID();
+  return uuidv4();
 }

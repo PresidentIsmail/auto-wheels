@@ -50,17 +50,6 @@
     );
   }
 
-  /* Hide scrollbar */
-  .carousel-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel-list {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    -webkit-overflow-scrolling: touch; /* iOS Safari */
-  }
-
   @media (max-width: 1023px) {
     /* Apply sm-clip-path for screens below lg */
     :root {
@@ -148,4 +137,15 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Hide scrollbar */
+.carousel-list::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-list {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* iOS Safari */
 }
