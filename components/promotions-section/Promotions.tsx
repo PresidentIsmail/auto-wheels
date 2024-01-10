@@ -77,7 +77,7 @@ const Promotions: React.FC = () => {
       </div>
 
       {/* Promos on large screens - displayed in a carousel */}
-      <Carousel className="hidden w-[40%] min-w-[410px] shrink-0 md:block lg:w-1/2">
+      <Carousel className="relative hidden w-[40%] min-w-[410px] shrink-0 md:block lg:w-1/2">
         {promoData.map((promo) => (
           <PromoCard key={promo.title} promo={promo} />
         ))}

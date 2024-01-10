@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
     .join("");
 
   return (
-    <Card role="article" className="max-w-[200px] h-max shrink-0 md:max-w-[250px]">
+    <Card role="article" className="w-[200px] h-max shrink-0 md:w-[250px]">
       <CardHeader className="px-3 pb-4 pt-4 md:pb-6">
         {/* Stars */}
         <Stars rating={testimonial.rating} />

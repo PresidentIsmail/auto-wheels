@@ -80,14 +80,14 @@ const Carousel = ({ className, children }: Props) => {
       </div>
 
       {/* Previous and Next Buttons */}
-      <div className="hidden  md:flex">
+      <div className="flex gap-8">
         {/* left btn */}
         {
           <SliderButton
             disabled={!scrollState.canScrollLeft}
             handleClick={scrollToPrevious}
             aria-label="previous slide"
-            className={`absolute left-0 top-full z-10 translate-y-1/2 ${
+            className={`left-0 top-full z-10 translate-y-1/2 ${
               !scrollState.canScrollLeft && "invisible"
             }`}
           >
@@ -101,7 +101,7 @@ const Carousel = ({ className, children }: Props) => {
             disabled={!scrollState.canScrollRight}
             handleClick={scrollToNext}
             aria-label="next slide"
-            className={`absolute left-16 top-full z-10 flex translate-y-1/2 ${
+            className={`left-16 top-full z-10 flex translate-y-1/2 ${
               !scrollState.canScrollRight && "invisible"
             }`}
           >
