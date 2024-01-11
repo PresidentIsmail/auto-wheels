@@ -80,14 +80,6 @@ export const testimonialData: Testimonial[] = [
   {
     id: generateId(),
     rating: 5,
-    comment:
-      "Always give fast and efficient service to customers. I have the most satisfactory experiences when needed service.",
-    fullName: "Miriam Harry",
-    profileImgUrl: "/images/testimonials/miriam.png",
-  },
-  {
-    id: generateId(),
-    rating: 5,
     comment: "Good service I got and excellent customer care.",
     fullName: "dumisani ndlovu",
     profileImgUrl: "/images/testimonials/dumisani.png",
