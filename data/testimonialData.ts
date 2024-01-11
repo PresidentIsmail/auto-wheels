@@ -69,19 +69,19 @@ export const testimonialData: Testimonial[] = [
     fullName: "Urie Tseleng",
     profileImgUrl: "/images/testimonials/urie.png",
   },
-  {
-    id: generateId(),
-    rating: 5,
-    comment:
-      "Very good service and very helpful I was stranded with the overheating car nd they sorted my car I'm one of the happy customer. Drove back to johannesburg peacefully.",
-    fullName: "richard neven",
-    profileImgUrl: "/images/testimonials/richard.png",
-  },
-  {
-    id: generateId(),
-    rating: 5,
-    comment: "Good service I got and excellent customer care.",
-    fullName: "dumisani ndlovu",
-    profileImgUrl: "/images/testimonials/dumisani.png",
-  },
+  // {
+  //   id: generateId(),
+  //   rating: 5,
+  //   comment:
+  //     "Very good service and very helpful I was stranded with the overheating car nd they sorted my car I'm one of the happy customer. Drove back to johannesburg peacefully.",
+  //   fullName: "richard neven",
+  //   profileImgUrl: "/images/testimonials/richard.png",
+  // },
+  // {
+  //   id: generateId(),
+  //   rating: 5,
+  //   comment: "Good service I got and excellent customer care.",
+  //   fullName: "dumisani ndlovu",
+  //   profileImgUrl: "/images/testimonials/dumisani.png",
+  // },
 ];
