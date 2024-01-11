@@ -12,6 +12,7 @@ type Alignment = {
   xDirection: 1 | -1;
   yDirection: 1 | -1;
   scrollWidth: number;
+  scrollHeight: number;
 };
 
 const LARGE_SCREEN_WIDTH = 1024;
@@ -23,45 +24,61 @@ const secondhalf = testimonialData.slice(
   Math.floor(testimonialData.length / 2),
 );
 
-const sectionVariants: Variants = {
-  initial: ({ xDirection, yDirection, scrollWidth }: Alignment) => ({
-    x: `${xDirection === 1 ? -scrollWidth : 0}px`,
-    // y: yDirection > 0 ? "0%" : "-100%",
-  }),
-  animate: ({ xDirection, yDirection, scrollWidth }: Alignment) => ({
-    x: `${xDirection * scrollWidth}px`,
-    // y: yDirection > 0 ? "0%" : "100%",
-    transition: {
-      duration: 20,
-      ease: "easeIn",
-      repeat: Infinity,
-      repeatType: "loop",
-    },
-  }),
-};
-
 const TestimonialList: FC = () => {
-  //   const { width } = useViewportSize();
+  const { width } = useViewportSize();
   const firstSectionRef = useRef<HTMLElement>(null);
   const secondSectionRef = useRef<HTMLElement>(null);
   const [animationProps, setAnimationProps] = useState<Alignment>({
     xDirection: -1,
     yDirection: 1,
     scrollWidth: 0,
+    scrollHeight: 0,
   });
+
+  const sectionVariants: Variants = {
+    initial: ({
+      xDirection,
+      yDirection,
+      scrollWidth,
+      scrollHeight,
+    }: Alignment) => ({
+      x:
+        width < LARGE_SCREEN_WIDTH
+          ? `${xDirection === 1 ? -scrollWidth : 0}px`
+          : "0px",
+      y:
+        width >= LARGE_SCREEN_WIDTH
+          ? `${yDirection === 1 ? -scrollHeight : 0}px`
+          : "0px",
+    }),
+    animate: ({
+      xDirection,
+      yDirection,
+      scrollWidth,
+      scrollHeight,
+    }: Alignment) => ({
+      x: width < LARGE_SCREEN_WIDTH ? `${xDirection * scrollWidth}px` : "0px",
+      y: width >= LARGE_SCREEN_WIDTH ? `${yDirection * scrollHeight}px` : "0px",
+      transition: {
+        duration: 20,
+        ease: "linear",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    }),
+  };
 
   useEffect(() => {
     const firstSection = firstSectionRef.current;
-    // const secondSection = secondSectionRef.current;
 
     if (firstSection) {
-      const { scrollWidth } = firstSection;
-      setAnimationProps((prev) => ({ ...prev, scrollWidth }));
+      const { scrollWidth, scrollHeight } = firstSection;
+      setAnimationProps((prev) => ({ ...prev, scrollWidth, scrollHeight }));
     }
   }, []);
 
   return (
-    <article className="right-0 flex flex-row lg:absolute lg:w-[50%] lg:flex-row lg:gap-x-8 lg:overflow-hidden xl:me-0">
+    <article className="right-0 flex flex-row lg:absolute lg:w-[50%] lg:flex-col lg:gap-x-8 lg:overflow-hidden xl:me-0">
       {/* --------------------- */}
       <motion.section
         ref={firstSectionRef}
@@ -72,9 +89,9 @@ const TestimonialList: FC = () => {
         className="flex h-full flex-col gap-y-4 lg:flex-row lg:gap-x-8 "
       >
         {/* Testimonials First Half */}
-        <div className="flex flex-row gap-8 lg:translate-y-8 lg:flex-col lg:gap-12">
+        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
           {/* adding space using an invisible div */}
-          <div className="h-full lg:w-full"></div>
+          <div className="h-full lg:hidden lg:w-full"></div>
           {firsthalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
@@ -102,9 +119,9 @@ const TestimonialList: FC = () => {
         aria-hidden
       >
         {/* Testimonials First Half */}
-        <div className="flex flex-row gap-8 lg:translate-y-8 lg:flex-col lg:gap-12">
+        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
           {/* adding space using an invisible div */}
-          <div className="h-full lg:w-full"></div>
+          <div className="h-full lg:hidden lg:w-full"></div>
           {firsthalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
@@ -115,6 +132,8 @@ const TestimonialList: FC = () => {
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
+        {/* adding space using an invisible div */}
+        <div className="h-full lg:w-full"></div>
       </motion.section>
       {/* --------------------- */}
     </article>
