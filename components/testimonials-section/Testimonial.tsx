@@ -12,7 +12,7 @@ const Testimonials: React.FC = () => {
       aria-label="Testimonials Section"
       id="testimonials-section"
       role="region"
-      className="master-container relative flex flex-col gap-x-12 gap-y-8 bg-white py-16 lg:flex-row lg:py-[72px]"
+      className="master-container relative my-4 flex h-max max-h-screen flex-col gap-x-12 gap-y-8 overflow-hidden bg-white lg:h-[600px] lg:flex-row "
     >
       {/* Heading */}
       <Heading />
@@ -25,7 +25,7 @@ const Testimonials: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="relative z-10 flex h-max flex-col gap-y-6 md:gap-y-8 lg:w-[50%]">
+    <header className="relative z-10 flex h-max flex-col gap-y-6  mt-12 md:gap-y-8 lg:w-[50%] lg:mt-[56px]">
       {/* subtitle */}
       <AnimatedText
         text="testimonials"
@@ -54,14 +54,14 @@ const Heading: React.FC = () => {
         <Image
           src={quotes}
           alt="Image of quotation marks"
-          className="absolute -left-2 top-[28px] z-[-1] h-20 w-20 -scale-x-110 transform md:-left-8 md:top-[32px] md:h-24 md:w-24 "
+          className="absolute opacity-50 md:opacity-80 -left-1 top-[28px] z-[-1] h-20 w-20 -scale-x-110 transform md:-left-4 md:top-[32px] md:h-24 md:w-24 "
         />
 
         {/* Bottom */}
         <Image
           src={quotes}
           alt="Image of quotation marks"
-          className="absolute bottom-0 right-[30%] z-[-1] h-20 w-20 scale-x-110 md:h-24 md:w-24 lg:-bottom-2 lg:right-[10%] xl:right-[35%]  "
+          className="absolute opacity-50 md:opacity-80 bottom-0 right-[30%] z-[-1] h-20 w-20 scale-x-110 md:h-24 md:w-24 lg:-bottom-2 lg:right-[10%] xl:right-[35%]  "
         />
       </div>
     </header>
