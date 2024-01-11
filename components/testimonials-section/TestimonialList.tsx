@@ -30,7 +30,7 @@ const TestimonialList: FC = () => {
   const secondSectionRef = useRef<HTMLElement>(null);
   const [animationProps, setAnimationProps] = useState<Alignment>({
     xDirection: -1,
-    yDirection: 1,
+    yDirection: -1,
     scrollWidth: 0,
     scrollHeight: 0,
   });
@@ -60,7 +60,7 @@ const TestimonialList: FC = () => {
       x: width < LARGE_SCREEN_WIDTH ? `${xDirection * scrollWidth}px` : "0px",
       y: width >= LARGE_SCREEN_WIDTH ? `${yDirection * scrollHeight}px` : "0px",
       transition: {
-        duration: 20,
+        duration: 10,
         ease: "linear",
         repeat: Infinity,
         repeatType: "loop",
@@ -95,6 +95,8 @@ const TestimonialList: FC = () => {
           {firsthalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
+          {/* adding space using an invisible div */}
+          <div className="hidden h-full lg:block lg:w-full"></div>
         </div>
         {/* Testimonials Second Half */}
         <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
@@ -102,7 +104,7 @@ const TestimonialList: FC = () => {
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
           {/* adding space using an invisible div */}
-          <div className="h-full lg:w-full"></div>
+          <div className="h-full lg:hidden lg:w-full"></div>
         </div>
       </motion.section>
       {/* --------------------- */}
