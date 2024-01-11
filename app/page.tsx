@@ -20,9 +20,12 @@ export default function Home() {
         <Hero />
         <Statistics />
         <TireSelection />
-        <Services />
-        <Promotions />
+        {/* <Services />
+        <Promotions /> */}
         <Testimonials />
+
+        {/* scroll area for testing */}
+        <div className="h-screen w-full bg-gray-200"></div>
       </main>
     </>
   );
