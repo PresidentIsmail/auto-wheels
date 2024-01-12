@@ -4,7 +4,8 @@ import { FC, useEffect, useRef, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 import { testimonialData } from "@/data/testimonialData";
-import { useViewportSize } from "@/hooks/use-viewport-size";
+// import { useViewportSize } from "@/hooks/use-viewport-size";
+import { useViewportSize } from "@mantine/hooks";
 
 import TestimonialCard from "./TestimonialCard";
 
@@ -25,7 +26,7 @@ const secondhalf = testimonialData.slice(
 );
 
 const TestimonialList: FC = () => {
-  const { width } = useViewportSize();
+  const { width: screenWidth } = useViewportSize();
   const firstSectionRef = useRef<HTMLElement>(null);
   const secondSectionRef = useRef<HTMLElement>(null);
   const [animationProps, setAnimationProps] = useState<Alignment>({
@@ -43,11 +44,11 @@ const TestimonialList: FC = () => {
       scrollHeight,
     }: Alignment) => ({
       x:
-        width < LARGE_SCREEN_WIDTH
+        screenWidth < LARGE_SCREEN_WIDTH
           ? `${xDirection === 1 ? -scrollWidth : 0}px`
           : "0px",
       y:
-        width >= LARGE_SCREEN_WIDTH
+        screenWidth >= LARGE_SCREEN_WIDTH
           ? `${yDirection === 1 ? -scrollHeight : 0}px`
           : "0px",
     }),
@@ -57,8 +58,14 @@ const TestimonialList: FC = () => {
       scrollWidth,
       scrollHeight,
     }: Alignment) => ({
-      x: width < LARGE_SCREEN_WIDTH ? `${xDirection * scrollWidth}px` : "0px",
-      y: width >= LARGE_SCREEN_WIDTH ? `${yDirection * scrollHeight}px` : "0px",
+      x:
+        screenWidth < LARGE_SCREEN_WIDTH
+          ? `${xDirection * scrollWidth}px`
+          : "0px",
+      y:
+        screenWidth >= LARGE_SCREEN_WIDTH
+          ? `${yDirection * scrollHeight}px`
+          : "0px",
       transition: {
         duration: 10,
         ease: "linear",
