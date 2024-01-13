@@ -75,34 +75,8 @@ const TestimonialList: FC = () => {
       xDirection: "scroll-right",
       yDirection: "scroll-down",
     });
-  const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const scrollUp = scrollY.getPrevious() - latest > 0;
-    const scrollDown = latest - scrollY.getPrevious() > 0;
-
-    if (scrollUp)
-      setAnimationDirection((prev) => {
-        // If the animation direction is already scroll-up, do nothing
-        if (prev.yDirection === "scroll-up") return prev;
-
-        return {
-          xDirection: "scroll-right",
-          yDirection: "scroll-up",
-        };
-      });
-
-    if (scrollDown)
-      setAnimationDirection((prev) => {
-        // If the animation direction is already scroll-down, do nothing
-        if (prev.yDirection === "scroll-down") return prev;
-
-        return {
-          xDirection: "scroll-left",
-          yDirection: "scroll-down",
-        };
-      });
-  });
+ 
 
   return (
     <article className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0">
