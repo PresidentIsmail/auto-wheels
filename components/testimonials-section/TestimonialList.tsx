@@ -8,13 +8,7 @@ import { testimonialData } from "@/data/testimonialData";
 import { useViewportSize } from "@mantine/hooks";
 
 import TestimonialCard from "./TestimonialCard";
-
-type Alignment = {
-  xDirection: 1 | -1;
-  yDirection: 1 | -1;
-  scrollWidth: number;
-  scrollHeight: number;
-};
+import { generateId } from "@/lib/helper";
 
 const LARGE_SCREEN_WIDTH = 1024;
 const firsthalf = testimonialData.slice(
@@ -25,93 +19,84 @@ const secondhalf = testimonialData.slice(
   Math.floor(testimonialData.length / 2),
 );
 
+type SectionVariantsParams = AnimationDirection & {
+  screenWidth: number;
+  LARGE_SCREEN_WIDTH: number;
+};
+
+const sectionVariants = ({
+  xDirection,
+  yDirection,
+  screenWidth,
+  LARGE_SCREEN_WIDTH,
+}: SectionVariantsParams): Variants => ({
+  initial: {
+    x:
+      screenWidth < LARGE_SCREEN_WIDTH
+        ? `${xDirection === 1 ? -100 : 0}%`
+        : "0px",
+    y:
+      screenWidth >= LARGE_SCREEN_WIDTH
+        ? `${yDirection === 1 ? -100 : 0}%`
+        : "0px",
+  },
+  animate: {
+    x:
+      screenWidth < LARGE_SCREEN_WIDTH
+        ? `${xDirection === 1 ? -0 : -100}%`
+        : "0px",
+    y:
+      screenWidth >= LARGE_SCREEN_WIDTH
+        ? `${yDirection === 1 ? -0 : -100}%`
+        : "0px",
+    transition: {
+      duration: 10,
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "loop",
+    },
+  },
+});
+
+type AnimationDirection = {
+  xDirection: -1 | 1; // -1 for left, 1 for right
+  yDirection: -1 | 1; // -1 for up, 1 for up
+};
+
 const TestimonialList: FC = () => {
   const { width: screenWidth } = useViewportSize();
-  const firstSectionRef = useRef<HTMLElement>(null);
-  const secondSectionRef = useRef<HTMLElement>(null);
-  const [animationProps, setAnimationProps] = useState<Alignment>({
-    xDirection: -1,
-    yDirection: -1,
-    scrollWidth: 0,
-    scrollHeight: 0,
-  });
-
-  const sectionVariants: Variants = {
-    initial: ({
-      xDirection,
-      yDirection,
-      scrollWidth,
-      scrollHeight,
-    }: Alignment) => ({
-      x:
-        screenWidth < LARGE_SCREEN_WIDTH
-          ? `${xDirection === 1 ? -scrollWidth : 0}px`
-          : "0px",
-      y:
-        screenWidth >= LARGE_SCREEN_WIDTH
-          ? `${yDirection === 1 ? -scrollHeight : 0}px`
-          : "0px",
-    }),
-    animate: ({
-      xDirection,
-      yDirection,
-      scrollWidth,
-      scrollHeight,
-    }: Alignment) => ({
-      x:
-        screenWidth < LARGE_SCREEN_WIDTH
-          ? `${xDirection * scrollWidth}px`
-          : "0px",
-      y:
-        screenWidth >= LARGE_SCREEN_WIDTH
-          ? `${yDirection * scrollHeight}px`
-          : "0px",
-      transition: {
-        duration: 10,
-        ease: "linear",
-        repeat: Infinity,
-        repeatType: "loop",
-      },
-    }),
-  };
-
-  useEffect(() => {
-    const firstSection = firstSectionRef.current;
-
-    if (firstSection) {
-      const { scrollWidth, scrollHeight } = firstSection;
-      setAnimationProps((prev) => ({ ...prev, scrollWidth, scrollHeight }));
-    }
-  }, []);
+  const [animationDirection, setAnimationDirection] =
+    useState<AnimationDirection>({
+      xDirection: -1,
+      yDirection: 1,
+    });
 
   return (
-    <article className="right-0 flex flex-row lg:absolute lg:w-[50%] lg:flex-col lg:gap-x-8 lg:overflow-hidden xl:me-0">
+    <article className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0">
       {/* --------------------- */}
       <motion.section
-        ref={firstSectionRef}
-        variants={sectionVariants}
+        key={generateId()}
+        variants={sectionVariants({
+          ...animationDirection,
+          screenWidth,
+          LARGE_SCREEN_WIDTH,
+        })}
         initial="initial"
         animate="animate"
-        custom={animationProps}
-        className="flex h-full flex-col gap-y-4 lg:flex-row lg:gap-x-8 "
+        custom={animationDirection}
+        className=" flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
       >
         {/* Testimonials First Half */}
-        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
-          {/* adding space using an invisible div */}
-          <div className="h-full lg:hidden lg:w-full"></div>
+        <div className="flex flex-row gap-8 pe-8 lg:flex-col lg:gap-12 lg:pb-8 lg:pe-0">
           {firsthalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
-          {/* adding space using an invisible div */}
-          <div className="hidden h-full lg:block lg:w-full"></div>
         </div>
         {/* Testimonials Second Half */}
-        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
+        <div className="flex flex-row gap-8 pe-8 lg:flex-col lg:gap-12 lg:pb-8 lg:pe-0">
           {secondhalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
-          {/* adding space using an invisible div */}
-          <div className="h-full lg:hidden lg:w-full"></div>
         </div>
       </motion.section>
       {/* --------------------- */}
@@ -119,30 +104,30 @@ const TestimonialList: FC = () => {
       {/* Duplicate for infinite animation purposes */}
       {/* --------------------- */}
       <motion.section
-        ref={secondSectionRef}
-        variants={sectionVariants}
+        key={generateId()}
+        variants={sectionVariants({
+          ...animationDirection,
+          screenWidth,
+          LARGE_SCREEN_WIDTH,
+        })}
         initial="initial"
         animate="animate"
-        custom={animationProps}
-        className="flex h-full flex-col gap-y-4 lg:flex-row lg:gap-x-8"
+        custom={animationDirection}
+        className="flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
         aria-hidden
       >
         {/* Testimonials First Half */}
-        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
-          {/* adding space using an invisible div */}
-          <div className="h-full lg:hidden lg:w-full"></div>
+        <div className="flex flex-row gap-8 pe-8 lg:flex-col lg:gap-12 lg:pb-8 lg:pe-0">
           {firsthalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
         {/* Testimonials Second Half */}
-        <div className="flex flex-row gap-8 lg:flex-col lg:gap-12">
+        <div className="flex flex-row gap-8 pe-8 lg:flex-col lg:gap-12 lg:pb-8 lg:pe-0">
           {secondhalf.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
-        {/* adding space using an invisible div */}
-        <div className="h-full lg:w-full"></div>
       </motion.section>
       {/* --------------------- */}
     </article>
