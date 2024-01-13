@@ -1,7 +1,12 @@
 "use client";
 
 import { FC, useEffect, useRef, useState } from "react";
-import { motion, Variants } from "framer-motion";
+import {
+  motion,
+  Variants,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 
 import { testimonialData } from "@/data/testimonialData";
 // import { useViewportSize } from "@/hooks/use-viewport-size";
@@ -33,21 +38,21 @@ const sectionVariants = ({
   initial: {
     x:
       screenWidth < LARGE_SCREEN_WIDTH
-        ? `${xDirection === 1 ? -100 : 0}%`
+        ? `${xDirection === "scroll-right" ? -100 : 0}%`
         : "0px",
     y:
       screenWidth >= LARGE_SCREEN_WIDTH
-        ? `${yDirection === 1 ? -100 : 0}%`
+        ? `${yDirection === "scroll-down" ? -100 : 0}%`
         : "0px",
   },
   animate: {
     x:
       screenWidth < LARGE_SCREEN_WIDTH
-        ? `${xDirection === 1 ? -0 : -100}%`
+        ? `${xDirection === "scroll-right" ? -0 : -100}%`
         : "0px",
     y:
       screenWidth >= LARGE_SCREEN_WIDTH
-        ? `${yDirection === 1 ? -0 : -100}%`
+        ? `${yDirection === "scroll-down" ? -0 : -100}%`
         : "0px",
     transition: {
       duration: 10,
@@ -59,17 +64,45 @@ const sectionVariants = ({
 });
 
 type AnimationDirection = {
-  xDirection: -1 | 1; // -1 for left, 1 for right
-  yDirection: -1 | 1; // -1 for up, 1 for up
+  xDirection: "scroll-left" | "scroll-right"; // -1 for left, 1 for right
+  yDirection: "scroll-up" | "scroll-down"; // -1 for up, 1 for down
 };
 
 const TestimonialList: FC = () => {
   const { width: screenWidth } = useViewportSize();
   const [animationDirection, setAnimationDirection] =
     useState<AnimationDirection>({
-      xDirection: -1,
-      yDirection: 1,
+      xDirection: "scroll-right",
+      yDirection: "scroll-down",
     });
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const scrollUp = scrollY.getPrevious() - latest > 0;
+    const scrollDown = latest - scrollY.getPrevious() > 0;
+
+    if (scrollUp)
+      setAnimationDirection((prev) => {
+        // If the animation direction is already scroll-up, do nothing
+        if (prev.yDirection === "scroll-up") return prev;
+
+        return {
+          xDirection: "scroll-right",
+          yDirection: "scroll-up",
+        };
+      });
+
+    if (scrollDown)
+      setAnimationDirection((prev) => {
+        // If the animation direction is already scroll-down, do nothing
+        if (prev.yDirection === "scroll-down") return prev;
+
+        return {
+          xDirection: "scroll-left",
+          yDirection: "scroll-down",
+        };
+      });
+  });
 
   return (
     <article className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0">
