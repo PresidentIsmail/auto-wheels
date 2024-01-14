@@ -5,6 +5,7 @@ import TireSelection from "@/components/tire-selection-section/TireSelection";
 import Services from "@/components/services-section/Services";
 import Promotions from "@/components/promotions-section/Promotions";
 import Testimonials from "@/components/testimonials-section/Testimonial";
+import Faq from "@/components/faq-section/Faq";
 
 export default function Home() {
   return (
@@ -23,9 +24,7 @@ export default function Home() {
         <Services />
         <Promotions />
         <Testimonials />
-
-        {/* scroll area for testing */}
-        <div className="h-screen w-full bg-gray-200"></div>
+        <Faq />
       </main>
     </>
   );
