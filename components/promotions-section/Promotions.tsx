@@ -18,6 +18,8 @@ const ANIMATION_DURATION = 0.05;
 const Promotions: React.FC = () => {
   return (
     <section
+      role="region"
+      aria-label="Promotions"
       className="relative flex flex-col overflow-hidden border border-black py-16 md:flex-row lg:py-[72px]"
       style={{
         background:
