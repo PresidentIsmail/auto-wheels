@@ -9,7 +9,6 @@ import {
 } from "framer-motion";
 
 import { testimonialData } from "@/data/testimonialData";
-// import { useViewportSize } from "@/hooks/use-viewport-size";
 import { useViewportSize } from "@mantine/hooks";
 
 import TestimonialCard from "./TestimonialCard";
@@ -75,8 +74,57 @@ const TestimonialList: FC = () => {
       xDirection: "scroll-right",
       yDirection: "scroll-down",
     });
+  const { scrollYProgress } = useScroll();
 
- 
+  useMotionValueEvent(scrollYProgress, "change", (progress) => {
+    const delta = scrollYProgress.getPrevious() - progress;
+
+    // animation on sm screen
+    if (screenWidth < LARGE_SCREEN_WIDTH) {
+      if (delta > 0) {
+        setAnimationDirection((prev) => {
+          // do not change animation direction if it is already scrolling right
+          if (prev.xDirection === "scroll-right") return prev;
+          return {
+            xDirection: "scroll-right",
+            yDirection: "scroll-down",
+          };
+        });
+      } else {
+        setAnimationDirection((prev) => {
+          // do not change animation direction if it is already scrolling left
+          if (prev.xDirection === "scroll-left") return prev;
+          return {
+            xDirection: "scroll-left",
+            yDirection: "scroll-up",
+          };
+        });
+      }
+    }
+
+    // animation on lg screen
+    if (screenWidth >= LARGE_SCREEN_WIDTH) {
+      if (delta > 0) {
+        setAnimationDirection((prev) => {
+          // do not change animation direction if it is already scrolling down
+          if (prev.yDirection === "scroll-down") return prev;
+          return {
+            xDirection: "scroll-right",
+            yDirection: "scroll-down",
+          };
+        });
+      } else {
+        setAnimationDirection((prev) => {
+          // do not change animation direction if it is already scrolling up
+          if (prev.yDirection === "scroll-up") return prev;
+          return {
+            xDirection: "scroll-left",
+            yDirection: "scroll-up",
+          };
+        });
+      }
+    }
+  });
 
   return (
     <article className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0">
