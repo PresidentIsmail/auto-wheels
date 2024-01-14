@@ -107,6 +107,7 @@ type ArticleDirection = {
 
 const TestimonialList: FC = () => {
   const { width: screenWidth } = useViewportSize();
+  const container = useRef<HTMLDivElement>(null);
   const [moveArticle, setMoveArticle] = useState<ArticleDirection>({
     direction: "left",
   });
@@ -115,11 +116,16 @@ const TestimonialList: FC = () => {
       xDirection: "scroll-right",
       yDirection: "scroll-down",
     });
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start 0.7", "0.6 end"],
+  });
 
   // Event handling for scroll motion
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
     const delta = scrollYProgress.getPrevious() - progress;
+
+    console.log("progress => ", progress);
 
     // Animation logic based on scroll direction and screen width
     if (screenWidth < LARGE_SCREEN_WIDTH) {
@@ -198,6 +204,7 @@ const TestimonialList: FC = () => {
 
   return (
     <motion.article
+      ref={container}
       variants={articleVariants(moveArticle, screenWidth)}
       initial="initial"
       animate="animate"
