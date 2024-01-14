@@ -28,6 +28,7 @@ type SectionVariantsParams = AnimationDirection & {
   LARGE_SCREEN_WIDTH: number;
 };
 
+// Function to define variants for the testimonial section animations
 const sectionVariants = ({
   xDirection,
   yDirection,
@@ -54,10 +55,43 @@ const sectionVariants = ({
         ? `${yDirection === "scroll-down" ? -0 : -100}%`
         : "0px",
     transition: {
-      duration: 10,
+      duration: 20,
       ease: "linear",
       repeat: Infinity,
       repeatType: "loop",
+    },
+  },
+});
+
+// Function to define variants for the article animations
+const articleVariants = (
+  direction: ArticleDirection,
+  screenWidth: number,
+): Variants => ({
+  initial: {
+    x: "0px",
+    y: "0px",
+  },
+
+  animate: {
+    x:
+      screenWidth < LARGE_SCREEN_WIDTH
+        ? direction.direction === "left"
+          ? "-200px"
+          : "0px"
+        : "0px",
+    y:
+      screenWidth >= LARGE_SCREEN_WIDTH
+        ? direction.direction === "up"
+          ? "-200px"
+          : "0px"
+        : "0px",
+
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      duration: 1.5,
     },
   },
 });
@@ -67,8 +101,15 @@ type AnimationDirection = {
   yDirection: "scroll-up" | "scroll-down"; // -1 for up, 1 for down
 };
 
+type ArticleDirection = {
+  direction: "left" | "right" | "up" | "down";
+};
+
 const TestimonialList: FC = () => {
   const { width: screenWidth } = useViewportSize();
+  const [moveArticle, setMoveArticle] = useState<ArticleDirection>({
+    direction: "left",
+  });
   const [animationDirection, setAnimationDirection] =
     useState<AnimationDirection>({
       xDirection: "scroll-right",
@@ -76,12 +117,14 @@ const TestimonialList: FC = () => {
     });
   const { scrollYProgress } = useScroll();
 
+  // Event handling for scroll motion
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
     const delta = scrollYProgress.getPrevious() - progress;
 
-    // animation on sm screen
+    // Animation logic based on scroll direction and screen width
     if (screenWidth < LARGE_SCREEN_WIDTH) {
       if (delta > 0) {
+        // Scroll right animation
         setAnimationDirection((prev) => {
           // do not change animation direction if it is already scrolling right
           if (prev.xDirection === "scroll-right") return prev;
@@ -90,7 +133,14 @@ const TestimonialList: FC = () => {
             yDirection: "scroll-down",
           };
         });
+        setMoveArticle((prev) => {
+          if (prev.direction === "right") return prev;
+          return {
+            direction: "right",
+          };
+        });
       } else {
+        // Scroll left animation
         setAnimationDirection((prev) => {
           // do not change animation direction if it is already scrolling left
           if (prev.xDirection === "scroll-left") return prev;
@@ -99,12 +149,19 @@ const TestimonialList: FC = () => {
             yDirection: "scroll-up",
           };
         });
+        setMoveArticle((prev) => {
+          if (prev.direction === "left") return prev;
+          return {
+            direction: "left",
+          };
+        });
       }
     }
 
-    // animation on lg screen
+    // Animation on large screens
     if (screenWidth >= LARGE_SCREEN_WIDTH) {
       if (delta > 0) {
+        // Scroll down animation
         setAnimationDirection((prev) => {
           // do not change animation direction if it is already scrolling down
           if (prev.yDirection === "scroll-down") return prev;
@@ -113,7 +170,14 @@ const TestimonialList: FC = () => {
             yDirection: "scroll-down",
           };
         });
+        setMoveArticle((prev) => {
+          if (prev.direction === "down") return prev;
+          return {
+            direction: "down",
+          };
+        });
       } else {
+        // Scroll up animation
         setAnimationDirection((prev) => {
           // do not change animation direction if it is already scrolling up
           if (prev.yDirection === "scroll-up") return prev;
@@ -122,12 +186,23 @@ const TestimonialList: FC = () => {
             yDirection: "scroll-up",
           };
         });
+        setMoveArticle((prev) => {
+          if (prev.direction === "up") return prev;
+          return {
+            direction: "up",
+          };
+        });
       }
     }
   });
 
   return (
-    <article className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0">
+    <motion.article
+      variants={articleVariants(moveArticle, screenWidth)}
+      initial="initial"
+      animate="animate"
+      className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0"
+    >
       {/* --------------------- */}
       <motion.section
         key={generateId()}
@@ -136,9 +211,6 @@ const TestimonialList: FC = () => {
           screenWidth,
           LARGE_SCREEN_WIDTH,
         })}
-        initial="initial"
-        animate="animate"
-        custom={animationDirection}
         className=" flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
       >
         {/* Testimonials First Half */}
@@ -165,9 +237,6 @@ const TestimonialList: FC = () => {
           screenWidth,
           LARGE_SCREEN_WIDTH,
         })}
-        initial="initial"
-        animate="animate"
-        custom={animationDirection}
         className="flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
         aria-hidden
       >
@@ -185,7 +254,7 @@ const TestimonialList: FC = () => {
         </div>
       </motion.section>
       {/* --------------------- */}
-    </article>
+    </motion.article>
   );
 };
 
