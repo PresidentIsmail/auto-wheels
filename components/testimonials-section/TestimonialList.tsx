@@ -212,7 +212,7 @@ const TestimonialList: FC = () => {
       variants={articleVariants(moveArticle, screenWidth)}
       initial="initial"
       animate="animate"
-      className="right-0 flex flex-row lg:absolute lg:block lg:w-[50%] lg:gap-x-8 lg:overflow-hidden xl:me-0"
+      className="right-0 flex w-full flex-row overflow-hidden lg:absolute lg:block lg:w-[60%] lg:gap-x-8 xl:me-0"
     >
       {/* --------------------- */}
       <motion.section
@@ -222,7 +222,7 @@ const TestimonialList: FC = () => {
           screenWidth,
           LARGE_SCREEN_WIDTH,
         })}
-        className=" flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
+        className=" flex h-max flex-col justify-end gap-y-4 lg:flex-row lg:gap-x-8"
       >
         {/* Testimonials First Half */}
         <div className="flex flex-row gap-8 pe-8 lg:flex-col lg:gap-12 lg:pb-8 lg:pe-0">
@@ -248,7 +248,7 @@ const TestimonialList: FC = () => {
           screenWidth,
           LARGE_SCREEN_WIDTH,
         })}
-        className="flex h-max flex-col gap-y-4 lg:flex-row lg:gap-x-8"
+        className="flex h-max flex-col justify-end gap-y-4 lg:flex-row lg:gap-x-8"
         aria-hidden
       >
         {/* Testimonials First Half */}
