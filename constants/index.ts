@@ -1,3 +1,47 @@
+import bfgoodrich from "@/public/images/brands/BFGoodrich.png";
+import bridgestone from "@/public/images/brands/Bridgestone.png";
+import continental from "@/public/images/brands/continental.png";
+import dunlop from "@/public/images/brands/dunlop.png";
+import bosal from "@/public/images/brands/bosal.png";
+import monroe from "@/public/images/brands/monroe.png";
+import gabriel from "@/public/images/brands/gabriel.png";
+import bosch from "@/public/images/brands/Bosch.png";
+
+export const BRANDS = [
+  {
+    name: "BFGoodrich",
+    image: bfgoodrich,
+  },
+  {
+    name: "Bridgestone",
+    image: bridgestone,
+  },
+  {
+    name: "Continental",
+    image: continental,
+  },
+  {
+    name: "Dunlop",
+    image: dunlop,
+  },
+  {
+    name: "Bosal",
+    image: bosal,
+  },
+  {
+    name: "Monroe",
+    image: monroe,
+  },
+  {
+    name: "Gabriel",
+    image: gabriel,
+  },
+  {
+    name: "Bosch",
+    image: bosch,
+  },
+];
+
 export const BUSINESS_TELEPHONE_NUMBER = "0183817456";
 export const BUSINESS_WORKING_HOURS = [
   "Mon-Fri : 07:00 - 17:00",
@@ -130,7 +174,6 @@ export const SERVICES_DATA: Service[] = [
 export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
   a.label.localeCompare(b.label),
 );
-
 
 export const AUTO_WHEELS_STATS = [
   {
