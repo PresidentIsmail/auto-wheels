@@ -15,7 +15,7 @@ export const faqData = [
   },
   {
     id: generateId(),
-    question: "How often should I schedule routine maintenance for my vehicle?",
+    question: "How often should I schedule vehicle maintenance?",
     answer:
       "We recommend regular maintenance every 6 months or as per your vehicle manufacturer's guidelines. This ensures optimal performance, fuel efficiency, and extends the lifespan of your vehicle.",
   },
