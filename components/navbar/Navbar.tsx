@@ -49,7 +49,9 @@ const Navbar: React.FC = () => {
     const rect = tireSelectionSection?.getBoundingClientRect();
 
     const isInViewport =
-      rect && rect.top <= window.innerHeight && rect.bottom >= (window.innerHeight / 4);
+      rect &&
+      rect.top <= window.innerHeight &&
+      rect.bottom >= window.innerHeight / 4;
 
     if (isInViewport && latest > 100) {
       setNavbarVisibility(false);
@@ -64,7 +66,7 @@ const Navbar: React.FC = () => {
     <motion.nav
       variants={navbarVariants}
       animate={isNavbarVisible ? "visible" : "hidden"}
-      className="fixed inset-x-0 top-0 z-20 w-full"
+      className="fixed inset-x-0 top-0 z-20 w-full border-b border-b-grayBorder"
     >
       <HeaderInformation />
 
