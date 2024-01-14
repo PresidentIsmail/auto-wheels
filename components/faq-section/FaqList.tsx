@@ -15,7 +15,7 @@ const FaqList: React.FC = () => {
   return (
     <Accordion type="single" collapsible className="w-full lg:w-[60%]">
       {faqData.map((faq, index) => (
-        <SlideInContent key={faq.id} delay={index * 0.25} direction="slideLeft">
+        <SlideInContent key={faq.id} delay={index * 0.5} direction="slideDown">
           <FaqItem
             value={index.toString()}
             question={faq.question}
