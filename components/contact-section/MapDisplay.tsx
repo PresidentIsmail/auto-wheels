@@ -8,6 +8,7 @@ const MapDisplay: React.FC = () => {
       style={{
         border: 0,
         borderRadius: "0.5rem",
+        minHeight: "400px",
       }}
       allowFullScreen={true}
       loading="lazy"
