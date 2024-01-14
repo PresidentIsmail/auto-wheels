@@ -30,7 +30,7 @@ const FaqItem: React.FC<FaqItemProps> = ({
         className,
       )}
     >
-      <AccordionTrigger className="font-medium tracking-wide text-white hover:bg-white/10 hover:no-underline focus-visible:bg-white/10">
+      <AccordionTrigger className="text-start text-sm font-medium tracking-wide text-white hover:bg-white/10 hover:no-underline focus-visible:bg-white/10 lg:text-base">
         {question}
       </AccordionTrigger>
       <AccordionContent className="px-0  text-white/80">

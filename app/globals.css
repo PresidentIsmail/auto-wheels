@@ -34,7 +34,8 @@
 
     --radius: 0.5rem;
 
-    --lg-clip-path: ellipse(85% 100% at center top);
+    --top-clip-path: ellipse(100% 100% at center bottom);
+    --lg-clip-path: ellipse(100% 100% at center top);
     --sm-clip-path: ellipse(105% 100% at center top);
     /* --sm-clip-path: ellipse(100% 95% at center top); */
     --navbar-desktop-height: 70px;
@@ -54,6 +55,7 @@
     /* Apply sm-clip-path for screens below lg */
     :root {
       /* --clip-path: var(--sm-clip-path); */
+      --top-clip-path: ellipse(100% 100% at center);
     }
   }
 
@@ -61,6 +63,7 @@
     /* Apply lg-clip-path for lg screens and above */
     :root {
       --clip-path: var(--lg-clip-path);
+      --top-clip-path: ellipse(100% 100% at center bottom);
     }
   }
 

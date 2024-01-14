@@ -12,10 +12,11 @@ const Faq: React.FC = () => {
     <article
       role="region"
       aria-label="Frequently Asked Questions"
-      className="overflow-hidden border border-black  py-16 lg:py-[72px]"
+      className="overflow-hidden border border-black py-16 lg:py-0 lg:pb-[36px] lg:pt-[88px]"
       style={{
         background:
           "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), #E71D00",
+        clipPath: "var(--top-clip-path)",
       }}
     >
       <section className="master-container relative flex flex-col gap-x-12 gap-y-8 lg:flex-row">
