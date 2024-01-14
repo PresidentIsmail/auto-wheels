@@ -20,8 +20,8 @@ export default function Home() {
         <Hero />
         <Statistics />
         <TireSelection />
-        {/* <Services />
-        <Promotions /> */}
+        <Services />
+        <Promotions />
         <Testimonials />
 
         {/* scroll area for testing */}
