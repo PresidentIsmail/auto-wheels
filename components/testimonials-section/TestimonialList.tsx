@@ -118,7 +118,7 @@ const TestimonialList: FC = () => {
     });
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start 0.7", "0.6 end"],
+    offset: ["end start", "start end"],
   });
 
   // Function to handle animation direction
@@ -212,7 +212,7 @@ const TestimonialList: FC = () => {
       variants={articleVariants(moveArticle, screenWidth)}
       initial="initial"
       animate="animate"
-      className="right-0 flex w-full flex-row overflow-hidden lg:absolute lg:block lg:w-[60%] lg:gap-x-8 xl:me-0"
+      className="right-0 flex w-max flex-row overflow-x-hidden lg:absolute lg:block lg:w-[60%] lg:gap-x-8 xl:me-0"
     >
       {/* --------------------- */}
       <motion.section
