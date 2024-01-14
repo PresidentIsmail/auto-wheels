@@ -43,6 +43,7 @@ const FadeInContent: React.FC<Props> = ({
           delay: delay,
           ease: "easeInOut",
         }}
+        className={"h-full"}
       >
         {children}
       </motion.div>
