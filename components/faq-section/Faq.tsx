@@ -28,12 +28,12 @@ const Faq: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="relative z-10 flex h-max flex-col  gap-y-6 md:gap-y-8 lg:w-[40%]">
+    <header className="relative z-10 flex h-full flex-col  gap-y-6 lg:w-[40%] lg:gap-y-8">
       {/* subtitle */}
       <AnimatedText
         text="faq"
         element="h3"
-        className=" text-xs font-bold uppercase text-[#92959a] md:text-sm"
+        className=" text-xs font-bold uppercase text-[#92959a] lg:text-sm"
         duration={ANIMATION_DURATION}
       />
       <div className="flex flex-col gap-y-4">
@@ -41,7 +41,7 @@ const Heading: React.FC = () => {
         <AnimatedText
           text="Frequently Asked Questions."
           element="h2"
-          className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl"
+          className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
           duration={ANIMATION_DURATION}
         />
         {/* description */}
@@ -57,14 +57,14 @@ const Heading: React.FC = () => {
         <Image
           src={questionMark}
           alt="Image of question mark"
-          className="absolute left-[20%] top-[28px] z-[-1] -rotate-[20deg] scale-150 transform  opacity-80 md:-left-4 md:top-[32px] lg:scale-110 "
+          className="absolute left-[20%] top-[28px] z-[-1] -rotate-[20deg] scale-150 transform  opacity-80 lg:-left-4 lg:top-[32px] lg:scale-110 "
         />
 
         {/* NO-02 */}
         <Image
           src={questionMark}
           alt="Image of question mark"
-          className="absolute bottom-0 right-[30%] z-[-1] rotate-[30deg] scale-150 opacity-80 lg:-bottom-2 lg:right-[10%] lg:scale-110 xl:right-[35%] "
+          className="absolute bottom-0 right-[30%] z-[-1] rotate-[30deg] scale-150 opacity-80 lg:-bottom-[50%] lg:right-[10%] lg:scale-110"
         />
 
         {/* NO-03 */}

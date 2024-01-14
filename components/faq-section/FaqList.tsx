@@ -20,6 +20,8 @@ const FaqList: React.FC = () => {
             value={index.toString()}
             question={faq.question}
             answer={faq.answer}
+            // give a border-t to the first item
+            className={index === 0 ? "border-t-2 border-grayBorder" : ""}
           />
         </SlideInContent>
       ))}
