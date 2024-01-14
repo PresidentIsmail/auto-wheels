@@ -11,7 +11,7 @@ type BrandDisplayProps = {
 const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
   ({ className }, ref) => {
     return (
-      <div className={cn("flex flex-row gap-x-10", className)}>
+      <div ref={ref} className={cn("flex flex-row h-max", className)}>
         {BRANDS.map((brand, index) => (
           <div key={index} className="w-max">
             <Image
@@ -20,7 +20,7 @@ const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
               placeholder="blur"
               sizes=" (max-width: 1024px) 33vw, (min-width: 1025px) 25vw"
               className={
-                "h-[25px] sm:h-[30px] md:h-[35px] lg:h-[45px] xl:h-[50px]"
+                "scale-75 sm:h-[30px] md:h-[35px] lg:h-[45px] xl:h-[50px]"
               }
             />
           </div>
@@ -32,4 +32,4 @@ const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
 
 BrandDisplay.displayName = "BrandDisplay";
 
-export default BrandDisplay;
+export default React.memo(BrandDisplay);
