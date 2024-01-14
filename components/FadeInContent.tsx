@@ -33,7 +33,7 @@ const FadeInContent: React.FC<Props> = ({
   const isInView = useInView(ref, { amount: 0.5, once: animateOnce });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={className}>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -43,7 +43,6 @@ const FadeInContent: React.FC<Props> = ({
           delay: delay,
           ease: "easeInOut",
         }}
-        className={className}
       >
         {children}
       </motion.div>
