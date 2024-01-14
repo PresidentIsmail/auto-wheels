@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState, useCallback } from "react";
 import {
   motion,
   Variants,
@@ -121,86 +121,90 @@ const TestimonialList: FC = () => {
     offset: ["start 0.7", "0.6 end"],
   });
 
+  // Function to handle animation direction
+  const handleScrollAnimation = useCallback(
+    (progress: number) => {
+      const delta = scrollYProgress.getPrevious() - progress;
+
+      // Animation logic based on scroll direction and screen width
+      if (screenWidth < LARGE_SCREEN_WIDTH) {
+        if (delta > 0) {
+          // Scroll right animation
+          setAnimationDirection((prev) => {
+            // do not change animation direction if it is already scrolling right
+            if (prev.xDirection === "scroll-right") return prev;
+            return {
+              xDirection: "scroll-right",
+              yDirection: "scroll-up",
+            };
+          });
+          setMoveArticle((prev) => {
+            if (prev.direction === "right") return prev;
+            return {
+              direction: "right",
+            };
+          });
+        } else {
+          // Scroll left animation
+          setAnimationDirection((prev) => {
+            // do not change animation direction if it is already scrolling left
+            if (prev.xDirection === "scroll-left") return prev;
+            return {
+              xDirection: "scroll-left",
+              yDirection: "scroll-up",
+            };
+          });
+          setMoveArticle((prev) => {
+            if (prev.direction === "left") return prev;
+            return {
+              direction: "left",
+            };
+          });
+        }
+      }
+
+      // Animation on large screens
+      if (screenWidth >= LARGE_SCREEN_WIDTH) {
+        if (delta > 0) {
+          // Scroll down animation
+          setAnimationDirection((prev) => {
+            // do not change animation direction if it is already scrolling down
+            if (prev.yDirection === "scroll-down") return prev;
+            return {
+              xDirection: "scroll-right",
+              yDirection: "scroll-down",
+            };
+          });
+          setMoveArticle((prev) => {
+            if (prev.direction === "down") return prev;
+            return {
+              direction: "down",
+            };
+          });
+        } else {
+          // Scroll up animation
+          setAnimationDirection((prev) => {
+            // do not change animation direction if it is already scrolling up
+            if (prev.yDirection === "scroll-up") return prev;
+            return {
+              xDirection: "scroll-left",
+              yDirection: "scroll-up",
+            };
+          });
+          setMoveArticle((prev) => {
+            if (prev.direction === "up") return prev;
+            return {
+              direction: "up",
+            };
+          });
+        }
+      }
+    },
+    [screenWidth, scrollYProgress],
+  );
+
   // Event handling for scroll motion
-  useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    const delta = scrollYProgress.getPrevious() - progress;
-
-    console.log("progress => ", progress);
-
-    // Animation logic based on scroll direction and screen width
-    if (screenWidth < LARGE_SCREEN_WIDTH) {
-      if (delta > 0) {
-        // Scroll right animation
-        setAnimationDirection((prev) => {
-          // do not change animation direction if it is already scrolling right
-          if (prev.xDirection === "scroll-right") return prev;
-          return {
-            xDirection: "scroll-right",
-            yDirection: "scroll-down",
-          };
-        });
-        setMoveArticle((prev) => {
-          if (prev.direction === "right") return prev;
-          return {
-            direction: "right",
-          };
-        });
-      } else {
-        // Scroll left animation
-        setAnimationDirection((prev) => {
-          // do not change animation direction if it is already scrolling left
-          if (prev.xDirection === "scroll-left") return prev;
-          return {
-            xDirection: "scroll-left",
-            yDirection: "scroll-up",
-          };
-        });
-        setMoveArticle((prev) => {
-          if (prev.direction === "left") return prev;
-          return {
-            direction: "left",
-          };
-        });
-      }
-    }
-
-    // Animation on large screens
-    if (screenWidth >= LARGE_SCREEN_WIDTH) {
-      if (delta > 0) {
-        // Scroll down animation
-        setAnimationDirection((prev) => {
-          // do not change animation direction if it is already scrolling down
-          if (prev.yDirection === "scroll-down") return prev;
-          return {
-            xDirection: "scroll-right",
-            yDirection: "scroll-down",
-          };
-        });
-        setMoveArticle((prev) => {
-          if (prev.direction === "down") return prev;
-          return {
-            direction: "down",
-          };
-        });
-      } else {
-        // Scroll up animation
-        setAnimationDirection((prev) => {
-          // do not change animation direction if it is already scrolling up
-          if (prev.yDirection === "scroll-up") return prev;
-          return {
-            xDirection: "scroll-left",
-            yDirection: "scroll-up",
-          };
-        });
-        setMoveArticle((prev) => {
-          if (prev.direction === "up") return prev;
-          return {
-            direction: "up",
-          };
-        });
-      }
-    }
-  });
+  useMotionValueEvent(scrollYProgress, "change", handleScrollAnimation);
 
   return (
     <motion.article
