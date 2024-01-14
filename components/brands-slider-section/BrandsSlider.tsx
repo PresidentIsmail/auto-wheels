@@ -95,7 +95,7 @@ const BrandsSlider: React.FC = () => {
       variants={sliderContainerVariants(animationDirection)}
       animate="animate"
       initial="initial"
-      className="relative flex flex-row py-10"
+      className="relative flex flex-row py-6 lg:py-8"
       aria-label="Brands Slider"
     >
       <motion.article
