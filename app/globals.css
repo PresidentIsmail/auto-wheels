@@ -108,16 +108,20 @@
 .master-container {
   @apply mx-auto px-4;
   @screen sm {
-    max-width: 640px;
+    /* calculate 90% of 640 */
+    max-width: 90%;
   }
   @screen md {
-    max-width: 768px;
+    /* calculate 90% of 768 */
+    max-width: 90%;
   }
   @screen lg {
-    max-width: 1024px;
+    /* calculate 90% of 1024 */
+    max-width: 85%;
   }
   @screen xl {
-    max-width: 1280px;
+    /* calculate 90% of 1280 */
+    max-width: 80%;
   }
 }
 
