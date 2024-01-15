@@ -18,23 +18,19 @@ export default function Home() {
         className="
         relative 
         mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))]
-        min-h-[200vh] 
          w-full overflow-x-hidden bg-white md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
       "
       >
         <Hero />
         <Statistics />
-        {/* <TireSelection />
+        <TireSelection />
+        <BrandsSlider />
         <Services />
         <Promotions />
-        <Testimonials /> */}
-        {/* <Faq /> */}
+        <Testimonials />
+        <Faq />
         <Contact />
-        <BrandsSlider />
         <Footer />
-
-        {/* area to scroll */}
-        <div className="relative z-[-1] h-[100vh] w-full bg-white"></div>
       </main>
     </>
   );

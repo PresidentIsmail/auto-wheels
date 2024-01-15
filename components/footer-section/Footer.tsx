@@ -9,17 +9,19 @@ import FooterItem from "./FooterItem";
 const ANIMATION_DURATION = 0.05;
 
 const Footer: React.FC = () => {
+  // get the current year
+  const year = new Date().getFullYear();
   return (
     <section
       role="region"
       aria-label="Footer"
-      className="border border-black py-16"
+      className="border border-black pb-4 pt-16"
       style={{
         background:
           "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), #E71D00",
       }}
     >
-      <article className="master-container flex h-full flex-col lg:flex-row">
+      <article className="master-container flex h-full flex-col pb-4 lg:flex-row">
         <Heading />
 
         {/* Separator */}
@@ -31,11 +33,20 @@ const Footer: React.FC = () => {
         />
 
         {/* Footer Items */}
-        <ul className="relative flex w-full flex-col md:flex-row md:justify-between lg:max-w-[65%]">
+        <ul className="relative flex w-full flex-col gap-y-4 sm:grid sm:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-row lg:justify-between">
           {FOOTER_ITEMS.map((item) => (
             <FooterItem key={item.title} item={item} />
           ))}
         </ul>
+        <Separator className="mb-6 mt-8 bg-grayBorder lg:hidden" />
+        {/* Footer Credits */}
+        {/* <p className=""></p> */}
+        <AnimatedText
+          text={` Copyright © ${year} Auto Wheels & Exhaust. All rights reserved.`}
+          element="p"
+          className="text-xs font-semibold tracking-wide text-white"
+          duration={ANIMATION_DURATION}
+        />
       </article>
     </section>
   );

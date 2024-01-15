@@ -11,7 +11,7 @@ interface FooterItemProps {
 
 const FooterItem: React.FC<FooterItemProps> = ({ item }) => {
   return (
-    <li className="flex w-1/3 shrink-0 flex-col gap-y-2 lg:gap-y-4 ">
+    <li className="flex shrink-0 flex-col gap-y-2 lg:w-1/3 lg:gap-y-4 ">
       <AnimatedText
         text={item.title}
         element="h3"

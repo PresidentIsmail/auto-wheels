@@ -11,7 +11,9 @@ import {
 import BrandDisplay from "./BrandDisplay";
 import { generateId } from "@/lib/helper";
 
-const sliderVariants = (direction: "left" | "right"): Variants => ({
+type Direction = "left" | "right";
+
+const sliderVariants = (direction: Direction): Variants => ({
   initial: {
     x: direction === "left" ? "0%" : "-100%",
   },
@@ -25,12 +27,12 @@ const sliderVariants = (direction: "left" | "right"): Variants => ({
   },
 });
 
-const sliderContainerVariants = (direction: "left" | "right"): Variants => ({
+const sliderContainerVariants = (direction: Direction): Variants => ({
   initial: {
-    x: direction === "left" ? "0px" : "-100px",
+    x: direction === "left" ? "0px" : "-50px",
   },
   animate: {
-    x: direction === "left" ? "-100px" : "0px",
+    x: direction === "left" ? "-50px" : "0px",
     transition: {
       type: "spring",
       stiffness: 100,
@@ -42,12 +44,10 @@ const sliderContainerVariants = (direction: "left" | "right"): Variants => ({
 
 const BrandsSlider: React.FC = () => {
   const sliderContainer = useRef<HTMLDivElement>(null);
-  const [sliderContainerDirection, setSliderContainerDirection] = useState<
-    "left" | "right"
-  >("right");
-  const [animationDirection, setAnimationDirection] = useState<
-    "left" | "right"
-  >("right");
+  const [sliderContainerDirection, setSliderContainerDirection] =
+    useState<Direction>("left");
+  const [animationDirection, setAnimationDirection] =
+    useState<Direction>("left");
   const { scrollYProgress } = useScroll({
     target: sliderContainer,
     offset: ["end start", "start end"],
@@ -61,17 +61,6 @@ const BrandsSlider: React.FC = () => {
       // Animation logic based on scroll direction and screen width
 
       if (delta > 0) {
-        // Scroll right animation
-        setAnimationDirection((prev) => {
-          // do not change animation direction if it is already scrolling right
-          if (prev === "right") return prev;
-          return "right";
-        });
-        setSliderContainerDirection((prev) => {
-          if (prev === "right") return prev;
-          return "right";
-        });
-      } else {
         // Scroll left animation
         setAnimationDirection((prev) => {
           // do not change animation direction if it is already scrolling left
@@ -81,6 +70,17 @@ const BrandsSlider: React.FC = () => {
         setSliderContainerDirection((prev) => {
           if (prev === "left") return prev;
           return "left";
+        });
+      } else {
+        // Scroll right animation
+        setAnimationDirection((prev) => {
+          // do not change animation direction if it is already scrolling right
+          if (prev === "right") return prev;
+          return "right";
+        });
+        setSliderContainerDirection((prev) => {
+          if (prev === "right") return prev;
+          return "right";
         });
       }
     },
