@@ -8,6 +8,7 @@ import Testimonials from "@/components/testimonials-section/Testimonial";
 import Faq from "@/components/faq-section/Faq";
 import Contact from "@/components/contact-section/Contact";
 import BrandsSlider from "@/components/brands-slider-section/BrandsSlider";
+import Footer from "@/components/footer-section/Footer";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
         <Faq />
         <Contact />
         <BrandsSlider />
+        <Footer />
 
         {/* area to scroll */}
         <div className="relative z-[-1] h-[100vh] w-full bg-white"></div>
