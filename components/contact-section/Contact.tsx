@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="master-container relative z-10 flex h-full w-full flex-col items-start justify-center gap-y-4">
+    <header className="master-container relative z-10 flex lg:text-center h-full w-full flex-col lg:items-center items-start justify-center gap-y-4">
       {/* subtitle */}
       <AnimatedText
         text="contact"
@@ -41,14 +41,14 @@ const Heading: React.FC = () => {
         <AnimatedText
           text="Get in Touch."
           element="h2"
-          className="justify-start text-pretty text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-4xl"
+          className="justify-start lg:justify-center text-pretty text-2xl font-bold tracking-tight text-black sm:text-3xl lg:text-4xl"
           duration={ANIMATION_DURATION}
         />
         {/* description */}
         <AnimatedText
           text="Need assistance? Feel free to reach out to us."
           element="p"
-          className="max-w-prose justify-start text-start text-xs font-medium uppercase tracking-wide text-black/70 lg:text-sm"
+          className="max-w-prose justify-start lg:justify-center lg:text-center text-xs font-medium uppercase tracking-wide text-black/70 lg:text-sm"
           duration={ANIMATION_DURATION}
         />
       </div>
