@@ -12,7 +12,7 @@ const ContactDetails: React.FC = () => {
   return (
     <article
       aria-label="Contact Details"
-      className="master-container grid h-max w-full gap-x-4 gap-y-8 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1"
+      className="master-container mb-8 grid min-h-[400px] w-full justify-between gap-x-4 gap-y-4 sm:grid-cols-2 lg:col-span-5 lg:mb-0 lg:grid-cols-1"
     >
       {contactInfo.map((info, index) => (
         <Card
@@ -21,7 +21,7 @@ const ContactDetails: React.FC = () => {
             index === contactInfo.length - 1
               ? "sm:col-span-2 lg:col-span-1"
               : ""
-          }`}
+          } lg:max-w-[30%]`}
         >
           <CardHeader className="flex flex-row gap-x-4 space-y-0 p-4">
             {/* icon */}

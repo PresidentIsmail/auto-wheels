@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
       className=" pt-16 lg:pt-[72px]"
     >
       <Heading />
-      <div className="relative mt-12 grid gap-x-0  gap-y-8  overflow-hidden lg:mt-14 lg:min-h-[400px] lg:grid-cols-12">
+      <div className="relative mt-12  gap-x-0  gap-y-8  overflow-hidden lg:mt-14 lg:min-h-[400px] ">
         <ContactDetails />
         <FadeInContent className="right-0 top-0 h-full w-full lg:absolute lg:w-[60%]">
           <MapDisplay />
