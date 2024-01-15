@@ -18,7 +18,7 @@ const sliderVariants = (direction: "left" | "right"): Variants => ({
   animate: {
     x: direction === "left" ? "-100%" : "0%",
     transition: {
-      duration: 15,
+      duration: 20,
       ease: "linear",
       repeat: Infinity,
     },
