@@ -28,7 +28,7 @@ export default function Home() {
         <Services />
         <Promotions />
         <Testimonials /> */}
-        <Faq />
+        {/* <Faq /> */}
         <Contact />
         <BrandsSlider />
         <Footer />
