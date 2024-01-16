@@ -40,13 +40,11 @@ const Footer: React.FC = () => {
       <section className="master-container mt-4">
         <Separator className="mb-4 bg-grayBorder" />
         {/* Footer Credits */}
-        <AnimatedText
-          text={`Copyright © ${year} Auto Wheels & Exhaust. All rights reserved.`}
-          element="p"
-          className="text-xs font-semibold text-start tracking-wide text-white"
-          duration={ANIMATION_DURATION}
-          />
-          </section>
+        <p className="text-start text-xs font-semibold tracking-wide text-white">
+          Copyright &copy; {year} Auto Wheels &amp; Exhaust. All rights
+          reserved.
+        </p>
+      </section>
     </footer>
   );
 };
@@ -62,12 +60,10 @@ const Heading: React.FC = () => {
         duration={ANIMATION_DURATION}
       />
       {/* description */}
-      <AnimatedText
-        text="A leading auto repair shop dedicated to providing exceptional services and customer satisfaction."
-        element="p"
-        className="max-w-prose text-sm font-normal tracking-wide text-white/80"
-        duration={ANIMATION_DURATION}
-      />
+      <p className="max-w-prose text-sm font-normal tracking-wide text-white/80">
+        A leading auto repair shop dedicated to providing exceptional services
+        and customer satisfaction.
+      </p>
     </header>
   );
 };

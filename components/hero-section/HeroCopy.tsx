@@ -9,6 +9,7 @@ import {
 
 import { Phone, MapPin } from "lucide-react";
 import { Button } from "../ui/button";
+import WhatsappButton from "../ui/WhatsappButton";
 import AnimatedText from "../AnimatedText";
 import SlideInContent from "../SlideInContent";
 import Stars from "../Stars";
@@ -36,17 +37,9 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         {/* Buttons */}
         <div className="flex gap-x-4 ">
           {/* Contact */}
+          {/* Whatsapp */}
           <SlideInContent direction="slideRight" delay={0.5}>
-            <Button variant={"default"} asChild className="w-max">
-              <Link
-                href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
-                aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
-                className="flex gap-x-2"
-              >
-                <Phone className="h-4 w-4 xl:h-5 xl:w-5" />
-                Call Us
-              </Link>
-            </Button>
+            <WhatsappButton className="w-max">WhatsApp Us</WhatsappButton>
           </SlideInContent>
 
           {/* Location */}
@@ -59,8 +52,8 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
                 aria-label="Location"
                 className="flex gap-x-2"
               >
-                <MapPin className="h-4 w-4 xl:h-5 xl:w-5" />
-                Location
+                <MapPin className="h-4 w-4 lg:h-5 lg:w-5" />
+                Find Us
               </Link>
             </Button>
           </SlideInContent>

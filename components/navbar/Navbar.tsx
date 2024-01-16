@@ -10,12 +10,9 @@ import {
   useScroll,
 } from "framer-motion";
 
-import { BUSINESS_TELEPHONE_NUMBER } from "@/constants";
-
-import { Phone } from "lucide-react";
 import NavItems from "./NavItems";
 import HeaderInformation from "../ui/HeaderInformation";
-import { Button } from "../ui/button";
+import WhatsappButton from "../ui/WhatsappButton";
 
 const MobileNavItems = Dynamic(() => import("./mobile-nav/MobileNavItems"), {
   ssr: false,
@@ -89,16 +86,10 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <Button variant={"secondary"} asChild>
-            <Link
-              href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
-              aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
-              className="hidden gap-x-2 md:flex"
-            >
-              <Phone className="h-4 w-4 xl:h-5 xl:w-5" />
-              Call Us
-            </Link>
-          </Button>
+          <WhatsappButton className="hidden md:flex">
+          <span className="hidden lg:inline-block">Chat On WhatsApp</span>
+          <span className="lg:hidden">WhatsApp Us</span>
+          </WhatsappButton>
         </div>
       </div>
     </motion.nav>

@@ -4,7 +4,7 @@ import { Phone, CalendarClock, MapPin } from "lucide-react";
 export const contactInfo = [
   {
     id: generateId(),
-    type: "Phone",
+    type: "Phone & WhatsApp",
     value: ["018 381 7451"],
     Icon: Phone,
   },

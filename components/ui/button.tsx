@@ -9,13 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-brand text-white hover:bg-brand/80",
+        default: "bg-brand text-white hover:bg-brand/80",
         secondary: "bg-white text-black hover:bg-white/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-grayBorder bg-transparent hover:bg-accent hover:text-accent-foreground",
+        whatsappGreen:
+          "border border-[#25d366] ring-offset-background bg-[#25d366] hover:bg-[#25d366]/70 text-white hover:text-white focus-visible:ring-[#25d366]",
+        whatsappWhite:
+          "border border-white bg-white hover:bg-white/90 text-[#103928] hover:text-[#103928]/90",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },

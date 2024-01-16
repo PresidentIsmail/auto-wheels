@@ -15,9 +15,14 @@ export function generateId(): string {
 }
 
 // Function to generate WhatsApp Click to Chat URL
-const generateWhatsAppLink = (phoneNumber: string = BUSINESS_TELEPHONE_NUMBER as string, message: string = ""): string => {
+type GenerateWhatsAppLink = (message: string, phoneNumber?: string) => string;
+
+export const generateWhatsAppLink: GenerateWhatsAppLink = (
+  message,
+  phoneNumber = BUSINESS_TELEPHONE_NUMBER as string,
+) => {
   const baseUrl = "https://wa.me/";
-  const fullPhoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-numeric characters
+  const fullPhoneNumber = phoneNumber.replace(/\D/g, ""); // Remove non-numeric characters
   const encodedMessage = encodeURIComponent(message);
   return `${baseUrl}${fullPhoneNumber}?text=${encodedMessage}`;
 };
