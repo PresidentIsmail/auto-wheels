@@ -12,9 +12,7 @@ const Footer: React.FC = () => {
   // get the current year
   const year = new Date().getFullYear();
   return (
-    <section
-      role="region"
-      aria-label="Footer"
+    <footer
       className="border border-black pb-4 pt-16"
       style={{
         background:
@@ -38,17 +36,18 @@ const Footer: React.FC = () => {
             <FooterItem key={item.title} item={item} />
           ))}
         </ul>
-        <Separator className="mb-6 mt-8 bg-grayBorder lg:hidden" />
-        {/* Footer Credits */}
-        {/* <p className=""></p> */}
-        <AnimatedText
-          text={` Copyright © ${year} Auto Wheels & Exhaust. All rights reserved.`}
-          element="p"
-          className="text-xs font-semibold tracking-wide text-white"
-          duration={ANIMATION_DURATION}
-        />
       </article>
-    </section>
+      <section className="master-container mt-4">
+        <Separator className="mb-4 bg-grayBorder" />
+        {/* Footer Credits */}
+        <AnimatedText
+          text={`Copyright © ${year} Auto Wheels & Exhaust. All rights reserved.`}
+          element="p"
+          className="text-xs font-semibold text-start tracking-wide text-white"
+          duration={ANIMATION_DURATION}
+          />
+          </section>
+    </footer>
   );
 };
 

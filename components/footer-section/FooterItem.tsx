@@ -20,13 +20,12 @@ const FooterItem: React.FC<FooterItemProps> = ({ item }) => {
       />
       <ul className="flex flex-col gap-y-1">
         {item.links.map((link, index) => (
-          <Link
+          <li
             key={index}
-            href={"#"}
-            className="text-sm font-normal tracking-wide text-white/80 underline-offset-2 transition hover:text-white hover:underline"
+            className="w-max text-sm font-normal tracking-wide text-white/80 underline-offset-2 transition hover:text-white hover:underline"
           >
-            {link}
-          </Link>
+            <Link href={"#"}>{link}</Link>
+          </li>
         ))}
       </ul>
     </li>
