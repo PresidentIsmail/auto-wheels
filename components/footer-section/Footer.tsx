@@ -5,6 +5,7 @@ import { FOOTER_ITEMS } from "@/constants";
 import { Separator } from "../ui/separator";
 import AnimatedText from "../AnimatedText";
 import FooterItem from "./FooterItem";
+import WhatsappButton from "../ui/WhatsappButton";
 
 const ANIMATION_DURATION = 0.05;
 
@@ -64,6 +65,8 @@ const Heading: React.FC = () => {
         A leading auto repair shop dedicated to providing exceptional services
         and customer satisfaction.
       </p>
+      {/* WhatsApp */}
+      <WhatsappButton className="w-max xl:text-sm">WhatsApp Us</WhatsappButton>
     </header>
   );
 };

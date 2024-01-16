@@ -86,9 +86,12 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <WhatsappButton className="hidden md:flex">
-          <span className="hidden lg:inline-block">Chat On WhatsApp</span>
-          <span className="lg:hidden">WhatsApp Us</span>
+          <WhatsappButton
+            variant="whatsappSecondary"
+            className="hidden md:flex xl:text-sm"
+          >
+            <span className="hidden lg:inline-block">Chat On WhatsApp</span>
+            <span className="lg:hidden">WhatsApp Us</span>
           </WhatsappButton>
         </div>
       </div>

@@ -13,11 +13,13 @@ import { Button } from "./button";
 
 interface WhatsappButtonProps {
   children: React.ReactNode;
+  variant?: "whatsappSecondary" | "whatsappPrimary";
   className?: string;
 }
 
 const WhatsappButton: React.FC<WhatsappButtonProps> = ({
   children,
+  variant = "whatsappPrimary",
   className,
 }) => {
   const handleButtonClick = () => {
@@ -26,7 +28,7 @@ const WhatsappButton: React.FC<WhatsappButtonProps> = ({
 
   return (
     <>
-      <Button variant={"whatsappGreen"} asChild>
+      <Button variant={variant} asChild>
         <Link
           href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
           aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
