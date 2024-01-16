@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef, useState, useCallback } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import SliderButton from "./SliderButton";
 
 type Props = {
@@ -91,7 +91,7 @@ const Carousel = ({ className, children }: Props) => {
               !scrollState.canScrollLeft && "invisible"
             }`}
           >
-            <IoIosArrowBack className=" h-[80%] w-[80%] -translate-x-0.5" />
+            <ArrowLeft className=" h-[80%] w-[80%] -translate-x-0.5" />
           </SliderButton>
         }
 
@@ -105,7 +105,7 @@ const Carousel = ({ className, children }: Props) => {
               !scrollState.canScrollRight && "invisible"
             }`}
           >
-            <IoIosArrowForward className=" h-[80%] w-[80%] translate-x-0.5 transition-transform group-hover:scale-110" />
+            <ArrowRight className=" h-[80%] w-[80%] translate-x-0.5 transition-transform group-hover:scale-110" />
           </SliderButton>
         }
       </div>
