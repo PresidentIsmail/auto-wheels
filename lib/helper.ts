@@ -22,7 +22,13 @@ export const generateWhatsAppLink: GenerateWhatsAppLink = (
   phoneNumber = BUSINESS_TELEPHONE_NUMBER as string,
 ) => {
   const baseUrl = "https://wa.me/";
-  const fullPhoneNumber = phoneNumber.replace(/\D/g, ""); // Remove non-numeric characters
+  let fullPhoneNumber = phoneNumber.replace(/\D/g, ""); // Remove non-numeric characters
+  // remove leading 0
+  if (fullPhoneNumber.startsWith("0")) {
+    fullPhoneNumber = fullPhoneNumber.slice(1);
+  }
+  // add "+27" to the beginning of the number
+  fullPhoneNumber = "+27" + fullPhoneNumber;
   const encodedMessage = encodeURIComponent(message);
   return `${baseUrl}${fullPhoneNumber}?text=${encodedMessage}`;
 };
