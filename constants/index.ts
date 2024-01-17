@@ -42,7 +42,7 @@ export const BRANDS = [
   },
 ];
 
-export const BUSINESS_TELEPHONE_NUMBER = "0183817456";
+export const BUSINESS_TELEPHONE_NUMBER = "0183817451";
 export const BUSINESS_WORKING_HOURS = [
   "Mon-Fri : 07:00 - 17:00",
   "Sat: 08:00 - 13:00",
