@@ -66,7 +66,9 @@ const Heading: React.FC = () => {
         and customer satisfaction.
       </p>
       {/* WhatsApp */}
-      <WhatsappButton className="w-max xl:text-sm">WhatsApp Us</WhatsappButton>
+      <WhatsappButton className="mt-2 w-max xl:text-sm">
+        WhatsApp Us
+      </WhatsappButton>
     </header>
   );
 };
