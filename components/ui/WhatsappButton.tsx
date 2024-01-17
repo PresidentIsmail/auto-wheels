@@ -11,9 +11,10 @@ import whatsappWhite from "@/public/icons/whatsapp-white.png";
 import { BUSINESS_TELEPHONE_NUMBER } from "@/constants";
 import { Button } from "./button";
 
-interface WhatsappButtonProps {
+interface WhatsappButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: "whatsappSecondary" | "whatsappPrimary";
+  message?: string;
   className?: string;
 }
 
@@ -21,25 +22,26 @@ const WhatsappButton: React.FC<WhatsappButtonProps> = ({
   children,
   variant = "whatsappPrimary",
   className,
+  message = "Hello, I'm interested in your auto repair services.",
+  ...props
 }) => {
-  const handleButtonClick = () => {
-    // Implement your logic here
-  };
+  const whatsappLink = generateWhatsAppLink(message);
 
   return (
     <>
-      <Button variant={variant} asChild>
+      <Button variant={variant} asChild {...props}>
         <Link
-          href={`tel:${BUSINESS_TELEPHONE_NUMBER}`}
-          aria-label={`Call us at ${BUSINESS_TELEPHONE_NUMBER}`}
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
           className={cn("gap-x-2", className)}
         >
           <Image
             src={whatsappWhite}
-            alt="Whatsapp"
+            alt="Whatsapp Logo"
             height={40}
             width={40}
-            sizes="64px"
+            priority
             className="h-4 w-4 lg:h-5 lg:w-5"
           />
           {children}

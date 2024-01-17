@@ -87,11 +87,19 @@ const Navbar: React.FC = () => {
 
           {/* Contact */}
           <WhatsappButton
+            aria-label="WhatsApp Us"
+            variant="whatsappSecondary"
+            className="md:hidden"
+          >
+            WhatsApp Us
+          </WhatsappButton>
+
+          <WhatsappButton
+            aria-label="Chat On WhatsApp"
             variant="whatsappSecondary"
             className="hidden md:flex xl:text-sm"
           >
-            <span className="hidden lg:inline-block">Chat On WhatsApp</span>
-            <span className="lg:hidden">WhatsApp Us</span>
+            Chat On WhatsApp{" "}
           </WhatsappButton>
         </div>
       </div>

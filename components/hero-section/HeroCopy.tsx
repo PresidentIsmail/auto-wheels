@@ -39,7 +39,9 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
           {/* Contact */}
           {/* Whatsapp */}
           <SlideInContent direction="slideRight" delay={0.5}>
-            <WhatsappButton className="w-max">WhatsApp Us</WhatsappButton>
+            <WhatsappButton aria-label="WhatsApp Us" className="w-max">
+              WhatsApp Us
+            </WhatsappButton>
           </SlideInContent>
 
           {/* Location */}
@@ -49,7 +51,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
                 href={BUSINESS_ADDRESS_ON_GOOGLE_MAPS}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Location"
+                aria-label="Find Us"
                 className="flex gap-x-2"
               >
                 <MapPin className="h-4 w-4 lg:h-5 lg:w-5" />

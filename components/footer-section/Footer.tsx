@@ -66,7 +66,7 @@ const Heading: React.FC = () => {
         and customer satisfaction.
       </p>
       {/* WhatsApp */}
-      <WhatsappButton className="mt-2 w-max xl:text-sm">
+      <WhatsappButton className="mt-2 w-max xl:text-sm" aria-label="WhatsApp Us">
         WhatsApp Us
       </WhatsappButton>
     </header>
