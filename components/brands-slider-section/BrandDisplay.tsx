@@ -13,7 +13,10 @@ const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
     return (
       <div
         ref={ref}
-        className={cn("flex h-max flex-row -space-x-8 md:space-x-0", className)}
+        className={cn(
+          "flex h-max flex-row gap-x-8 md:gap-x-16 lg:gap-x-24 xl:gap-x-32",
+          className,
+        )}
       >
         {BRANDS.map((brand, index) => (
           <div key={index} className="w-max">
@@ -22,9 +25,7 @@ const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
               alt={`Logo of ${brand.name}`}
               placeholder="blur"
               sizes=" (max-width: 1024px) 33vw, (min-width: 1025px) 25vw"
-              className={
-                "w-auto scale-[0.65] sm:h-[30px] md:h-[35px] md:scale-75 lg:h-[45px] xl:h-[50px]"
-              }
+              className={"h-[35px] w-auto md:h-[40px] lg:h-[45px] xl:h-[50px]"}
             />
           </div>
         ))}
