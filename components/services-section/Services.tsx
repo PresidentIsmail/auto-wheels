@@ -4,6 +4,7 @@ import { top5AutoRepairServices } from "@/data/servicesData";
 
 import ServiceCard from "@/components/services-section/ServiceCard";
 import AnimatedText from "../AnimatedText";
+import ScaleInContent from "../ScaleInContent";
 
 const Services: FC = () => {
   return (
@@ -33,7 +34,9 @@ const Services: FC = () => {
 
       {/* Services */}
       {top5AutoRepairServices.map((service, index) => (
-        <ServiceCard key={service.heading} service={service} />
+        <ScaleInContent key={service.heading} delay={index * 0.1}>
+          <ServiceCard service={service} />
+        </ScaleInContent>
       ))}
     </section>
   );
