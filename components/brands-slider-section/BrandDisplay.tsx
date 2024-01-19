@@ -23,7 +23,7 @@ const BrandDisplay = React.forwardRef<HTMLDivElement, BrandDisplayProps>(
               placeholder="blur"
               sizes=" (max-width: 1024px) 33vw, (min-width: 1025px) 25vw"
               className={
-                "scale-[0.65] sm:h-[30px] md:h-[35px] md:scale-75 lg:h-[45px] xl:h-[50px]"
+                "w-auto scale-[0.65] sm:h-[30px] md:h-[35px] md:scale-75 lg:h-[45px] xl:h-[50px]"
               }
             />
           </div>
