@@ -41,9 +41,9 @@ const Footer: React.FC = () => {
       <section className="master-container mt-4">
         <Separator className="mb-4 bg-grayBorder" />
         {/* Footer Credits */}
-        <p className="text-start text-xs font-semibold tracking-wide text-white">
-          Copyright &copy; {year} Auto Wheels &amp; Exhaust. All rights
-          reserved.
+        <p className="text-start text-xs font-medium tracking-wide text-white sm:font-bold">
+          Copyright &copy; {year} Auto Wheels &amp; Exhaust.{" "}
+          <span className="block sm:inline-block">All rights reserved.</span>
         </p>
       </section>
     </footer>
@@ -66,7 +66,10 @@ const Heading: React.FC = () => {
         and customer satisfaction.
       </p>
       {/* WhatsApp */}
-      <WhatsappButton className="mt-2 w-max xl:text-sm" aria-label="WhatsApp Us">
+      <WhatsappButton
+        className="mt-2 w-max xl:text-sm"
+        aria-label="WhatsApp Us"
+      >
         WhatsApp Us
       </WhatsappButton>
     </header>
