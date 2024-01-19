@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
           <WhatsappButton
             aria-label="WhatsApp Us"
             variant="whatsappSecondary"
-            className="md:hidden"
+            className="hidden sm:flex md:hidden"
           >
             WhatsApp Us
           </WhatsappButton>

@@ -2,9 +2,7 @@ import React from "react";
 
 import { contactInfo } from "@/data/contactData";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import AnimatedText from "../AnimatedText";
-import FadeInContent from "../FadeInContent";
+import { Card, CardHeader } from "@/components/ui/card";
 
 const ANIMATION_DURATION = 0.05;
 
@@ -25,32 +23,26 @@ const ContactDetails: React.FC = () => {
         >
           <CardHeader className="flex flex-row gap-x-4 space-y-0 p-4">
             {/* icon */}
-            <FadeInContent delay={index * 0.5}>
               <info.Icon
                 aria-hidden="true"
                 focusable="false"
                 className="h-6 w-6 shrink-0 translate-y-[2px] text-brand"
               />
-            </FadeInContent>
 
             <div className="flex flex-col gap-y-2">
               {/* type (eg: Phone) */}
-              <AnimatedText
-                text={info.type}
-                element="h3"
-                className="text-lg  font-bold uppercase text-black"
-                duration={ANIMATION_DURATION}
-              />
+              <h3 className="text-lg  font-bold uppercase text-black">
+                {info.type}
+              </h3>
 
               {/* value (eg: 123-456-7890) */}
               {info.value.map((text, index) => (
-                <AnimatedText
+                <p
                   key={index}
-                  text={text}
-                  element="p"
                   className="text-pretty text-sm font-medium text-black/70"
-                  duration={ANIMATION_DURATION}
-                />
+                >
+                  {text}
+                </p>
               ))}
             </div>
           </CardHeader>
