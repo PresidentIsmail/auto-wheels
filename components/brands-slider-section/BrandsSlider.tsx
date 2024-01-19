@@ -1,17 +1,7 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  Variants,
-} from "framer-motion";
-
-import BrandDisplay from "./BrandDisplay";
-import { generateId } from "@/lib/helper";
-
-type Direction = "left" | "right";
+import React from "react";
+import { motion, Variants } from "framer-motion";
 
 const sliderVariants: Variants = {
   initial: {
@@ -27,28 +17,28 @@ const sliderVariants: Variants = {
   },
 };
 
-const BrandsSlider: React.FC = () => {
+const BrandsSlider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return (
     <section
       className="relative flex flex-row py-6 lg:py-8"
       aria-label="Brands Slider"
     >
       <motion.article
-        key={generateId()}
         variants={sliderVariants}
         initial="initial"
         animate="animate"
       >
-        <BrandDisplay className="pe-10" />
+        {children}
       </motion.article>
       {/* duplicate to make infinite slider animation */}
       <motion.article
-        key={generateId()}
         variants={sliderVariants}
         initial="initial"
         animate="animate"
       >
-        <BrandDisplay className="pe-10" />
+        {children}
       </motion.article>
     </section>
   );
