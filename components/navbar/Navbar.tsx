@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
           <WhatsappButton
             aria-label="WhatsApp Us"
             variant="whatsappSecondary"
-            className="hidden sm:flex md:hidden"
+            className="hidden sm:flex lg:hidden"
           >
             WhatsApp Us
           </WhatsappButton>
@@ -97,7 +97,7 @@ const Navbar: React.FC = () => {
           <WhatsappButton
             aria-label="Chat On WhatsApp"
             variant="whatsappSecondary"
-            className="hidden md:flex xl:text-sm"
+            className="hidden lg:flex xl:text-sm"
           >
             Chat On WhatsApp{" "}
           </WhatsappButton>
