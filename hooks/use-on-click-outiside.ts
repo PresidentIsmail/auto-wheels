@@ -8,8 +8,7 @@ export const useOnClickOutside = (
 ) => {
   useEffect(() => {
     const listener = (event: Event) => {
-      const refsArray = Array.isArray(refs) ? refs : [refs];
-      for (const ref of refsArray) {
+      for (const ref of refs) {
         const el = ref?.current;
         if (el && el.contains((event?.target as Node) || null)) {
           return; // If the event target is inside any of the elements, do not call the handler
