@@ -15,10 +15,12 @@ export function generateId(): string {
 }
 
 // Function to generate WhatsApp Click to Chat URL
-type GenerateWhatsAppLink = (message: string, phoneNumber?: string) => string;
+type GenerateWhatsAppLink = (message?: string, phoneNumber?: string) => string;
+
+const defaultWhatsAppMessage = `Hello, I'm interested in your auto repair services.`;
 
 export const generateWhatsAppLink: GenerateWhatsAppLink = (
-  message,
+  message = defaultWhatsAppMessage,
   phoneNumber = BUSINESS_TELEPHONE_NUMBER as string,
 ) => {
   const baseUrl = "https://wa.me/";

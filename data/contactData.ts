@@ -1,4 +1,6 @@
-import { generateId } from "@/lib/helper";
+import { generateId, generateWhatsAppLink } from "@/lib/helper";
+import { BUSINESS_ADDRESS_ON_GOOGLE_MAPS } from "@/constants";
+
 import { Phone, CalendarClock, MapPin } from "lucide-react";
 
 export const contactInfo = [
@@ -7,12 +9,14 @@ export const contactInfo = [
     type: "Phone & WhatsApp",
     value: ["018 381 7451"],
     Icon: Phone,
+    link: generateWhatsAppLink(),
   },
   {
     id: generateId(),
     type: "Address",
     value: ["23 Nelson Mandela, Golf View, Mahikeng, 2745"],
     Icon: MapPin,
+    link: BUSINESS_ADDRESS_ON_GOOGLE_MAPS,
   },
   {
     id: generateId(),
@@ -23,5 +27,6 @@ export const contactInfo = [
       "Sunday: Closed",
     ],
     Icon: CalendarClock,
+    link: null,
   },
 ];
