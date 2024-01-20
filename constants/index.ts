@@ -1,8 +1,8 @@
 // =========== HERO BACKGROUND VIDEO AND POSTER ================
-const HERO_MP4_MOBILE_PATH = "./videos/mp4/promo-01-mobile.mp4";
-const HERO_MP4_DESKTOP_PATH = "./videos/mp4/promo-01-desktop.mp4";
-const HERO_WEBM_MOBILE_PATH = "./videos/webm/promo-01-mobile.webm";
-const HERO_WEBM_DESKTOP_PATH = "./videos/webm/promo-01-desktop.webm";
+const HERO_MP4_MOBILE_PATH = "/videos/mp4/promo-01-mobile.mp4";
+const HERO_MP4_DESKTOP_PATH = "/videos/mp4/promo-01-desktop.mp4";
+const HERO_WEBM_MOBILE_PATH = "/videos/webm/promo-01-mobile.webm";
+const HERO_WEBM_DESKTOP_PATH = "/videos/webm/promo-01-desktop.webm";
 import HERO_POSTER_MOBILE from "@/public/videos/posters/mobile-poster-01.png";
 import HERO_POSTER_DESKTOP from "@/public/videos/posters/desktop-poster-01.png";
 // Exporting the imported images and videos
