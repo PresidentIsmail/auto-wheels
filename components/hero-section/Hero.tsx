@@ -21,9 +21,6 @@ const Hero = () => {
         {/* Promo Video */}
         <section className="relative order-1 col-span-3 row-span-2 h-auto lg:order-2">
           <VideoLoader
-            webm={promoVideoTwoPath}
-            videoTitle="Promotional video"
-            imageSrc={undefined}
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </section>

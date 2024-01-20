@@ -1,42 +1,42 @@
+"use client";
+
 import React from "react";
-import { cn } from "@/lib/utils";
+4;
+import Image from "next/image";
 
-interface VideoLoaderProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
-  webm?: string;
-  mp4?: string;
-  videoTitle: string;
-  imageSrc?: string;
-}
+import { useViewportSize } from "@/hooks/use-viewport-size";
+import { heroMedia } from "@/constants";
 
-const VideoLoader: React.FC<VideoLoaderProps> = ({
-  mp4,
-  webm,
-  videoTitle,
-  imageSrc,
-  className,
-  ...props
-}) => {
-  // Check if either mp4 or webm is provided
-  if (!mp4 && !webm) {
-    console.error("Error: At least one of mp4 or webm should be provided.");
-    throw new Error("Error: At least one of mp4 or webm should be provided.");
-  }
+interface VideoLoaderProps
+  extends React.VideoHTMLAttributes<HTMLVideoElement> {}
+
+const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
+  const { width } = useViewportSize();
+  const isMobile = width < 1024;
+
+  const mp4Source = isMobile ? heroMedia.mp4.mobile : heroMedia.mp4.desktop;
+  const webmSource = isMobile ? heroMedia.webm.mobile : heroMedia.webm.desktop;
+  const poster = isMobile
+    ? heroMedia.poster.mobile.src
+    : heroMedia.poster.desktop.src;
 
   return (
-    <video
-      preload="auto"
-      autoPlay
-      loop
-      muted
-      playsInline
-      title={videoTitle}
-      className={cn("", className)}
-      poster={imageSrc}
-      {...props}
-    >
-      {webm && <source src={webm} type="video/webm" />}
-      {mp4 && <source src={mp4} type="video/mp4" />}
-    </video>
+    <>
+      <video
+        preload="auto"
+        autoPlay
+        loop
+        muted
+        playsInline
+        title="Promo video"
+        poster={poster}
+        className={className}
+        {...props}
+      >
+        <source src={webmSource} type="video/webm" />
+        <source src={mp4Source} type="video/mp4" />
+      </video>
+    </>
   );
 };
 
