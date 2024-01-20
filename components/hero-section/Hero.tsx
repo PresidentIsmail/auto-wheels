@@ -3,10 +3,6 @@ import React from "react";
 import HeroCopy from "./HeroCopy";
 import VideoLoader from "../VideoLoader";
 
-const promoVideoPath = "/videos/promo-video-1.mp4";
-const promoVideoTwoPath = "/videos/promo-video-2.webm";
-const testPromoVideoPath = "/videos/test-promo-video.mp4";
-
 const Hero = () => {
   return (
     <section
@@ -20,9 +16,7 @@ const Hero = () => {
 
         {/* Promo Video */}
         <section className="relative order-1 col-span-3 row-span-2 h-auto lg:order-2">
-          <VideoLoader
-            className="absolute inset-0 h-full w-full object-cover object-center"
-          />
+          <VideoLoader className="absolute inset-0 h-full w-full object-cover object-center" />
         </section>
       </div>
     </section>
