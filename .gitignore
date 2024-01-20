@@ -37,3 +37,6 @@ next-env.d.ts
 
 # custom script to convert images
 convert-images.sh
+
+.devcontainer/
+
