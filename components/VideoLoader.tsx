@@ -35,6 +35,7 @@ const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
           src={poster}
           alt="Video poster"
           placeholder="blur"
+          priority
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover"

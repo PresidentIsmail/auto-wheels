@@ -50,7 +50,7 @@ const DropDown: React.FC<DropDownProps> = ({ isDropdownVisible }) => {
               key={service.label}
               href={`#`}
               role="menuitem"
-              className="flex w-full max-w-[224px] flex-col gap-2 rounded-md px-3 py-3 transition-colors hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none "
+              className="flex w-full max-w-[224px] flex-col gap-2 rounded-md px-3 py-3 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none "
             >
               <h3 className="font-bold text-white">{service.label}</h3>
               <ul className="flex flex-col gap-1 text-sm text-white/80">
