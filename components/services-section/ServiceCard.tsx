@@ -35,7 +35,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-y-3">
         {/* title */}
-        <CardTitle>{service.heading}</CardTitle>
+        <CardTitle className="capitalize">{service.heading}</CardTitle>
         {/* description */}
         <CardDescription>{service.description}</CardDescription>
       </CardContent>
@@ -44,7 +44,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {/* button */}
         <Button
           variant={"outline"}
-          className="group w-full rounded-md border-none ring-1 ring-grayBorder hover:bg-black/10"
+          className="group w-full rounded-md border-none ring-1 ring-grayBorder duration-300 hover:bg-black hover:text-white"
           asChild
         >
           <Link
@@ -53,7 +53,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             aria-label="Learn more about our services"
           >
             Learn More
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand group-focus-visible:-rotate-45 group-focus-visible:text-brand" />
+            <ArrowRight className="ml-2 h-4 w-4 text-brand transition-transform group-hover:-rotate-45 group-hover:scale-125 group-focus-visible:-rotate-45 group-focus-visible:scale-125" />
           </Link>
         </Button>
       </CardFooter>
