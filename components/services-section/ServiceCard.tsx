@@ -44,7 +44,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {/* button */}
         <Button
           variant={"outline"}
-          className="group rounded-md hover:bg-black/10"
+          className="group w-full rounded-md border-none ring-1 ring-grayBorder hover:bg-black/10"
           asChild
         >
           <Link
@@ -53,7 +53,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             aria-label="Learn more about our services"
           >
             Learn More
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:text-brand group-focus-visible:-rotate-45 group-focus-visible:text-brand" />
           </Link>
         </Button>
       </CardFooter>
