@@ -42,7 +42,7 @@ const DropDown: React.FC<DropDownProps> = ({ isDropdownVisible }) => {
           animate="visible"
           exit="exit"
           role="menu"
-          className="absolute left-1/2 top-full grid w-max grid-cols-3  gap-2 rounded-md bg-special px-12 py-8 lg:grid-cols-4 lg:gap-4"
+          className="absolute left-1/2 top-full grid w-max grid-cols-3  gap-2 rounded-md bg-special px-12 py-8 lg:grid-cols-4 lg:gap-4 border border-grayBorder"
         >
           {SERVICES_DATA.map((service) => (
             <motion.a

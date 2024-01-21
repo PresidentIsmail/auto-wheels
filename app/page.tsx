@@ -13,8 +13,6 @@ import Footer from "@/components/footer-section/Footer";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
       <main
         className="
         relative 
@@ -33,8 +31,7 @@ export default function Home() {
         <Testimonials />
         <Faq />
         <Contact />
-        <Footer />
       </main>
-    </>
+
   );
 }

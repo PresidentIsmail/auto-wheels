@@ -69,10 +69,9 @@ const Carousel = ({ className, children }: Props) => {
     <div className={cn("relative", className)}>
       <div
         ref={scrollContainerRef}
-        className="carousel-list me-8 flex gap-x-8 overflow-y-hidden overflow-x-scroll py-1"
+        className="carousel-list flex gap-x-8 overflow-y-hidden overflow-x-scroll py-1"
         style={{
           scrollSnapType: "x mandatory",
-          scrollPadding: "0 24px",
           scrollBehavior: "smooth",
         }}
       >

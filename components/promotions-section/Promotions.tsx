@@ -31,9 +31,9 @@ const Promotions: React.FC = () => {
       <BackgroundImageWithOverlayMobile />
 
       {/* Content */}
-      <div className="master-container z-10 shrink-0 text-center md:w-1/2 md:ps-8 md:text-start">
+      <div className="z-10 shrink-0 text-center md:w-1/2 md:ps-8 md:text-start">
         {/* Heading */}
-        <header className="relative z-10 flex flex-col items-center gap-y-6 md:items-start md:gap-y-8 ">
+        <header className="master-container relative z-10 flex flex-col items-center gap-y-6 md:items-start md:gap-y-8">
           {/* subtitle */}
           <AnimatedText
             text="promotions"
@@ -79,7 +79,7 @@ const Promotions: React.FC = () => {
       </div>
 
       {/* Promos on large screens - displayed in a carousel */}
-      <Carousel className="relative hidden w-[40%] min-w-[410px] shrink-0 md:block lg:w-1/2">
+      <Carousel className="relative hidden w-[40%] min-w-[410px] flex-col pe-4 md:flex lg:w-1/2 lg:pe-8">
         {promoData.map((promo) => (
           <PromoCard key={promo.title} promo={promo} />
         ))}

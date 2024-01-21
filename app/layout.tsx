@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// 👇 import local font
 import localFont from "next/font/local";
 import "./globals.css";
+
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer-section/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,7 +56,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${gothamSans.variable} font-sans`}>
+        <Navbar />
         {children}
+        <Footer />
         </body>
     </html>
   );
