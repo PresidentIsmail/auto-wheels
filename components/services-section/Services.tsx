@@ -21,22 +21,20 @@ const Services: FC = () => {
           text="Services"
           element="h3"
           className="text-xs font-bold uppercase text-[#92959a] md:text-sm"
-          duration={0.075}
+          duration={0.05}
         />
         {/* title */}
         <AnimatedText
           text="Explore our auto repair services in detail"
           element="h2"
           className="text-3xl font-bold tracking-tight text-[#222020] md:text-4xl lg:text-5xl"
-          duration={0.075}
+          duration={0.05}
         />
       </header>
 
       {/* Services */}
-      {top5AutoRepairServices.map((service, index) => (
-        <ScaleInContent key={service.heading} delay={index * 0.1}>
-          <ServiceCard service={service} />
-        </ScaleInContent>
+      {top5AutoRepairServices.map((service) => (
+        <ServiceCard key={service.heading} service={service} />
       ))}
     </section>
   );

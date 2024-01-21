@@ -10,6 +10,7 @@ import {
   useScroll,
 } from "framer-motion";
 
+import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";
 import HeaderInformation from "../ui/HeaderInformation";
 import WhatsappButton from "../ui/WhatsappButton";
@@ -63,11 +64,11 @@ const Navbar: React.FC = () => {
     <motion.nav
       variants={navbarVariants}
       animate={isNavbarVisible ? "visible" : "hidden"}
-      className="fixed inset-x-0 top-0 z-20 w-full border-b border-b-grayBorder"
+      className="fixed inset-x-0 top-0 z-20 w-full"
     >
       <HeaderInformation />
-
-      <div className="relative h-navbar-mobile border-b border-b-[#1212125c] bg-special md:h-navbar-desktop">
+      <Separator className="bg-white/70" />
+      <div className="relative h-navbar-mobile bg-special md:h-navbar-desktop">
         <div className="master-container flex h-full items-center justify-between">
           {/* Business Name */}
           <Link
@@ -103,6 +104,7 @@ const Navbar: React.FC = () => {
           </WhatsappButton>
         </div>
       </div>
+      <Separator className="bg-white/70" />
     </motion.nav>
   );
 };
