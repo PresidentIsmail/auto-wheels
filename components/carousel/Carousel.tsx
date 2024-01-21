@@ -90,7 +90,7 @@ const Carousel = ({ className, children }: Props) => {
               !scrollState.canScrollLeft && "invisible"
             }`}
           >
-            <ArrowLeft className=" h-[80%] w-[80%]" />
+            <ArrowLeft className="h-[80%] w-[80%]" />
           </SliderButton>
         }
 
@@ -104,7 +104,7 @@ const Carousel = ({ className, children }: Props) => {
               !scrollState.canScrollRight && "invisible"
             }`}
           >
-            <ArrowRight className=" h-[80%] w-[80%] transition-transform group-hover:scale-110" />
+            <ArrowRight className="h-[80%] w-[80%]" />
           </SliderButton>
         }
       </div>
