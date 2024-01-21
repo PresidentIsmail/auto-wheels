@@ -30,7 +30,7 @@ const HeaderInformation: React.FC = () => {
           aria-label="Phone number"
         >
           <Phone className="h-4 w-4" aria-hidden />
-          <p>018 381 7456</p>
+          <p>018 381 7451</p>
         </div>
 
         {/* location (seen after md)*/}
