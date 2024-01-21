@@ -2,7 +2,8 @@
 
 import React, { useState, useCallback } from "react";
 
-import { NAV_ITEMS, SERVICES_DATA_SORTED } from "@/constants";
+import { NAV_ITEMS } from "@/constants";
+import { SERVICES_DATA_SORTED } from "@/data/servicesData";
 
 import { ChevronLeft } from "lucide-react";
 import MobileNavItem from "./MobileNavItem";
@@ -57,7 +58,7 @@ const MobileNavItems: React.FC = () => {
           <div className="flex flex-col ">
             <button
               onClick={toggleDropdownVisibility}
-              className="flex w-full gap-x-1 p-1 text-white transition-colors mb-7 -ms-1"
+              className="-ms-1 mb-7 flex w-full gap-x-1 p-1 text-white transition-colors"
               aria-label="Go Back"
             >
               <ChevronLeft className="-translate-y-[1px] " />
@@ -104,7 +105,9 @@ const NavigationItems: React.FC<NavigationItemsProps> = ({
 const ServicesDropdown: React.FC = () => {
   return (
     <ul className="flex flex-col gap-y-2">
-      <h2 className="text-white p-2 text-start w-full mb-3 text-2xl font-medium">Services</h2>
+      <h2 className="mb-3 w-full p-2 text-start text-2xl font-medium text-white">
+        Services
+      </h2>
       {SERVICES_DATA_SORTED.map((item) => (
         <li
           key={item.label}

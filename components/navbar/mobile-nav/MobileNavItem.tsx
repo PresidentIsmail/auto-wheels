@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 
-import { NAV_ITEMS, SERVICES_DATA } from "@/constants";
+import { NAV_ITEMS } from "@/constants";
+import { SERVICES_DATA } from "@/data/servicesData";
 
 import { ChevronRight } from "lucide-react";
 
