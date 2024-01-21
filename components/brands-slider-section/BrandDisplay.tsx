@@ -7,7 +7,7 @@ const BrandDisplay: React.FC = () => {
   return (
     <div
       className={
-        "flex h-max flex-row gap-x-8 pe-10 md:gap-x-16 lg:gap-x-24 xl:gap-x-32"
+        "flex h-max flex-row gap-x-12 pe-12 md:gap-x-16 md:pe-16 lg:gap-x-24 lg:pe-24 xl:gap-x-32 xl:pe-32"
       }
     >
       {BRANDS.map((brand, index) => (
@@ -15,9 +15,9 @@ const BrandDisplay: React.FC = () => {
           <Image
             src={brand.image}
             alt={`Logo of ${brand.name}`}
-            placeholder="blur"
+            quality={100}
             sizes=" (max-width: 1024px) 33vw, (min-width: 1025px) 25vw"
-            className={"h-[35px] w-auto md:h-[40px] lg:h-[45px] xl:h-[50px]"}
+            className={"h-[24px] w-auto md:h-[32px] lg:h-[40px]"}
           />
         </div>
       ))}

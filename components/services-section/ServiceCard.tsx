@@ -27,8 +27,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <Image
           src={service.icon}
           alt={service.heading}
+          quality={100}
           width={64}
           height={64}
+          sizes="64px"
         />
       </CardHeader>
       <CardContent className="flex flex-col gap-y-3">
