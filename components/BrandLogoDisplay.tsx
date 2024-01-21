@@ -7,7 +7,7 @@ const BrandLogoDisplay: React.FC = () => {
   return (
     <div
       className={
-        "flex h-max flex-row gap-x-12 pe-12 md:gap-x-16 md:pe-16 lg:gap-x-24 lg:pe-24 xl:gap-x-32 xl:pe-32"
+        "flex h-max select-none flex-row gap-x-12 pe-12 md:gap-x-16 md:pe-16 lg:gap-x-24 lg:pe-24 xl:gap-x-32 xl:pe-32"
       }
     >
       {BRANDS.map((brand, index) => (
