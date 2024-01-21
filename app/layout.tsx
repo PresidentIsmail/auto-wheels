@@ -55,11 +55,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${gothamSans.variable} font-sans`}>
+      <body
+        className={`${gothamSans.variable} flex min-h-screen w-full flex-col font-sans`}
+      >
         <Navbar />
-        {children}
+        <main
+          className="
+        relative 
+        mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))]
+         w-full flex-1 overflow-x-hidden bg-white
+         text-black
+         md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
+      "
+        >
+          {children}
+        </main>
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }
