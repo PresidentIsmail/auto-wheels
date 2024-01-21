@@ -29,8 +29,8 @@ const TireSelection: React.FC = () => {
       <article className="master-container relative z-10 flex flex-col gap-y-6">
         {/* Header */}
         <header className="">
-          <h2 className="text-2xl font-extrabold sm:text-3xl md:text-4xl lg:text-4xl">
-            Find the Perfect Tires for Your Vehicle.
+          <h2 className="text-2xl capitalize font-extrabold sm:text-3xl md:text-4xl lg:text-4xl">
+            Find the Perfect Tyres for Your Vehicle.
           </h2>
         </header>
 

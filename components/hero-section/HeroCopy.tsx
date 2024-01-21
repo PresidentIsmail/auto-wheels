@@ -68,7 +68,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         <SlideInContent direction="slideRight" delay={1}>
           <p className="text-sm font-medium text-[#323236] md:text-base">
             Revitalize your ride at Auto Wheels! Expert auto care, unbeatable
-            specials, and top-tier tires for a confident drive. Elevate your
+            specials, and top-tier tyres for a confident drive. Elevate your
             journey with us!
           </p>
         </SlideInContent>

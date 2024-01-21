@@ -45,7 +45,7 @@ const gothamSans = localFont({
 export const metadata: Metadata = {
   title: "Auto Wheels & Exhaust",
   description:
-    "Auto Wheels & Exhaust is a business that has been serving the community for over 30 years. We specialize in custom exhaust, wheels, tires, and accessories. We also offer a wide variety of services including brakes, suspension, alignments, and more. We are located in the heart of Mafikeng, North West.",
+    "Auto Wheels & Exhaust is a business that has been serving the community for over 30 years. We specialize in custom exhaust, wheels, tyres, and accessories. We also offer a wide variety of services including brakes, suspension, alignments, and more. We are located in the heart of Mafikeng, North West.",
 };
 
 export default function RootLayout({

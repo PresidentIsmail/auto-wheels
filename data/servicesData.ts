@@ -6,10 +6,10 @@ export const top5AutoRepairServices = [
       "Elevate your ride with expert Suspension Services. From shock replacements to precision handling, trust us for a smooth journey.",
   },
   {
-    icon: "/icons/tires-01.png",
-    heading: "Tires and Wheels",
+    icon: "/icons/tyres-01.png",
+    heading: "tyres and Wheels",
     description:
-      "Drive confidently with our Tires and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
+      "Drive confidently with our tyres and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
   },
   {
     icon: "/icons/maintainance-01.png",

@@ -94,13 +94,13 @@ export const SERVICES_DATA: Service[] = [
     href: "/brake-services",
   },
   {
-    label: "Tires and Wheels",
+    label: "Tyres and Wheels",
     services: [
       "Tire fitting and replacement",
       "3D Wheel alignment",
       "Wheel balancing",
     ],
-    href: "/tires-and-wheels",
+    href: "/tyres-and-wheels",
   },
   {
     label: "ECU Diagnostics",
@@ -184,7 +184,7 @@ export const AUTO_WHEELS_STATS = [
     value: 100,
   },
   {
-    label: "Quality Tires Installed Yearly",
+    label: "Quality tyres Installed Yearly",
     value: 1000,
   },
   {
@@ -213,7 +213,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "#",
   },
   {
-    label: "Tires",
+    label: "tyres",
     href: "#",
   },
   {
@@ -235,7 +235,7 @@ type FooterItem = {
 export const FOOTER_ITEMS: FooterItem[] = [
   {
     title: "Products",
-    links: ["tires", "batteries", "wipers"],
+    links: ["tyres", "batteries", "wipers"],
   },
   {
     title: "Popular Services",

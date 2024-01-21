@@ -54,7 +54,7 @@ const TireSelectionInput: React.FC = () => {
       return profileMatches && diameterMatches;
     });
 
-    // Extract unique widths from the selected tires
+    // Extract unique widths from the selected tyres
     const uniqueFilteredWidths = [
       ...new Set(selectedTires.map((tire) => tire.width)),
     ];
@@ -79,7 +79,7 @@ const TireSelectionInput: React.FC = () => {
       return widthMatches && diameterMatches;
     });
 
-    // Extract unique profiles from the selected tires
+    // Extract unique profiles from the selected tyres
     const uniqueFilteredProfiles = [
       ...new Set(selectedTires.map((tire) => tire.profile)),
     ];
@@ -104,7 +104,7 @@ const TireSelectionInput: React.FC = () => {
       return widthMatches && profileMatches;
     });
 
-    // Extract unique diameters from the selected tires
+    // Extract unique diameters from the selected tyres
     const uniqueFilteredDiameters = [
       ...new Set(selectedTires.map((tire) => tire.diameter)),
     ];
@@ -184,7 +184,7 @@ const TireSelectionInput: React.FC = () => {
       </form>
 
       {/* Progress Indicator will fill when inputs are being filled*/}
-      <div className="absolute bottom-0 left-0 z-10 h-[3px] bg-grayBorder w-full" />
+      <div className="absolute bottom-0 left-0 z-10 h-[3px] w-full bg-grayBorder" />
       <div
         className="absolute bottom-0 left-0 z-10 h-[3px] bg-brand"
         style={{

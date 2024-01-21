@@ -3,9 +3,9 @@ import { generateId } from "@/lib/helper";
 export const faqData = [
   {
     id: generateId(),
-    question: "Can I purchase tires from your shop?",
+    question: "Can I purchase tyres from your shop?",
     answer:
-      "Absolutely! We offer a wide selection of quality tires. Our expert team can help you choose the right tires based on your driving habits, vehicle specifications, and budget. Feel free to ask for personalized recommendations during your visit.",
+      "Absolutely! We offer a wide selection of quality tyres. Our expert team can help you choose the right tyres based on your driving habits, vehicle specifications, and budget. Feel free to ask for personalized recommendations during your visit.",
   },
   {
     id: generateId(),
