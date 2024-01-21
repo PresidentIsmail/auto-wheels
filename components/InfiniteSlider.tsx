@@ -3,23 +3,28 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
-const sliderVariants: Variants = {
-  initial: {
-    x: "0%",
-  },
-  animate: {
-    x: "-100%",
-    transition: {
-      duration: 20,
-      ease: "linear",
-      repeat: Infinity,
-    },
-  },
-};
+interface InfiniteSliderProps {
+  children: React.ReactNode;
+  duration?: number;
+}
 
-const InfiniteSlider: React.FC<{ children: React.ReactNode }> = ({
+const InfiniteSlider: React.FC<InfiniteSliderProps> = ({
   children,
+  duration = 20,
 }) => {
+  const sliderVariants: Variants = {
+    initial: {
+      x: "0%",
+    },
+    animate: {
+      x: "-100%",
+      transition: {
+        duration: duration,
+        ease: "linear",
+        repeat: Infinity,
+      },
+    },
+  };
   return (
     <section
       className="relative flex flex-row py-6 lg:py-8"
@@ -27,24 +32,34 @@ const InfiniteSlider: React.FC<{ children: React.ReactNode }> = ({
       role="region"
       aria-roledescription="infinite slider"
     >
-      <motion.article
-        variants={sliderVariants}
-        initial="initial"
-        animate="animate"
-      >
+      <SliderArticle variants={sliderVariants}>{children}</SliderArticle>
+      {/* duplicate to make infinite slider animation, hidden for accessibility */}
+      <SliderArticle variants={sliderVariants} ariaHidden>
         {children}
-      </motion.article>
-      {/* duplicate to make infinite slider animation */}
-      <motion.article
-        variants={sliderVariants}
-        initial="initial"
-        animate="animate"
-        aria-hidden
-      >
-        {children}
-      </motion.article>
+      </SliderArticle>
     </section>
   );
 };
+
+interface SliderArticleProps {
+  children: React.ReactNode;
+  variants: Variants;
+  ariaHidden?: boolean;
+}
+
+const SliderArticle: React.FC<SliderArticleProps> = ({
+  children,
+  variants,
+  ariaHidden = false,
+}) => (
+  <motion.article
+    variants={variants}
+    initial="initial"
+    animate="animate"
+    aria-hidden={ariaHidden}
+  >
+    {children}
+  </motion.article>
+);
 
 export default InfiniteSlider;
