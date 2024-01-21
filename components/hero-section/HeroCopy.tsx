@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import WhatsappButton from "../ui/WhatsappButton";
 import AnimatedText from "../AnimatedText";
 import SlideInContent from "../SlideInContent";
-import Stars from "../Stars";
+import Stars from "../ui/Stars";
 
 type HeroCopyProps = React.HTMLAttributes<HTMLDivElement>;
 // master-container flex w-[30%] flex-col items-start justify-between py-8

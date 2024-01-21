@@ -17,13 +17,15 @@ const sliderVariants: Variants = {
   },
 };
 
-const BrandsSlider: React.FC<{ children: React.ReactNode }> = ({
+const InfiniteSlider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   return (
     <section
       className="relative flex flex-row py-6 lg:py-8"
-      aria-label="Brands Slider"
+      aria-label="Infinite Slider"
+      role="region"
+      aria-roledescription="infinite slider"
     >
       <motion.article
         variants={sliderVariants}
@@ -37,6 +39,7 @@ const BrandsSlider: React.FC<{ children: React.ReactNode }> = ({
         variants={sliderVariants}
         initial="initial"
         animate="animate"
+        aria-hidden
       >
         {children}
       </motion.article>
@@ -44,4 +47,4 @@ const BrandsSlider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export default BrandsSlider;
+export default InfiniteSlider;

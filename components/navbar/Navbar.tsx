@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
       className="fixed inset-x-0 top-0 z-20 w-full"
     >
       <HeaderInformation />
-      <Separator className="bg-white/70" />
+      <Separator className="bg-white/50" />
       <div className="relative h-navbar-mobile bg-special md:h-navbar-desktop">
         <div className="master-container flex h-full items-center justify-between">
           {/* Business Name */}

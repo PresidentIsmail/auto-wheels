@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Stars from "../Stars";
+import Stars from "../ui/Stars";
 
 interface TestimonialCardProps {
   testimonial: (typeof testimonialData)[0];

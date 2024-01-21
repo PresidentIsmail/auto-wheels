@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { BRANDS } from "@/constants";
 
-const BrandDisplay: React.FC = () => {
+const BrandLogoDisplay: React.FC = () => {
   return (
     <div
       className={
@@ -25,4 +25,4 @@ const BrandDisplay: React.FC = () => {
   );
 };
 
-export default React.memo(BrandDisplay);
+export default React.memo(BrandLogoDisplay);

@@ -7,8 +7,8 @@ import Promotions from "@/components/promotions-section/Promotions";
 import Testimonials from "@/components/testimonials-section/Testimonial";
 import Faq from "@/components/faq-section/Faq";
 import Contact from "@/components/contact-section/Contact";
-import BrandsSlider from "@/components/brands-slider-section/BrandsSlider";
-import BrandDisplay from "@/components/brands-slider-section/BrandDisplay";
+import InfiniteSlider from "@/components/InfiniteSlider";
+import BrandLogoDisplay from "@/components/BrandLogoDisplay";
 import Footer from "@/components/footer-section/Footer";
 
 export default function Home() {
@@ -25,9 +25,9 @@ export default function Home() {
         <Hero />
         <Statistics />
         <TireSelection />
-        <BrandsSlider>
-          <BrandDisplay />
-        </BrandsSlider>
+        <InfiniteSlider>
+          <BrandLogoDisplay />
+        </InfiniteSlider>
         <Services />
         <Promotions />
         <Testimonials />
