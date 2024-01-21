@@ -37,12 +37,12 @@ const Services: FC = () => {
         {/* View all services btn */}
         <Button
           variant={"outline"}
-          className="group hidden w-max rounded-md border-black bg-black text-white hover:bg-white/10 hover:text-black sm:flex"
+          className="group hidden w-max rounded-md border-brand bg-brand capitalize text-white hover:bg-brand/90 hover:text-white sm:flex"
           asChild
         >
           <Link href={"#"} role="button" aria-label="View all services">
             View all services
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:scale-125 group-hover:text-brand" />
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:scale-125" />
           </Link>
         </Button>
       </header>
