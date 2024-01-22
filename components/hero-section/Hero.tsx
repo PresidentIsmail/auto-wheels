@@ -1,7 +1,7 @@
 import React from "react";
 
 import HeroCopy from "./HeroCopy";
-import VideoLoader from "../VideoLoader";
+import HomeScreenVideoLoader from "../HomeScreenVideoLoader";
 
 const Hero = () => {
   return (
@@ -16,7 +16,7 @@ const Hero = () => {
 
         {/* Promo Video */}
         <section className="relative order-1 col-span-3 row-span-2 h-auto lg:order-2">
-          <VideoLoader className="absolute inset-0 h-full w-full object-cover object-center" />
+          <HomeScreenVideoLoader className="absolute inset-0 h-full w-full object-cover object-center" />
         </section>
       </div>
     </section>

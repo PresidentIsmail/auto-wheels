@@ -1,15 +1,37 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 
 import { useViewportSize } from "@/hooks/use-viewport-size";
-import { heroMedia } from "@/constants";
 
-interface VideoLoaderProps
-  extends React.VideoHTMLAttributes<HTMLVideoElement> {}
+interface VideoLoaderProps extends React.VideoHTMLAttributes<HTMLVideoElement> {
+  videoSources: {
+    mp4: {
+      mobile: string;
+      desktop: string;
+    };
+    webm: {
+      mobile: string;
+      desktop: string;
+    };
+  };
+  posterSources: {
+    mobile: StaticImageData;
+    desktop: StaticImageData;
+  };
+  videoTitle: string;
+  imageSizes: string; // new prop for image sizes
+}
 
-const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
+const VideoLoader: React.FC<VideoLoaderProps> = ({
+  className,
+  videoSources,
+  posterSources,
+  videoTitle,
+  imageSizes = "(max-width: 1024px) 100vw, 50vw",
+  ...props
+}) => {
   const { width } = useViewportSize();
   const isMobile = width < 1024;
 
@@ -24,9 +46,13 @@ const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
     return null; // or return a placeholder/loading state
   }
 
-  const mp4Source = isMobile ? heroMedia.mp4.mobile : heroMedia.mp4.desktop;
-  const webmSource = isMobile ? heroMedia.webm.mobile : heroMedia.webm.desktop;
-  const poster = isMobile ? heroMedia.poster.mobile : heroMedia.poster.desktop;
+  const mp4Source = isMobile
+    ? videoSources.mp4.mobile
+    : videoSources.mp4.desktop;
+  const webmSource = isMobile
+    ? videoSources.webm.mobile
+    : videoSources.webm.desktop;
+  const poster = isMobile ? posterSources.mobile : posterSources.desktop;
 
   return (
     <>
@@ -37,8 +63,8 @@ const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
           placeholder="blur"
           priority
           fill
-          sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
+          sizes={imageSizes}
+          className={`${className}`}
         />
       )}
 
@@ -48,7 +74,7 @@ const VideoLoader: React.FC<VideoLoaderProps> = ({ className, ...props }) => {
         loop
         muted
         playsInline
-        title="Promo video"
+        title={videoTitle}
         className={`${className} ${isVideoLoaded ? "" : "hidden"}`}
         onLoadedData={() => setIsVideoLoaded(true)}
         {...props}
