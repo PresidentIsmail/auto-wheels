@@ -14,15 +14,15 @@ export default function Services() {
         <header className=" max-w-screen-sm py-[60px]">
           <AnimatedText
             element="h2"
-            text="Discover Our Range of " // the space at the end is intentional
+            text="Browse Comprehensive " // the space at the end is intentional
             className="inline-block select-text text-[28px] font-bold leading-tight text-black md:text-4xl xl:text-5xl"
           />
           <SlideInContent
             direction="slideUp"
-            delay={"Discover Our Range of ".length * 0.05}
+            delay={"Browse comprehensive ".length * 0.05}
             className="inline-block text-brand"
           >
-            <h2 className="text-[28px] inline-block font-bold leading-tight md:text-4xl xl:text-5xl">
+            <h2 className="inline-block text-[28px] font-bold leading-tight md:text-4xl xl:text-5xl">
               Services
             </h2>
           </SlideInContent>

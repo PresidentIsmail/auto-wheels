@@ -13,7 +13,7 @@ const ANIMATION_DURATION = 0.05;
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-[40vh]phero">
+    <section className="hero relative h-[40vh]">
       {/* Section Title And Subtitle */}
       <header className="master-container relative z-[1]  flex h-full flex-col justify-center">
         {/* Heading */}
