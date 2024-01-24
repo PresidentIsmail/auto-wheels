@@ -23,17 +23,26 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
     <AccordionItem
       value={serviceGroup.title}
       className={cn(
-        "group border-b-2 border-[#6F7682] bg-transparent p-0 transition-all hover:border-black data-[state=open]:border-black",
+        "border-b-2 border-[#6F7682] bg-transparent duration-0 p-0 text-[#6F7682] transition-all hover:border-black hover:text-black data-[state=open]:border-black",
         className,
       )}
     >
-      <AccordionTrigger arrowType="right" className="text-start text-lg font-bold tracking-wide text-[#6F7682] hover:no-underline focus-visible:text-black group-hover:text-black data-[state=open]:text-black sm:text-xl md:text-2xl lg:text-3xl ">
+      <AccordionTrigger
+        arrowType="right"
+        className={cn(
+          "text-start text-lg font-bold tracking-wide hover:no-underline focus-visible:text-black data-[state=open]:border-b-2 data-[state=open]:text-black sm:text-xl md:text-2xl lg:text-3xl",
+        )}
+      >
         {serviceGroup.title}
       </AccordionTrigger>
-      <AccordionContent className="text-normal py-6 flex flex-col gap-8  px-0 text-base md:flex-row">
+      <AccordionContent className="text-normal flex flex-col gap-8 px-0 py-6 lg:py-8 text-base md:flex-row">
         {/* Service cards of services in the group */}
         {serviceGroup.services.map((service) => (
-          <ServiceCard key={service.heading} service={service} />
+          <ServiceCard
+            key={service.heading}
+            service={service}
+            className="bg-white/50"
+          />
         ))}
       </AccordionContent>
     </AccordionItem>

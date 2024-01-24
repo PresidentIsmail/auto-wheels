@@ -14,14 +14,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
   service: (typeof top5AutoRepairServices)[number];
+  className?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
   return (
-    <Card role="article" className="max-w-[375px]">
+    <Card role="article" className={cn("max-w-[375px]", className)}>
       <CardHeader>
         {/* icon */}
         <Image
@@ -45,7 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         {/* button */}
         <Button
           variant={"outline"}
-          className="group w-full rounded-md border-none ring-1 ring-grayBorder duration-300 hover:bg-black hover:text-white"
+          className="group relative w-full rounded-md border-none ring-1 ring-grayBorder duration-300 hover:bg-black hover:text-white"
           asChild
         >
           <Link
