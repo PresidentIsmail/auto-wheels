@@ -37,7 +37,7 @@ const Services: FC = () => {
         {/* View all services btn */}
         <Button
           variant={"outline"}
-          className="group hidden w-max rounded-md border-none ring-1 ring-brand bg-brand capitalize text-white/80 hover:bg-brand hover:text-white sm:flex"
+          className="group hidden w-max rounded-md border-none bg-brand capitalize text-white ring-1 ring-brand hover:bg-brand hover:text-white sm:flex"
           asChild
         >
           <Link href={"/services"} role="link" aria-label="View all services">
@@ -55,7 +55,7 @@ const Services: FC = () => {
       {/* View all services btn */}
       <Button
         variant={"outline"}
-        className="group flex w-full rounded-md border-none ring-1 ring-brand bg-brand capitalize text-white/80 hover:bg-brand hover:text-white sm:hidden"
+        className="group flex w-full rounded-md border-none bg-brand capitalize text-white/80 ring-1 ring-brand hover:bg-brand hover:text-white sm:hidden"
         asChild
       >
         <Link href={"/services"} role="link" aria-label="View all services">
