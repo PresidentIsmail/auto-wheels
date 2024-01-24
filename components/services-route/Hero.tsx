@@ -11,11 +11,9 @@ import SlideInContent from "../SlideInContent";
 
 const ANIMATION_DURATION = 0.05;
 
-type Props = {};
-
-const Hero: React.FC<Props> = () => {
+const Hero: React.FC = () => {
   return (
-    <section className="relative h-[40vh]">
+    <section className="relative h-[40vh]phero">
       {/* Section Title And Subtitle */}
       <header className="master-container relative z-[1]  flex h-full flex-col justify-center">
         {/* Heading */}

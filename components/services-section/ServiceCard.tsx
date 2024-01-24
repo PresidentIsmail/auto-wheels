@@ -21,13 +21,14 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
-    <Card role="article">
+    <Card role="article" className="max-w-[375px]">
       <CardHeader>
         {/* icon */}
         <Image
           src={service.icon}
           alt={service.heading}
           quality={100}
+          placeholder="blur"
           width={64}
           height={64}
           sizes="64px"

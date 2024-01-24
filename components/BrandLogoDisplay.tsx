@@ -15,6 +15,7 @@ const BrandLogoDisplay: React.FC = () => {
           <Image
             src={brand.image}
             alt={`Logo of ${brand.name}`}
+            placeholder="blur"
             quality={100}
             sizes=" (max-width: 1024px) 33vw, (min-width: 1025px) 25vw"
             className={"h-[24px] w-auto md:h-[32px] lg:h-[40px]"}

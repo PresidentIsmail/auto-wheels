@@ -26,11 +26,11 @@ const FaqItem: React.FC<FaqItemProps> = ({
     <AccordionItem
       value={value}
       className={cn(
-        " border-b-2 border-grayBorder bg-transparent p-0 ",
+        "group border-grayBorder bg-transparent p-0  transition-all hover:border-white data-[state=open]:border-white",
         className,
       )}
     >
-      <AccordionTrigger className="text-start text-sm font-medium tracking-wide text-white hover:bg-white/10 hover:no-underline focus-visible:bg-white/10 lg:text-base">
+      <AccordionTrigger className="text-start text-sm font-medium tracking-wide text-white/70 hover:no-underline focus-visible:text-white group-hover:text-white data-[state=open]:text-white lg:text-base">
         {question}
       </AccordionTrigger>
       <AccordionContent className="px-0  text-white/80">

@@ -75,6 +75,7 @@ const VideoLoader: React.FC<VideoLoaderProps> = ({
         muted
         playsInline
         title={videoTitle}
+        poster={poster.src}
         className={`${className} ${isVideoLoaded ? "" : "hidden"}`}
         onLoadedData={() => setIsVideoLoaded(true)}
         {...props}

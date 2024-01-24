@@ -1,7 +1,7 @@
 // Updated imports
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import { Variants, motion, useInView } from "framer-motion";
 
 type Direction = "slideDown" | "slideUp" | "slideLeft" | "slideRight";
@@ -49,24 +49,24 @@ const SlideInContent: React.FC<Props> = ({
   animateOnce = true,
   direction = "slideRight", // Default direction is from the bottom
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.5, once: animateOnce });
   return (
-    <div ref={ref}>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{
-          duration: 0.5,
-          delay: delay,
-        }}
-        custom={direction} // Pass direction as a custom prop
-        className={className}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: animateOnce,
+        // amount: 0.5, // commented because it's already set to "some" by default and hero section is not working with it
+      }}
+      transition={{
+        duration: 0.5,
+        delay: delay,
+      }}
+      custom={direction} // Pass direction as a custom prop
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 };
 
