@@ -10,6 +10,7 @@ const ServicesAccordion: React.FC = () => {
   return (
     <Accordion
       type="single"
+      defaultValue={SERVICES_DATA_GROUPED[0].title}
       collapsible
       className="w-full space-y-2 lg:space-y-4"
     >

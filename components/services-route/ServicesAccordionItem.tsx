@@ -23,7 +23,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
     <AccordionItem
       value={serviceGroup.title}
       className={cn(
-        "border-b-2 border-[#6F7682] bg-transparent duration-0 p-0 text-[#6F7682] transition-all hover:border-black hover:text-black data-[state=open]:border-black",
+        "border-b-2 border-[#6F7682] bg-transparent p-0 text-[#6F7682] transition-all duration-0 hover:border-black hover:text-black data-[state=open]:border-black",
         className,
       )}
     >
@@ -35,7 +35,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
       >
         {serviceGroup.title}
       </AccordionTrigger>
-      <AccordionContent className="text-normal flex flex-col gap-8 px-0 py-6 lg:py-8 text-base md:flex-row">
+      <AccordionContent className="text-normal flex flex-col gap-8 px-0 py-6 text-base md:flex-row lg:py-8">
         {/* Service cards of services in the group */}
         {serviceGroup.services.map((service) => (
           <ServiceCard
