@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
           quality={100}
           fill
           sizes="(max-width: 768px) 100vw, 70vw"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-center brightness-75"
         />
       </div>
     </section>
