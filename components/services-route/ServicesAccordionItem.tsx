@@ -35,13 +35,13 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
       >
         {serviceGroup.title}
       </AccordionTrigger>
-      <AccordionContent className="text-normal flex flex-col gap-8 px-0 py-6 text-base md:flex-row lg:py-8">
+      <AccordionContent className="text-normal flex flex-wrap justify-center gap-8 px-0 py-6 text-base sm:justify-start md:flex-row lg:py-8">
         {/* Service cards of services in the group */}
         {serviceGroup.services.map((service) => (
           <ServiceCard
             key={service.heading}
             service={service}
-            className="bg-white/50"
+            className="max-w-[350px] shrink-0 bg-white/50"
           />
         ))}
       </AccordionContent>

@@ -132,15 +132,15 @@ type ServiceGroup = {
 
 export const SERVICES_DATA_GROUPED: ServiceGroup[] = [
   {
-    id: "brake-and-wheel-services",
-    title: "Brake and Wheel Services",
+    id: "brakes-and-wheel-services",
+    title: "Brakes and Wheel Services",
     services:[
       {
         icon: brakeServicesIcon,
-    heading: "Brake Services",
+    heading: "Brakes Services",
     description:
       "Brake confidently with our services. Fluid flush, pad replacements, and inspections for reliable and responsive braking.",
-        href: "/brake-services",
+        href: "/brakes-services",
       },
       {
         icon: tyresAndWheelsIcon,

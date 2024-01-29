@@ -47,7 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
         {/* button */}
         <Button
           variant={"outline"}
-          className="group relative w-full rounded-md border-none ring-1 ring-grayBorder duration-300 hover:bg-black hover:text-white"
+          className="group relative w-full rounded-md border-none ring-1 ring-grayBorder duration-300 hover:bg-black/10 hover:text-black"
           asChild
         >
           <Link

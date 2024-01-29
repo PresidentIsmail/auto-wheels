@@ -1,13 +1,14 @@
 // Updated imports
 "use client";
 
-import React, { useRef } from "react";
-import { Variants, motion, useInView } from "framer-motion";
+import React from "react";
+import { Variants, motion } from "framer-motion";
 
 // Updated type with a new 'direction' prop
 type Props = {
   children: React.ReactNode;
   delay?: number;
+  animationDuration?: number;
   className?: string;
   animateOnce?: boolean;
 };
@@ -26,28 +27,28 @@ const containerVariants: Variants = {
 const FadeInContent: React.FC<Props> = ({
   children,
   delay = 0,
+  animationDuration = 0.5,
   className,
   animateOnce = true,
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { amount: 0.5, once: animateOnce });
-
   return (
-    <div ref={ref} className={className}>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{
-          duration: 1,
-          delay: delay,
-          ease: "easeInOut",
-        }}
-        className={"h-full"}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{
+        once: animateOnce,
+        // amount: 0.5, // commented because it's already set to "some" by default and hero section is not working with it
+      }}
+      transition={{
+        duration: animationDuration,
+        delay: delay,
+        ease: "easeInOut",
+      }}
+      className={`h-full ${className}`}
+    >
+      {children}
+    </motion.div>
   );
 };
 
