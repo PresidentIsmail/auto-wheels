@@ -1,10 +1,9 @@
 import { FC } from "react";
 
-import { top5AutoRepairServices } from "@/data/servicesData";
+import { TOP_5_SERVICES } from "@/data/servicesData";
 
 import ServiceCard from "@/components/services-section/ServiceCard";
 import AnimatedText from "../AnimatedText";
-import ScaleInContent from "../ScaleInContent";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -48,14 +47,14 @@ const Services: FC = () => {
       </header>
 
       {/* Services */}
-      {top5AutoRepairServices.map((service) => (
-        <ServiceCard key={service.heading} service={service} />
+      {TOP_5_SERVICES.map((serviceGroup) => (
+        <ServiceCard key={serviceGroup?.title} service={serviceGroup!} />
       ))}
 
       {/* View all services btn */}
       <Button
         variant={"outline"}
-        className="group flex w-full rounded-md border-none bg-brand capitalize text-white/80 ring-1 ring-brand hover:bg-brand hover:text-white sm:hidden"
+        className="group flex w-full rounded-md border-none bg-brand capitalize ring-1 ring-brand hover:bg-[#ff0800] text-white hover:text-white sm:hidden"
         asChild
       >
         <Link href={"/services"} role="link" aria-label="View all services">

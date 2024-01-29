@@ -3,19 +3,18 @@
 import React from "react";
 import Link from "next/link";
 
-import { NAV_ITEMS } from "@/constants";
-import { SERVICES_DATA } from "@/data/servicesData";
-
 import { ChevronRight } from "lucide-react";
 
 type LinkItemProps = {
   type: "link";
-  navItem: (typeof NAV_ITEMS)[number] | (typeof SERVICES_DATA)[number];
+  label: string;
+  href: string;
+  onClick?: () => void;
 };
 
 type ButtonItemProps = {
   type: "button";
-  navItem: (typeof NAV_ITEMS)[number] | (typeof SERVICES_DATA)[number];
+  label: string;
   onClick: () => void;
 };
 
@@ -25,11 +24,12 @@ const MobileNavItem: React.FC<MobileNavItemProps> = (props) => {
   if (props.type === "link") {
     return (
       <Link
-        href={"#"}
+        href={props.href}
         className="block w-full p-2 transition-colors hover:bg-white/10 focus-visible:bg-white/10 "
-        aria-label={props.navItem.label}
+        aria-label={props.label}
+        onClick={props.onClick}
       >
-        {props.navItem.label}
+        {props.label}
       </Link>
     );
   }
@@ -39,10 +39,10 @@ const MobileNavItem: React.FC<MobileNavItemProps> = (props) => {
       <button
         onClick={props.onClick}
         className={`block w-full p-2 transition-colors hover:bg-white/10 focus-visible:bg-white/10`}
-        aria-label={props.navItem.label}
+        aria-label={props.label}
       >
         <span className="flex items-center justify-between gap-1">
-          {props.navItem.label}
+          {props.label}
           <ChevronRight />
         </span>
       </button>

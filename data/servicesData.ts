@@ -1,307 +1,250 @@
 import { StaticImageData } from "next/image";
 
 // =========== SERVICES ================
-type Service = {
-  label: string;
-  services: string[];
-  href: string;
-};
 
-export const SERVICES_DATA: Service[] = [
-  {
-    label: "Brake Services",
-    services: [
-      "Brake fluid flush",
-      "Brake pad replacement",
-      "Brake inspection",
-    ],
-    href: "/brake-services",
-  },
-  {
-    label: "Tyres and Wheels",
-    services: [
-      "Tire fitting and replacement",
-      "3D Wheel alignment",
-      "Wheel balancing",
-    ],
-    href: "/tyres-and-wheels",
-  },
-  {
-    label: "ECU Diagnostics",
-    services: ["Computerized system analysis", "ECU Diagnostics"],
-    href: "/ecu-diagnostics",
-  },
-  {
-    label: "Cooling System Services",
-    services: ["Radiator repair and replacement", "Cooling System Services"],
-    href: "/cooling-system-services",
-  },
-  {
-    label: "Wipers and Lights",
-    services: [
-      "Headlight and taillight inspection and replacement",
-      "Windshield wiper sales and fitting",
-    ],
-    href: "/wipers-and-lights",
-  },
-  {
-    label: "Battery Services",
-    services: ["Battery replacement", "Battery testing", "Battery Services"],
-    href: "/battery-services",
-  },
-  {
-    label: "Exhaust System Services",
-    services: [
-      "Muffler replacement",
-      "Exhaust system inspection and repair",
-      "Exhaust System Services",
-    ],
-    href: "/exhaust-system-services",
-  },
-  {
-    label: "Oil Services",
-    services: ["Fluid checks and top-ups", "Oil changes", "Oil Services"],
-    href: "/oil-services",
-  },
-  {
-    label: "Scheduled Maintenance",
-    services: [
-      "Manufacturer recommended services",
-      "Minor and major scheduled maintenance",
-      "Scheduled Maintenance",
-    ],
-    href: "/scheduled-maintenance",
-  },
-  {
-    label: "Fuel System Services",
-    services: ["Fuel pump replacement", "Fuel System Services"],
-    href: "/fuel-system-services",
-  },
-  {
-    label: "Engine Services",
-    services: [
-      "Engine overhaul (may include piston replacement, cylinder head work, etc.)",
-      "Engine Services",
-    ],
-    href: "/engine-services",
-  },
-  {
-    label: "Suspension Services",
-    services: [
-      "Suspension system inspection and repair",
-      "Shock absorber replacement",
-      "Suspension Services",
-    ],
-    href: "/suspension-services",
-  },
-];
+import suspensionServicesIcon from "@/public/icons/suspension.png";
+import tyresAndWheelsIcon from "@/public/icons/tyres.png";
+import scheduledMaintenanceIcon from "@/public/icons/maintainance.png";
+import brakeServicesIcon from "@/public/icons/brakes.png";
+import oilServicesIcon from "@/public/icons/engine-oil.png";
+import ecuDiagnosticsIcon from "@/public/icons/ecu-diagnostics.png";
+import engineServicesIcon from "@/public/icons/engine.png";
+import transmissionServicesIcon from "@/public/icons/transmission.png";
+import batteryIcon from "@/public/icons/battery.png";
+import wipersIcon from "@/public/icons/wipers.png";
+import lightsIcon from "@/public/icons/lights.png";
+import fuelSystemIcon from "@/public/icons/feul.png";
+import exhaustSystemIcon from "@/public/icons/exhaust.png";
+import coolingSystemIcon from "@/public/icons/coolant.png";
 
-// Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
-export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
-  a.label.localeCompare(b.label),
-);
-
-// =======================================
-// data for the top 5 auto repair services
-// =======================================
-import suspensionServicesIcon from "@/public/icons/suspension.png"
-import tyresAndWheelsIcon from "@/public/icons/tyres.png"
-import scheduledMaintenanceIcon from "@/public/icons/maintainance.png"
-import brakeServicesIcon from "@/public/icons/brakes.png"
-import oilServicesIcon from "@/public/icons/engine-oil.png"
-import ecuDiagnosticsIcon from "@/public/icons/ecu-diagnostics.png"
-import engineServicesIcon from "@/public/icons/engine.png"
-import transmissionServicesIcon from "@/public/icons/transmission.png"
-import batteryIcon from "@/public/icons/battery.png"
-import wipersIcon from "@/public/icons/wipers.png"
-import lightsIcon from "@/public/icons/lights.png"
-import fuelSystemIcon from "@/public/icons/feul.png"
-import exhaustSystemIcon from "@/public/icons/exhaust.png"
-import coolingSystemIcon from "@/public/icons/coolant.png"
-
-type ServiceGroup = {
-  id: string;
-  title: string;
-  services: {
-      icon: StaticImageData;
-      heading: string;
-      description: string;
-      href: string;
-  }[];
-};
-
-export const SERVICES_DATA_GROUPED: ServiceGroup[] = [
+export const SERVICES_DATA = [
   {
-    id: "brakes-and-wheel-services",
-    title: "Brakes and Wheel Services",
-    services:[
+    sectionId: "brake-and-wheel-services", // Unique identifier for the section tag
+    sectionTitle: "Brake and Wheel Services",
+    subsections: [
       {
         icon: brakeServicesIcon,
-    heading: "Brakes Services",
-    description:
-      "Brake confidently with our services. Fluid flush, pad replacements, and inspections for reliable and responsive braking.",
-        href: "/brakes-services",
+        title: "Brake Services",
+        services: [
+          "Brake fluid flush",
+          "Brake pad replacement",
+          "Brake inspection",
+        ],
+        description:
+          "Drive confidently with our brake services. Fluid flush, pad replacements, and inspections for reliable and responsive braking.",
+        link: "#brake-and-wheel-services",
       },
       {
         icon: tyresAndWheelsIcon,
-    heading: "tyres and Wheels",
-    description:
-      "Drive confidently with our tyres and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
-        href: "/tyres-and-wheels",
+        title: "Tyres and Wheels",
+        services: [
+          "Tire fitting and replacement",
+          "3D Wheel alignment",
+          "Wheel balancing",
+        ],
+        description:
+          "Explore our Tyres and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
+        link: "#brake-and-wheel-services",
       },
     ],
   },
   {
-    id: "vehicle-system-diagnostics",
-    title: "Vehicle System Diagnostics",
-    services:[
+    sectionId: "vehicle-system-diagnostics",
+    sectionTitle: "Vehicle System Diagnostics",
+    subsections: [
       {
         icon: ecuDiagnosticsIcon,
-        heading: "ECU Diagnostics",
+        title: "ECU Diagnostics",
+        services: ["Computerized system analysis", "ECU Diagnostics"],
         description:
-          "Uncover the heart of your vehicle's performance with our ECU Diagnostics service. Through advanced computerized system analysis, we decode your car's language, providing precise ECU diagnostics for optimal functionality and reliability.",      
-        href: "/ecu-diagnostics",
+          "Uncover the heart of your vehicle's performance with our ECU Diagnostics service. Through advanced computerized system analysis, we decode your car's language, providing precise ECU diagnostics for optimal functionality and reliability.",
+        link: "#vehicle-system-diagnostics",
       },
     ],
   },
   {
-    id: "engine-and-transmission-services",
-    title: "Engine and Transmission Services",
-    services:[
+    sectionId: "engine-and-transmission-services",
+    sectionTitle: "Engine and Transmission Services",
+    subsections: [
       {
         icon: engineServicesIcon,
-        heading: "Engine Services",
+        title: "Engine Services",
+        services: [
+          "Engine overhaul (may include piston replacement, cylinder head work, etc.)",
+          "Engine Services",
+        ],
         description:
           "Experience peak performance with our comprehensive Engine Services. From thorough overhauls to specialized repairs, we ensure your engine runs smoothly for a reliable ride.",
-        href: "/engine-services",
+        link: "#engine-and-transmission-services",
       },
       {
         icon: transmissionServicesIcon,
-        heading: "Transmission Services",
+        title: "Transmission Services",
+        services: [
+          "Transmission fluid flush",
+          "Transmission replacement",
+          "Transmission Services",
+        ],
         description:
           "Ensure seamless gear shifts and extend the life of your vehicle with our Transmission Services. From fluid flushes to expert replacements, we keep your transmission in top-notch condition.",
-        href: "/transmission-services",
-      }      
+        link: "#engine-and-transmission-services",
+      },
     ],
   },
   {
-    id: "lights-wipers-and-battery-services",
-    title: "Lights, Wipers, and Battery Services",
-    services:[
+    sectionId: "lights-wipers-and-battery-services",
+    sectionTitle: "Lights, Wipers, and Battery Services",
+    subsections: [
       {
         icon: batteryIcon,
-        heading: "Battery Services",
+        title: "Battery Services",
+        services: [
+          "Battery replacement",
+          "Battery testing",
+          "Battery Services",
+        ],
         description:
           "Power up your vehicle with our Battery Services. Whether it's a replacement or a test, we ensure your battery is reliable for every journey.",
-        href: "/battery-services",
-    },    
-    {
-      icon: wipersIcon,
-      heading: "Wipers Inspection and Sales",
-      description:
-        "See clearly on the road with our Wipers Services. From inspecting headlights and taillights to fitting quality windshield wipers, we keep your vision sharp.",
-      href: "/wipers-and-lights",
-  },
-  {
-    icon: lightsIcon,
-    heading: "Lights Inspection and Replacement",
-    description:
-      "Illuminate the way with our Lights Services. From inspecting and replacing headlights to ensuring your taillights shine, we keep you visible and safe.",
-    href: "/wipers-and-lights",
-}  
+        link: "#lights-wipers-and-battery-services",
+      },
+      {
+        icon: wipersIcon,
+        title: "Wipers Inspection and Sales",
+        services: [
+          "Windshield wiper sales and fitting",
+          "Wipers Inspection and Sales",
+        ],
+        description:
+          "See clearly on the road with our Wipers Services. From inspecting headlights and taillights to fitting quality windshield wipers, we keep your vision sharp.",
+        link: "#lights-wipers-and-battery-services",
+      },
+      {
+        icon: lightsIcon,
+        title: "Lights Inspection and Replacement",
+        services: [
+          "Headlight and taillight inspection and replacement",
+          "Lights Inspection and Replacement",
+        ],
+        description:
+          "Illuminate the way with our Lights Services. From inspecting and replacing headlights to ensuring your taillights shine, we keep you visible and safe.",
+        link: "#lights-wipers-and-battery-services",
+      },
     ],
   },
   {
-    id: "oil-and-maintenance-services",
-    title: "Oil and Maintenance Services",
-    services:[
+    sectionId: "oil-and-maintenance-services",
+    sectionTitle: "Oil and Maintenance Services",
+    subsections: [
       {
         icon: oilServicesIcon,
-    heading: "Oil Services",
-    description:
-      "Keep your engine running smoothly with our Oil Services. Fluid checks, top-ups, and regular changes for optimal engine health.",
-        href: "/oil-services",
+        title: "Oil Services",
+        services: ["Fluid checks and top-ups", "Oil changes", "Oil Services"],
+        description:
+          "Keep your engine running smoothly with our Oil Services. Fluid checks, top-ups, and regular changes for optimal engine health.",
+        link: "#oil-and-maintenance-services",
       },
       {
         icon: scheduledMaintenanceIcon,
-    heading: "Scheduled Maintenance",
-    description:
-      "Stay ahead with Scheduled Maintenance. Manufacturer-recommended services ensure peak performance. Drive worry-free, we've got you covered.",
-        href: "/scheduled-maintenance",
+        title: "Scheduled Maintenance",
+        services: [
+          "Manufacturer recommended services",
+          "Minor and major scheduled maintenance",
+          "Scheduled Maintenance",
+        ],
+        description:
+          "Stay ahead with Scheduled Maintenance. Manufacturer-recommended services ensure peak performance. Drive worry-free, we've got you covered.",
+        link: "#oil-and-maintenance-services",
       },
     ],
   },
   {
-    id: "fuel-and-suspension-services",
-    title: "Fuel and Suspension Services",
-    services:[
+    sectionId: "fuel-and-suspension-services",
+    sectionTitle: "Fuel and Suspension Services",
+    subsections: [
       {
         icon: fuelSystemIcon,
-        heading: "Fuel System Services",
+        title: "Fuel System Services",
+        services: ["Fuel pump replacement", "Fuel System Services"],
         description:
           "Keep your engine running smoothly with our Fuel System Services. From fuel pump replacements to comprehensive diagnostics, we ensure your vehicle's fuel system is in top-notch condition. Trust us for reliable and efficient service that keeps your journey worry-free.",
-        href: "/fuel-system-services",
-      },      
+        link: "#fuel-and-suspension-services",
+      },
       {
         icon: suspensionServicesIcon,
-    heading: "Suspension Services",
-    description:
-      "Elevate your ride with expert Suspension Services. From shock replacements to precision handling, trust us for a smooth journey.",
-        href: "/suspension-services",
+        title: "Suspension Services",
+        services: [
+          "Suspension system inspection and repair",
+          "Shock absorber replacement",
+          "Suspension Services",
+        ],
+        description:
+          "Elevate your ride with expert Suspension Services. From shock replacements to precision handling, trust us for a smooth journey.",
+        link: "#fuel-and-suspension-services",
       },
     ],
   },
   {
-    id: "exhaust-and-cooling-services",
-    title: "Exhaust and Cooling Services",
-    services: [
+    sectionId: "exhaust-and-cooling-services",
+    sectionTitle: "Exhaust and Cooling Services",
+    subsections: [
       {
         icon: exhaustSystemIcon,
-        heading: "Exhaust System Services",
-        description: "Breathe easy with our Exhaust System Services. From muffler replacements to thorough inspections and repairs, we ensure your vehicle's exhaust system runs smoothly for a quiet and efficient ride.",
-        href: "/exhaust-system-services",
-    },
-    {
-      icon: coolingSystemIcon,
-      heading: "Cooling System Services",
-      description: "Keep your engine cool with our expert Cooling System Services. Whether it's radiator repair or replacement, we've got your back. Trust us for a well-maintained cooling system that ensures a smooth and reliable drive.",
-      href: "/cooling-system-services",
-  },  
-      
+        title: "Exhaust System Services",
+        services: [
+          "Muffler replacement",
+          "Exhaust system inspection and repair",
+          "Exhaust System Services",
+        ],
+        description:
+          "Breathe easy with our Exhaust System Services. From muffler replacements to thorough inspections and repairs, we ensure your vehicle's exhaust system runs smoothly for a quiet and efficient ride.",
+        link: "#exhaust-and-cooling-services",
+      },
+      {
+        icon: coolingSystemIcon,
+        title: "Cooling System Services",
+        services: [
+          "Radiator repair and replacement",
+          "Cooling System Services",
+        ],
+        description:
+          "Keep your engine cool with our expert Cooling System Services. Whether it's radiator repair or replacement, we've got your back. Trust us for a well-maintained cooling system that ensures a smooth and reliable drive.",
+        link: "#exhaust-and-cooling-services",
+      },
     ],
   },
-]
-
-
-export const top5AutoRepairServices = [
-  {
-    icon: suspensionServicesIcon,
-    heading: "Suspension Services",
-    description:
-      "Elevate your ride with expert Suspension Services. From shock replacements to precision handling, trust us for a smooth journey.",
-  },
-  {
-    icon: tyresAndWheelsIcon,
-    heading: "tyres and Wheels",
-    description:
-      "Drive confidently with our tyres and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
-  },
-  {
-    icon: scheduledMaintenanceIcon,
-    heading: "Scheduled Maintenance",
-    description:
-      "Stay ahead with Scheduled Maintenance. Manufacturer-recommended services ensure peak performance. Drive worry-free, we've got you covered.",
-  },
-  {
-    icon: brakeServicesIcon,
-    heading: "Brake Services",
-    description:
-      "Brake confidently with our services. Fluid flush, pad replacements, and inspections for reliable and responsive braking.",
-  },
-  {
-    icon: oilServicesIcon,
-    heading: "Oil Services",
-    description:
-      "Keep your engine running smoothly with our Oil Services. Fluid checks, top-ups, and regular changes for optimal engine health.",
-  },
 ];
+
+/* 
+Top 5 services:
+- Suspension Services
+- tyres and Wheels
+- Brake Services
+- Scheduled Maintenance
+- Oil Services
+*/
+
+//  top 5 services
+export const TOP_5_SERVICES = [
+  getServiceByTitle("Suspension Services"),
+  getServiceByTitle("Tyres and Wheels"),
+  getServiceByTitle("Brake Services"),
+  getServiceByTitle("Scheduled Maintenance"),
+  getServiceByTitle("Oil Services"),
+];
+
+// ===================================================
+// ==================== FUNCTIONS ====================
+// ===================================================
+
+//  function that gets a service by its title
+function getServiceByTitle(title: string) {
+  const services = SERVICES_DATA.map((service) => service.subsections).flat();
+  return services.find(
+    (service) => service.title.toLowerCase() === title.toLowerCase(),
+  );
+}
+
+// Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
+export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
+  a.sectionTitle.localeCompare(b.sectionTitle),
+);

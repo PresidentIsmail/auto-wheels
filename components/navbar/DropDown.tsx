@@ -44,24 +44,26 @@ const DropDown: React.FC<DropDownProps> = ({ isDropdownVisible }) => {
           role="menu"
           className="absolute left-1/2 top-full grid w-max grid-cols-3  gap-2 rounded-md border border-grayBorder bg-special px-12 py-8 lg:grid-cols-4 lg:gap-4"
         >
-          {SERVICES_DATA.map((service) => (
-            <motion.a
-              variants={dropDownItemVariants}
-              key={service.label}
-              href={`#`}
-              role="menuitem"
-              className="flex w-full max-w-[224px] flex-col gap-2 rounded-md px-3 py-3 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none "
-            >
-              <h3 className="font-bold text-white">{service.label}</h3>
-              <ul className="flex flex-col gap-1 text-sm text-white/80">
-                {service.services.map((service) => (
-                  <li key={service}>
-                    <p>{service}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.a>
-          ))}
+          {SERVICES_DATA.map((serviceGroup) =>
+            serviceGroup.subsections.map((service) => (
+              <motion.a
+                variants={dropDownItemVariants}
+                key={service.title}
+                href={`/services/${service.link}`}
+                role="menuitem"
+                className="flex w-full max-w-[224px] flex-col gap-2 rounded-md px-3 py-3 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none "
+              >
+                <h3 className="font-bold text-white">{service.title}</h3>
+                <ul className="flex flex-col gap-1 text-sm text-white/80">
+                  {service.services.map((service) => (
+                    <li key={service}>
+                      <p>{service}</p>
+                    </li>
+                  ))}
+                </ul>
+              </motion.a>
+            )),
+          )}
         </motion.nav>
       )}
     </AnimatePresence>

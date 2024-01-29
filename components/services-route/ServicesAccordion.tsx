@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SERVICES_DATA_GROUPED } from "@/data/servicesData";
+import { SERVICES_DATA } from "@/data/servicesData";
 
 import { Accordion } from "../ui/accordion";
 import SlideInContent from "../SlideInContent";
@@ -12,12 +12,12 @@ const ServicesAccordion: React.FC = () => {
     <Accordion
       id="services-accordion"
       type="single"
-      defaultValue={SERVICES_DATA_GROUPED[0].title}
+      defaultValue={SERVICES_DATA[0].sectionId}
       collapsible
       className="w-full space-y-2 lg:space-y-4"
     >
-      {SERVICES_DATA_GROUPED.map((serviceGroup, index) => (
-        <FadeInContent key={serviceGroup.id} delay={index * 0.25}>
+      {SERVICES_DATA.map((serviceGroup, index) => (
+        <FadeInContent key={serviceGroup.sectionId} delay={index * 0.25}>
           <ServicesAccordionItem serviceGroup={serviceGroup} />
         </FadeInContent>
       ))}

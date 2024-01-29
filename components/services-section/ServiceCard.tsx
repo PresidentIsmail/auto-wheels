@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { top5AutoRepairServices } from "@/data/servicesData";
+import { SERVICES_DATA } from "@/data/servicesData";
 
 import { ArrowRight } from "lucide-react";
 import {
@@ -17,7 +17,7 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
-  service: (typeof top5AutoRepairServices)[number];
+  service: (typeof SERVICES_DATA)[0]["subsections"][0];
   className?: string;
 }
 
@@ -28,7 +28,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
         {/* icon */}
         <Image
           src={service.icon}
-          alt={service.heading}
+          alt={service.title}
           quality={100}
           placeholder="blur"
           width={64}
@@ -38,7 +38,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-y-3">
         {/* title */}
-        <CardTitle className="capitalize">{service.heading}</CardTitle>
+        <CardTitle className="capitalize">{service.title}</CardTitle>
         {/* description */}
         <CardDescription>{service.description}</CardDescription>
       </CardContent>
@@ -51,7 +51,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
           asChild
         >
           <Link
-            href={"#"}
+            href={`/services/${service.link}`}
             role="button"
             aria-label="Learn more about our services"
           >

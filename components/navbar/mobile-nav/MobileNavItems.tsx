@@ -18,6 +18,7 @@ import {
 
 const MobileNavItems: React.FC = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
+  const [isSheetOpen, setSheetOpen] = useState<boolean | undefined>(undefined);
 
   const closeDropdown = useCallback(() => {
     setDropdownVisibility(false);
@@ -27,10 +28,18 @@ const MobileNavItems: React.FC = () => {
     setDropdownVisibility((prev) => !prev);
   }, []);
 
+  // function to close sheet
+  const closeSheet = useCallback(() => {
+    setSheetOpen(false);
+  }, []);
+
   return (
-    <Sheet>
+    <Sheet open={isSheetOpen}>
       <SheetTrigger
-        onClick={closeDropdown}
+        onClick={() => {
+          setSheetOpen(undefined);
+          closeDropdown();
+        }}
         className="flex flex-col items-end justify-center p-2 text-white transition-colors hover:bg-white/10 focus-visible:bg-white/10 md:hidden"
         aria-label="Toggle Navigation"
       >
@@ -65,7 +74,7 @@ const MobileNavItems: React.FC = () => {
               <span className="ps-3 text-start">Back</span>
             </button>
 
-            <ServicesDropdown />
+            <ServicesDropdown closeSheet={closeSheet} />
           </div>
         )}
       </SheetContent>
@@ -90,11 +99,11 @@ const NavigationItems: React.FC<NavigationItemsProps> = ({
           {item.label === "Services" ? (
             <MobileNavItem
               type="button"
-              navItem={item}
+              label={item.label}
               onClick={toggleDropdownVisibility}
             />
           ) : (
-            <MobileNavItem type="link" navItem={item} />
+            <MobileNavItem type="link" label={item.label} href={item.href} />
           )}
         </li>
       ))}
@@ -102,7 +111,17 @@ const NavigationItems: React.FC<NavigationItemsProps> = ({
   );
 };
 
-const ServicesDropdown: React.FC = () => {
+type ServicesDropdownProps = {
+  closeSheet: () => void;
+};
+
+const ServicesDropdown: React.FC<ServicesDropdownProps> = ({ closeSheet }) => {
+  // Force refresh the page
+  const clickOutsideMenuToClose = () => {
+    console.log("clicked outside");
+    // router.refresh();
+  };
+
   return (
     <ul className="flex flex-col gap-y-2">
       <h2 className="mb-3 w-full p-2 text-start text-2xl font-medium text-white">
@@ -110,10 +129,15 @@ const ServicesDropdown: React.FC = () => {
       </h2>
       {SERVICES_DATA_SORTED.map((item) => (
         <li
-          key={item.label}
+          key={item.sectionTitle}
           className="w-full border-b border-b-grayBorder text-base font-semibold capitalize text-white/80"
         >
-          <MobileNavItem type="link" navItem={item} />
+          <MobileNavItem
+            type="link"
+            label={item.sectionTitle}
+            href={`/services#${item.sectionId}`}
+            onClick={closeSheet}
+          />
         </li>
       ))}
     </ul>

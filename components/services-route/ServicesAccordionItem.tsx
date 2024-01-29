@@ -1,7 +1,7 @@
 import React from "react";
 
 import { cn } from "@/lib/utils";
-import { SERVICES_DATA_GROUPED } from "@/data/servicesData";
+import { SERVICES_DATA } from "@/data/servicesData";
 
 import {
   AccordionContent,
@@ -11,7 +11,7 @@ import {
 import ServiceCard from "../services-section/ServiceCard";
 
 interface ServicesAccordionItemProps {
-  serviceGroup: (typeof SERVICES_DATA_GROUPED)[0];
+  serviceGroup: (typeof SERVICES_DATA)[0];
   className?: string;
 }
 
@@ -21,7 +21,8 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
 }) => {
   return (
     <AccordionItem
-      value={serviceGroup.title}
+      id={serviceGroup.sectionId}
+      value={serviceGroup.sectionTitle}
       className={cn(
         "border-b-2 border-[#6F7682] bg-transparent p-0 text-[#6F7682] transition-all duration-0 hover:border-black hover:text-black data-[state=open]:border-black",
         className,
@@ -33,13 +34,13 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
           "text-start text-lg font-bold tracking-wide hover:no-underline focus-visible:text-black data-[state=open]:border-b-2 data-[state=open]:text-black sm:text-xl md:text-2xl lg:text-3xl",
         )}
       >
-        {serviceGroup.title}
+        {serviceGroup.sectionTitle}
       </AccordionTrigger>
       <AccordionContent className="text-normal flex flex-wrap justify-center gap-8 px-0 py-6 text-base sm:justify-start md:flex-row lg:py-8">
         {/* Service cards of services in the group */}
-        {serviceGroup.services.map((service) => (
+        {serviceGroup.subsections.map((service) => (
           <ServiceCard
-            key={service.heading}
+            key={service.title}
             service={service}
             className="max-w-[350px] shrink-0 bg-white/50"
           />
