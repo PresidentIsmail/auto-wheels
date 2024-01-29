@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // import bg image
-import bgImage from "@/public/images/services-route/background-02.png";
+import bgImage from "@/public/images/services-route/service-01.png";
 
 import { ArrowRight, ArrowDown } from "lucide-react";
 import AnimatedText from "../AnimatedText";
