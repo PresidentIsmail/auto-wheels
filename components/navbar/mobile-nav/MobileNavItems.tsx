@@ -15,6 +15,7 @@ import {
   SheetFooter,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { buildSearchQuery } from "@/lib/helper";
 
 const MobileNavItems: React.FC = () => {
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
@@ -116,12 +117,6 @@ type ServicesDropdownProps = {
 };
 
 const ServicesDropdown: React.FC<ServicesDropdownProps> = ({ closeSheet }) => {
-  // Force refresh the page
-  const clickOutsideMenuToClose = () => {
-    console.log("clicked outside");
-    // router.refresh();
-  };
-
   return (
     <ul className="flex flex-col gap-y-2">
       <h2 className="mb-3 w-full p-2 text-start text-2xl font-medium text-white">
@@ -135,7 +130,7 @@ const ServicesDropdown: React.FC<ServicesDropdownProps> = ({ closeSheet }) => {
           <MobileNavItem
             type="link"
             label={item.sectionTitle}
-            href={`/services#${item.sectionId}`}
+            href={`/services?${buildSearchQuery(item.sectionTitle)}`}
             onClick={closeSheet}
           />
         </li>

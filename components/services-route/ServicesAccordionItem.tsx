@@ -2,6 +2,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 import { SERVICES_DATA } from "@/data/servicesData";
+import { normalizeString } from "@/lib/helper";
 
 import {
   AccordionContent,
@@ -21,8 +22,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
 }) => {
   return (
     <AccordionItem
-      id={serviceGroup.sectionId}
-      value={serviceGroup.sectionTitle}
+      value={normalizeString(serviceGroup.sectionTitle)}
       className={cn(
         "border-b-2 border-[#6F7682] bg-transparent p-0 text-[#6F7682] transition-all duration-0 hover:border-black hover:text-black data-[state=open]:border-black",
         className,
@@ -41,6 +41,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
         {serviceGroup.subsections.map((service) => (
           <ServiceCard
             key={service.title}
+            serviceGroupTitle={serviceGroup.sectionTitle}
             service={service}
             className="max-w-[350px] shrink-0 bg-white/50"
           />

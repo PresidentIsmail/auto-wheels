@@ -6,6 +6,7 @@ import { Variants, motion } from "framer-motion";
 
 // Updated type with a new 'direction' prop
 type Props = {
+  id?: string;
   children: React.ReactNode;
   delay?: number;
   animationDuration?: number;
@@ -25,6 +26,7 @@ const containerVariants: Variants = {
 
 // Updated component name and props
 const FadeInContent: React.FC<Props> = ({
+  id,
   children,
   delay = 0,
   animationDuration = 0.5,
@@ -33,6 +35,7 @@ const FadeInContent: React.FC<Props> = ({
 }) => {
   return (
     <motion.div
+      id={id}
       variants={containerVariants}
       initial="hidden"
       whileInView={"visible"}

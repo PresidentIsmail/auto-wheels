@@ -15,13 +15,19 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import { buildSearchQuery } from "@/lib/helper";
 
 interface ServiceCardProps {
   service: (typeof SERVICES_DATA)[0]["subsections"][0];
   className?: string;
+  serviceGroupTitle: string
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, serviceGroupTitle, className }) => {
+
+  // prepare search query for the services page, e.g. services?service-group=brake-sevices
+  const searchQuery = buildSearchQuery(serviceGroupTitle);
+
   return (
     <Card role="article" className={cn("max-w-[375px]", className)}>
       <CardHeader>
@@ -51,7 +57,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, className }) => {
           asChild
         >
           <Link
-            href={`/services/${service.link}`}
+            href={`/services?${searchQuery}`}
             role="button"
             aria-label="Learn more about our services"
           >

@@ -11,7 +11,7 @@ export default function Services() {
 
       {/* Services */}
       <section className="grainy">
-        <article className="master-container py-16">
+        <article className="master-container pb-16 pt-8 md:py-16">
           <ServicesAccordion />
         </article>
       </section>

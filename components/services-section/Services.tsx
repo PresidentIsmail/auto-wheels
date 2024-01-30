@@ -47,8 +47,8 @@ const Services: FC = () => {
       </header>
 
       {/* Services */}
-      {TOP_5_SERVICES.map((serviceGroup) => (
-        <ServiceCard key={serviceGroup?.title} service={serviceGroup!} />
+      {TOP_5_SERVICES.map((serviceGroup, index) => (
+        <ServiceCard serviceGroupTitle={serviceGroup.serviceGroupTitle} key={index} service={serviceGroup.service!} />
       ))}
 
       {/* View all services btn */}

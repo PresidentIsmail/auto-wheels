@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 
 import { SERVICES_DATA } from "@/data/servicesData";
+import { normalizeString, buildSearchQuery } from "@/lib/helper";
 
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
@@ -39,6 +40,9 @@ const DropDown: React.FC<DropDownProps> = ({ isDropdownVisible }) => {
   const [selectedServiceGroup, setSelectedServiceGroup] = useState<string>(
     SERVICES_DATA[0].sectionTitle,
   );
+
+  // prepare search query for the services page, e.g. services?service-group=brake-sevices
+  const searchQuery = buildSearchQuery(selectedServiceGroup);
 
   return (
     <AnimatePresence>
@@ -96,9 +100,9 @@ const DropDown: React.FC<DropDownProps> = ({ isDropdownVisible }) => {
                 {serviceGroup.subsections.map((service) => (
                   <motion.a
                     key={service.title}
-                    href={`/services/${service.link}`}
+                    href={`/services?${searchQuery}`}
                     role="menuitem"
-                    className="flex h-max w-full max-w-[250px] shrink-0 gap-2 rounded-md px-3 py-3 hover:bg-white/5 focus-visible:bg-white/5 focus-visible:outline-none focus-visible:ring-2
+                    className="flex h-max w-full max-w-[250px] shrink-0 gap-2 rounded-md px-3 py-3 hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none focus-visible:ring-2
                     focus-visible:ring-grayBorder focus-visible:ring-offset-2 focus-visible:ring-offset-white "
                   >
                     <section className="flex gap-4">
