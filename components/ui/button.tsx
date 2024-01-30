@@ -20,7 +20,7 @@ const buttonVariants = cva(
         whatsappSecondary:
           "border-[#21be5c] bg-[#111b21] hover:bg-[#111b21]/90 text-white hover:text-white focus-visible:ring-[#21be5c] focus-visible:ring-offset-black border hover:bg-[#21be5c]/40",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-white/70 underline-offset-4 hover:underline hover:text-white focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:text-white focus-visible:outline-none focus-visible:underline",
       },
       size: {
         default: "px-4 py-2",

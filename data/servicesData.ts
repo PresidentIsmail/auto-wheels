@@ -19,7 +19,7 @@ import coolingSystemIcon from "@/public/icons/coolant.png";
 
 export const SERVICES_DATA = [
   {
-    sectionId: "brake-and-wheel-services", // Unique identifier for the section tag
+    sectionId: "brake-and-wheel-services",
     sectionTitle: "Brake and Wheel Services",
     subsections: [
       {
@@ -50,7 +50,7 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "vehicle-system-diagnostics",
-    sectionTitle: "Vehicle System Diagnostics",
+    sectionTitle: "Vehicle Diagnostics",
     subsections: [
       {
         icon: ecuDiagnosticsIcon,
@@ -64,14 +64,14 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "engine-and-transmission-services",
-    sectionTitle: "Engine and Transmission Services",
+    sectionTitle: "Engine and Transmission",
     subsections: [
       {
         icon: engineServicesIcon,
         title: "Engine Services",
         services: [
           "Engine overhaul (may include piston replacement, cylinder head work, etc.)",
-          "Engine Services",
+          "General Engine Services",
         ],
         description:
           "Experience peak performance with our comprehensive Engine Services. From thorough overhauls to specialized repairs, we ensure your engine runs smoothly for a reliable ride.",
@@ -83,7 +83,7 @@ export const SERVICES_DATA = [
         services: [
           "Transmission fluid flush",
           "Transmission replacement",
-          "Transmission Services",
+          "General Transmission Services",
         ],
         description:
           "Ensure seamless gear shifts and extend the life of your vehicle with our Transmission Services. From fluid flushes to expert replacements, we keep your transmission in top-notch condition.",
@@ -93,7 +93,7 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "lights-wipers-and-battery-services",
-    sectionTitle: "Lights, Wipers, and Battery Services",
+    sectionTitle: "Lights, Wipers, and Battery",
     subsections: [
       {
         icon: batteryIcon,
@@ -101,7 +101,7 @@ export const SERVICES_DATA = [
         services: [
           "Battery replacement",
           "Battery testing",
-          "Battery Services",
+          "General Battery Services",
         ],
         description:
           "Power up your vehicle with our Battery Services. Whether it's a replacement or a test, we ensure your battery is reliable for every journey.",
@@ -112,7 +112,7 @@ export const SERVICES_DATA = [
         title: "Wipers Inspection and Sales",
         services: [
           "Windshield wiper sales and fitting",
-          "Wipers Inspection and Sales",
+          "General Wipers Inspection and Sales",
         ],
         description:
           "See clearly on the road with our Wipers Services. From inspecting headlights and taillights to fitting quality windshield wipers, we keep your vision sharp.",
@@ -123,7 +123,7 @@ export const SERVICES_DATA = [
         title: "Lights Inspection and Replacement",
         services: [
           "Headlight and taillight inspection and replacement",
-          "Lights Inspection and Replacement",
+          "General Lights Inspection and Replacement",
         ],
         description:
           "Illuminate the way with our Lights Services. From inspecting and replacing headlights to ensuring your taillights shine, we keep you visible and safe.",
@@ -133,12 +133,12 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "oil-and-maintenance-services",
-    sectionTitle: "Oil and Maintenance Services",
+    sectionTitle: "Oil and Maintenance",
     subsections: [
       {
         icon: oilServicesIcon,
         title: "Oil Services",
-        services: ["Fluid checks and top-ups", "Oil changes", "Oil Services"],
+        services: ["Fluid checks and top-ups", "Oil changes", "General Oil Services"],
         description:
           "Keep your engine running smoothly with our Oil Services. Fluid checks, top-ups, and regular changes for optimal engine health.",
         link: "#oil-and-maintenance-services",
@@ -149,7 +149,7 @@ export const SERVICES_DATA = [
         services: [
           "Manufacturer recommended services",
           "Minor and major scheduled maintenance",
-          "Scheduled Maintenance",
+          "General Scheduled Maintenance",
         ],
         description:
           "Stay ahead with Scheduled Maintenance. Manufacturer-recommended services ensure peak performance. Drive worry-free, we've got you covered.",
@@ -159,12 +159,12 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "fuel-and-suspension-services",
-    sectionTitle: "Fuel and Suspension Services",
+    sectionTitle: "Fuel and Suspension",
     subsections: [
       {
         icon: fuelSystemIcon,
         title: "Fuel System Services",
-        services: ["Fuel pump replacement", "Fuel System Services"],
+        services: ["Fuel pump replacement", "General Fuel System Services"],
         description:
           "Keep your engine running smoothly with our Fuel System Services. From fuel pump replacements to comprehensive diagnostics, we ensure your vehicle's fuel system is in top-notch condition. Trust us for reliable and efficient service that keeps your journey worry-free.",
         link: "#fuel-and-suspension-services",
@@ -175,7 +175,7 @@ export const SERVICES_DATA = [
         services: [
           "Suspension system inspection and repair",
           "Shock absorber replacement",
-          "Suspension Services",
+          "General Suspension Services",
         ],
         description:
           "Elevate your ride with expert Suspension Services. From shock replacements to precision handling, trust us for a smooth journey.",
@@ -185,7 +185,7 @@ export const SERVICES_DATA = [
   },
   {
     sectionId: "exhaust-and-cooling-services",
-    sectionTitle: "Exhaust and Cooling Services",
+    sectionTitle: "Exhaust and Cooling",
     subsections: [
       {
         icon: exhaustSystemIcon,
@@ -193,7 +193,7 @@ export const SERVICES_DATA = [
         services: [
           "Muffler replacement",
           "Exhaust system inspection and repair",
-          "Exhaust System Services",
+          "General Exhaust System Services",
         ],
         description:
           "Breathe easy with our Exhaust System Services. From muffler replacements to thorough inspections and repairs, we ensure your vehicle's exhaust system runs smoothly for a quiet and efficient ride.",
@@ -204,7 +204,7 @@ export const SERVICES_DATA = [
         title: "Cooling System Services",
         services: [
           "Radiator repair and replacement",
-          "Cooling System Services",
+          "General Cooling System Services",
         ],
         description:
           "Keep your engine cool with our expert Cooling System Services. Whether it's radiator repair or replacement, we've got your back. Trust us for a well-maintained cooling system that ensures a smooth and reliable drive.",
@@ -213,6 +213,7 @@ export const SERVICES_DATA = [
     ],
   },
 ];
+
 
 /* 
 Top 5 services:
