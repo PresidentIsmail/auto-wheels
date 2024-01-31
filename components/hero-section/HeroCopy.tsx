@@ -48,7 +48,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
 
           {/* Location */}
           <SlideInContent direction="slideLeft" delay={0.75}>
-            <Button variant={"outline"} asChild className="w-max text-xs">
+            <Button variant={"default"} asChild className="w-max text-xs">
               <Link
                 href={BUSINESS_ADDRESS_ON_GOOGLE_MAPS}
                 target="_blank"

@@ -9,14 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-brand text-white hover:bg-brand/80",
+        default:
+          "bg-brand/90 text-white border border-brand hover:bg-[#f53a33]",
         secondary: "bg-white text-black hover:bg-white/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-grayBorder bg-transparent hover:bg-accent hover:text-accent-foreground focus-visible:ring-grayBorder focus-visible:ring-offset-white",
         whatsappPrimary:
-          "border border-[#21be5c] ring-offset-background bg-[#21be5c] hover:bg-[#21be5c]/70 text-white hover:text-white focus-visible:ring-[#21be5c]",
+          "border border-[#4ae168] ring-offset-background bg-[#09b43a] hover:bg-[#26cd4d] text-white hover:text-white focus-visible:ring-[#21be5c] hover:border-[#4ae168]",
         whatsappSecondary:
           "border-[#21be5c] bg-[#111b21] hover:bg-[#111b21]/90 text-white hover:text-white focus-visible:ring-[#21be5c] focus-visible:ring-offset-black border hover:bg-[#21be5c]/40",
         ghost: "hover:bg-accent hover:text-accent-foreground",
