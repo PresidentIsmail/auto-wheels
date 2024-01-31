@@ -26,13 +26,25 @@ type AccordionTriggerProps = React.ComponentPropsWithoutRef<
   className?: string;
   children?: React.ReactNode;
   arrowType?: "down" | "right";
+  as?: React.ElementType;
 };
+
+type AccordionHeaderProps = React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Header
+> & {
+  as?: React.ElementType;
+};
+
+const AccordionHeader = ({
+  as: Component = "div",
+  ...props
+}: AccordionHeaderProps) => <Component {...props} />;
 
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
->(({ className, children, arrowType = "down", ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
+>(({ className, children, arrowType = "down", as = "h3", ...props }, ref) => (
+  <AccordionHeader as={as} className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
@@ -58,7 +70,7 @@ const AccordionTrigger = React.forwardRef<
         />
       ) : null}
     </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
+  </AccordionHeader>
 ));
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
