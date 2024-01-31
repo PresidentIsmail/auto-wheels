@@ -88,15 +88,14 @@ export const SERVICES_DATA = [
     sectionTitle: "Lights, Wipers, and Battery",
     subsections: [
       {
-        icon: batteryIcon,
-        title: "Battery Services",
+        icon: lightsIcon,
+        title: "Lights Inspection and Replacement",
         services: [
-          "Battery replacement",
-          "Battery testing",
-          "General Battery Services",
+          "Headlight and taillight inspection and replacement",
+          "General Lights Inspection and Replacement",
         ],
         description:
-          "Power up your vehicle with our Battery Services. Whether it's a replacement or a test, we ensure your battery is reliable for every journey.",
+          "Illuminate the way with our Lights Services. From inspecting and replacing headlights to ensuring your taillights shine, we keep you visible and safe.",
       },
       {
         icon: wipersIcon,
@@ -109,14 +108,15 @@ export const SERVICES_DATA = [
           "See clearly on the road with our Wipers Services. From inspecting headlights and taillights to fitting quality windshield wipers, we keep your vision sharp.",
       },
       {
-        icon: lightsIcon,
-        title: "Lights Inspection and Replacement",
+        icon: batteryIcon,
+        title: "Battery Services",
         services: [
-          "Headlight and taillight inspection and replacement",
-          "General Lights Inspection and Replacement",
+          "Battery replacement",
+          "Battery testing",
+          "General Battery Services",
         ],
         description:
-          "Illuminate the way with our Lights Services. From inspecting and replacing headlights to ensuring your taillights shine, we keep you visible and safe.",
+          "Power up your vehicle with our Battery Services. Whether it's a replacement or a test, we ensure your battery is reliable for every journey.",
       },
     ],
   },
