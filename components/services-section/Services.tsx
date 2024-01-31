@@ -17,7 +17,7 @@ const Services: FC = () => {
       className="master-container grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:py-[72px] xl:grid-cols-3"
     >
       {/* Heading */}
-      <header className="flex w-full flex-col gap-y-6 md:gap-y-8">
+      <header className="flex w-full flex-col gap-y-3 lg:gap-y-6 md:gap-y-8">
         {/* subtitle */}
         <AnimatedText
           text="Services"
@@ -29,14 +29,14 @@ const Services: FC = () => {
         <AnimatedText
           text="Explore our auto repair services in detail"
           element="h2"
-          className="text-3xl font-bold tracking-tight text-[#222020] md:text-4xl lg:text-5xl"
+          className="text-2xl font-black tracking-tight text-[#222020] md:text-3xl lg:text-4xl"
           duration={0.05}
         />
 
         {/* View all services btn */}
         <Button
           variant={"outline"}
-          className="group hidden w-max rounded-md border-none bg-brand capitalize text-white ring-1 ring-brand hover:bg-[#ff0800] hover:text-white sm:flex"
+          className="group flex w-max rounded-md border-none bg-brand capitalize text-white ring-1 ring-brand hover:bg-[#ff0800] hover:text-white"
           asChild
         >
           <Link href={"/services"} role="link" aria-label="View all services">
@@ -48,20 +48,12 @@ const Services: FC = () => {
 
       {/* Services */}
       {TOP_5_SERVICES.map((serviceGroup, index) => (
-        <ServiceCard serviceGroupTitle={serviceGroup.serviceGroupTitle} key={index} service={serviceGroup.service!} />
+        <ServiceCard
+          serviceGroupTitle={serviceGroup.serviceGroupTitle}
+          key={index}
+          service={serviceGroup.service!}
+        />
       ))}
-
-      {/* View all services btn */}
-      <Button
-        variant={"outline"}
-        className="group flex w-full rounded-md border-none bg-brand capitalize ring-1 ring-brand hover:bg-[#ff0800] text-white hover:text-white sm:hidden"
-        asChild
-      >
-        <Link href={"/services"} role="link" aria-label="View all services">
-          View all services
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:-rotate-45 group-hover:scale-125" />
-        </Link>
-      </Button>
     </section>
   );
 };

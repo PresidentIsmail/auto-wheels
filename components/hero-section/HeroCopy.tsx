@@ -34,28 +34,30 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
           className="text-[32px] font-extrabold leading-tight text-black md:text-5xl xl:text-6xl"
         />
 
-        {/* Buttons */}
+        {/* Buttons Contact */}
         <div className="flex gap-x-4 ">
-          {/* Contact */}
           {/* Whatsapp */}
           <SlideInContent direction="slideRight" delay={0.5}>
-            <WhatsappButton aria-label="WhatsApp Us" className="w-max">
-              WhatsApp Us
+            <WhatsappButton aria-label="WhatsApp" className="w-max text-xs">
+              WhatsApp{" "}
+              <span className="hidden md:inline-block" aria-hidden>
+                Us
+              </span>
             </WhatsappButton>
           </SlideInContent>
 
           {/* Location */}
           <SlideInContent direction="slideLeft" delay={0.75}>
-            <Button variant={"outline"} asChild className="w-max">
+            <Button variant={"outline"} asChild className="w-max text-xs">
               <Link
                 href={BUSINESS_ADDRESS_ON_GOOGLE_MAPS}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Find Us"
+                aria-label="Visit Our Workshop"
                 className="flex gap-x-2"
               >
                 <MapPin className="h-4 w-4 lg:h-5 lg:w-5" />
-                Find Us
+                Visit Our Workshop
               </Link>
             </Button>
           </SlideInContent>
