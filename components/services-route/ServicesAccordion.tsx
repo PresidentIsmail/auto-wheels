@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { SERVICES_DATA, sectionTitleExists } from "@/data/servicesData";
@@ -18,19 +18,16 @@ const ServicesAccordion: React.FC = () => {
     ? (searchParams as string)
     : normalizeString(SERVICES_DATA[0].sectionTitle);
 
-  // rearrange the with the openAccordionItem as the first in the array
-  // find the item that needs to be first
-  const openItemObject = SERVICES_DATA.find(
-    (item) => normalizeString(item.sectionTitle) === openAccordionItemId,
-  )!;
+  useEffect(() => {
+    const accordionItem = document.getElementById(openAccordionItemId);
 
-  // filter out the openItem from the original array
-  const remainingItems = SERVICES_DATA.filter(
-    (item) => normalizeString(item.sectionTitle) !== openAccordionItemId,
-  );
-
-  // combine the openItem and the remainingItems to get the rearranged array
-  const rearrangedServicesData = [openItemObject, ...remainingItems];
+    if (accordionItem) {
+      accordionItem.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [openAccordionItemId]);
 
   return (
     <Accordion
@@ -41,7 +38,7 @@ const ServicesAccordion: React.FC = () => {
       collapsible
       className="w-full space-y-2 lg:space-y-4"
     >
-      {rearrangedServicesData.map((serviceGroup, index) => (
+      {SERVICES_DATA.map((serviceGroup, index) => (
         <FadeInContent
           id={normalizeString(serviceGroup.sectionTitle)}
           key={serviceGroup.sectionTitle}
