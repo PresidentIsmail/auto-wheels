@@ -15,8 +15,9 @@ export default function Home() {
   return (
     <React.Fragment>
       <Hero />
-      <Statistics />
-      <TireSelection />
+      {/* not displaying tire selection and stats anymore */}
+      {/* <Statistics />
+      <TireSelection /> */}
       <InfiniteSlider>
         <BrandLogoDisplay />
       </InfiniteSlider>
