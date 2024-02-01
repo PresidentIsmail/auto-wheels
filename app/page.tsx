@@ -1,8 +1,8 @@
 import React from "react";
 
 import Hero from "@/components/hero-section/Hero";
-import Statistics from "@/components/statistic-section/Statistics";
-import TireSelection from "@/components/tire-selection-section/TireSelection";
+// import Statistics from "@/components/statistic-section/Statistics";
+// import TireSelection from "@/components/tire-selection-section/TireSelection";
 import Services from "@/components/services-section/Services";
 import Promotions from "@/components/promotions-section/Promotions";
 import Testimonials from "@/components/testimonials-section/Testimonial";
