@@ -22,7 +22,7 @@ const FooterItem: React.FC<FooterItemProps> = ({ item }) => {
         {item.links.map((link, index) => (
           <li
             key={index}
-            className="w-max text-sm font-normal tracking-wide text-white/80 underline-offset-2 transition hover:text-white hover:underline"
+            className="w-max text-sm font-normal tracking-wide text-[#E6E6E6] underline-offset-2 transition hover:text-white hover:underline"
           >
             <Link href={"#"}>{link}</Link>
           </li>

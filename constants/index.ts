@@ -137,7 +137,7 @@ export const FOOTER_ITEMS: FooterItem[] = [
     links: ["tyres", "batteries", "wipers"],
   },
   {
-    title: "Popular Services",
+    title: "Services",
     links: ["suspension", "exhaust", "wheel alignment"],
   },
   {

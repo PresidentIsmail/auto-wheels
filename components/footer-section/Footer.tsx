@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
         />
 
         {/* Footer Items */}
-        <ul className="relative flex w-full flex-col gap-y-4 sm:grid sm:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-row lg:justify-between">
+        <ul className="relative capitalize flex w-full flex-col gap-y-4 sm:grid sm:grid-cols-2 lg:flex lg:max-w-[65%] lg:flex-row lg:justify-between">
           {FOOTER_ITEMS.map((item) => (
             <FooterItem key={item.title} item={item} />
           ))}
