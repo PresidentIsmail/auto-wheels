@@ -36,18 +36,18 @@ const dropDownItemVariants: Variants = {
 const serviceGroupSubsectionVariants: Variants = {
   hidden: {
     opacity: 0,
-    x: -50,
-    transition: { ease: "easeInOut", duration: 0.2 },
+    y: -20,
+    transition: { ease: "easeInOut", duration: 0.1 },
   },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { ease: "easeInOut", duration: 0.2 },
+    y: 0,
+    transition: { ease: "easeInOut", duration: 0.1 },
   },
   exit: {
     opacity: 0,
-    x: 50,
-    transition: { ease: "easeInOut", duration: 0.2 },
+    y: 20,
+    transition: { ease: "easeInOut", duration: 0.1 },
   },
 };
 
