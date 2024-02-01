@@ -11,6 +11,7 @@ const ANIMATION_DURATION = 0.05;
 const Contact: React.FC = () => {
   return (
     <section
+    id="contact"
       role="region"
       aria-label="Contact section with map and contact details"
       className=" pb-1 pt-16 lg:pt-[72px]"

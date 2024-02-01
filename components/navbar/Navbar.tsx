@@ -14,6 +14,7 @@ import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";
 import HeaderInformation from "../ui/HeaderInformation";
 import WhatsappButton from "../ui/WhatsappButton";
+import ContactButton from "./ContactButton";
 
 const MobileNavItems = Dynamic(() => import("./mobile-nav/MobileNavItems"), {
   ssr: false,
@@ -87,21 +88,7 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <WhatsappButton
-            aria-label="WhatsApp Us"
-            variant="whatsappSecondary"
-            className="hidden sm:flex lg:hidden"
-          >
-            WhatsApp Us
-          </WhatsappButton>
-
-          <WhatsappButton
-            aria-label="Chat On WhatsApp"
-            variant="whatsappSecondary"
-            className="hidden lg:flex xl:text-sm"
-          >
-            Chat On WhatsApp{" "}
-          </WhatsappButton>
+          <ContactButton />
         </div>
       </div>
       <Separator className="bg-gray-500" />
