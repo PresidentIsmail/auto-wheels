@@ -27,15 +27,6 @@ const Hero: React.FC = () => {
         />
 
         {/* Subtitle */}
-        {/* <SlideInContent
-          direction="slideUp"
-          delay={"Service Hub".length * ANIMATION_DURATION + 0.25}
-        >
-          <p className="mt-4 max-w-prose  text-sm font-medium tracking-wide text-white/90 md:max-w-[30%] md:tracking-wider">
-            Discover a Spectrum of Services Tailored for Your Vehicle&apos;s
-            Peak Performance.
-          </p>
-        </SlideInContent> */}
         <AnimatedText
           element="p"
           text="Discover a Spectrum of Services Tailored for Your Vehicle's Peak Performance."

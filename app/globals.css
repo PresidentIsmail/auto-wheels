@@ -44,10 +44,10 @@
 
     /* hero-desktop-height that is 80vh - (--navbar-desktop-height + --header-info-height) */
     --hero-desktop-height: calc(
-      85vh - calc(var(--navbar-desktop-height) + var(--header-info-height))
+      90vh - calc(var(--navbar-desktop-height) + var(--header-info-height))
     );
     --hero-mobile-height: calc(
-      90vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
+      80vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
     );
   }
 

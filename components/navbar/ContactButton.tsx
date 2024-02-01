@@ -7,8 +7,6 @@ import { Phone } from "lucide-react";
 const ContactButton: React.FC = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <Link
       href={`${pathname}#contact`}
