@@ -17,14 +17,22 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { buildSearchQuery } from "@/lib/helper";
 
+// type that gives an option to display the description or to display the list of serivices
+type DisplayOption = "description" | "services";
+
 interface ServiceCardProps {
   service: (typeof SERVICES_DATA)[0]["subsections"][0];
   className?: string;
-  serviceGroupTitle: string
+  serviceGroupTitle: string;
+  displayOption?: DisplayOption;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service, serviceGroupTitle, className }) => {
-
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  service,
+  serviceGroupTitle,
+  displayOption = "description",
+  className,
+}) => {
   // prepare search query for the services page, e.g. services?service-group=brake-sevices
   const searchQuery = buildSearchQuery(serviceGroupTitle);
 
@@ -46,7 +54,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, serviceGroupTitle, c
         {/* title */}
         <CardTitle className="capitalize">{service.title}</CardTitle>
         {/* description */}
-        <CardDescription>{service.description}</CardDescription>
+        {displayOption === "description" ? (
+          <CardDescription>{service.description}</CardDescription>
+        ) : (
+          <ul className="flex flex-col gap-y-2">
+            {service.services.map((service, index) => (
+              <li key={index} className="text-sm text-muted-foreground">
+                &ndash; {service}
+              </li>
+            ))}
+          </ul>
+        )}
       </CardContent>
 
       <CardFooter>
