@@ -20,13 +20,13 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
   return (
     <section
       className={cn(
-        "mt-4 flex flex-col items-start pb-4  lg:justify-around ",
+        "mt-4 flex flex-col items-start justify-center gap-y-10 pb-4 lg:gap-y-16",
         className,
       )}
       {...props}
     >
       {/* Heading and Buttons */}
-      <div className="flex max-w-prose flex-col gap-y-6 lg:gap-y-12">
+      <div className="flex max-w-prose flex-col gap-y-6 lg:gap-y-8">
         {/* Heading */}
         <AnimatedText
           element="h1"
@@ -65,7 +65,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
       </div>
 
       {/* Description and Ratings*/}
-      <div className="mt-12 flex max-w-prose flex-col gap-y-2 lg:mt-0 lg:gap-y-4">
+      <div className="flex max-w-prose flex-col gap-y-2 lg:gap-y-4">
         {/* Description */}
         <SlideInContent direction="slideRight" delay={1}>
           <p className="text-sm font-medium text-[#323236] md:text-base">
