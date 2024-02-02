@@ -52,6 +52,7 @@ const Services: FC = () => {
           serviceGroupTitle={serviceGroup.serviceGroupTitle}
           key={index}
           service={serviceGroup.service!}
+          displayOption="services"
         />
       ))}
     </section>
