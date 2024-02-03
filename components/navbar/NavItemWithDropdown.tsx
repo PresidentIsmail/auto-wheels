@@ -53,7 +53,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
       <button
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
-        onMouseEnter={handleMouseEnter}
+        // onMouseEnter={handleMouseEnter}
         onClick={toggleDropdownVisibility}
       >
         <span className="flex items-center gap-1 ">
