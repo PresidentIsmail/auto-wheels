@@ -47,7 +47,7 @@
       90vh - calc(var(--navbar-desktop-height) + var(--header-info-height))
     );
     --hero-mobile-height: calc(
-      80vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
+      90vh - calc(var(--navbar-mobile-height) + var(--header-info-height))
     );
   }
 
