@@ -63,7 +63,7 @@ export default function RootLayout({
           className="
         relative 
         mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))]
-         w-full flex-1 overflow-x-hidden bg-white
+         flex w-full flex-1 flex-col overflow-x-hidden bg-white
          text-black
          md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
       "
