@@ -1,5 +1,3 @@
-
-
 import { NAV_ITEMS } from "@/constants";
 
 import NavItem from "./NavItem";

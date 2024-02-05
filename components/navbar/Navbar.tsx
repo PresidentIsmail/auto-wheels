@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Dynamic from "next/dynamic";
 import {
   Variants,
   motion,
@@ -13,12 +12,8 @@ import {
 import { Separator } from "../ui/separator";
 import NavItems from "./NavItems";
 import HeaderInformation from "../ui/HeaderInformation";
-import WhatsappButton from "../ui/WhatsappButton";
 import ContactButton from "./ContactButton";
-
-const MobileNavItems = Dynamic(() => import("./mobile-nav/MobileNavItems"), {
-  ssr: false,
-});
+import MobileNavItems from "./mobile-nav/MobileNavItems";
 
 const navbarVariants: Variants = {
   hidden: {
