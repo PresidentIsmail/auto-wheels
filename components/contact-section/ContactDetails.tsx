@@ -5,8 +5,6 @@ import { contactInfo } from "@/data/contactData";
 
 import { Card, CardHeader } from "@/components/ui/card";
 
-const ANIMATION_DURATION = 0.05;
-
 const ContactDetails: React.FC = () => {
   return (
     <article

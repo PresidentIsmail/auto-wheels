@@ -4,14 +4,13 @@ import dynamic from "next/dynamic";
 
 import FadeInContent from "../FadeInContent";
 import ContactDetails from "./ContactDetails";
+import HackerEffect from "../HackerEffect";
 const MapDisplay = dynamic(() => import("./MapDisplay"), { ssr: false });
-
-const ANIMATION_DURATION = 0.05;
 
 const Contact: React.FC = () => {
   return (
     <section
-    id="contact"
+      id="contact"
       role="region"
       aria-label="Contact section with map and contact details"
       className=" pb-1 pt-16 lg:pt-[72px]"
@@ -29,28 +28,26 @@ const Contact: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="master-container relative z-10 flex h-full w-full flex-col items-start justify-center gap-y-4 lg:items-center lg:text-center">
+    <header className="master-container relative z-10 flex h-full w-full flex-col items-start justify-center gap-y-3 lg:items-center lg:text-center">
       {/* subtitle */}
       <AnimatedText
         text="contact"
         element="h3"
-        className=" text-xs font-bold uppercase text-[#92959a] lg:text-sm"
-        duration={ANIMATION_DURATION}
+        className=" text-xs font-medium uppercase text-[#92959a] lg:text-sm"
       />
       <div className="flex flex-col gap-y-2">
         {/* title */}
-        <AnimatedText
-          text="Get in Touch."
-          element="h2"
+        <HackerEffect
+          tag="h2"
+          displayText="Get in Touch."
           className="justify-start text-pretty text-2xl font-bold tracking-tight text-black sm:text-3xl lg:justify-center lg:text-4xl"
-          duration={ANIMATION_DURATION}
         />
+
         {/* description */}
         <AnimatedText
           text="Need assistance? Feel free to reach out to us."
           element="p"
           className="max-w-prose justify-start text-xs font-medium uppercase tracking-wide text-black/70 lg:justify-center lg:text-center lg:text-sm"
-          duration={ANIMATION_DURATION}
         />
       </div>
     </header>

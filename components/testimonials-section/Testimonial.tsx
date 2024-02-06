@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import quotes from "@/public/images/quotes.png";
 import AnimatedText from "../AnimatedText";
+import HackerEffect from "../HackerEffect";
 import TestimonialList from "./TestimonialList";
 
 const ANIMATION_DURATION = 0.05;
@@ -25,22 +26,22 @@ const Testimonials: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="relative z-10 mt-12 flex h-max flex-col  gap-y-6 md:gap-y-8 lg:mt-[56px] lg:w-[40%] xl:w-[50%]">
+    <header className="relative z-10 mt-12 flex h-max flex-col gap-y-4 md:gap-y-6 lg:mt-[56px] lg:w-[40%] xl:w-[50%]">
       {/* subtitle */}
       <AnimatedText
         text="testimonials"
         element="h3"
-        className=" text-xs font-bold uppercase text-[#92959a] md:text-sm"
+        className=" text-xs font-medium uppercase text-[#92959a] md:text-sm"
         duration={ANIMATION_DURATION}
       />
       <div className="flex flex-col gap-y-4">
         {/* title */}
-        <AnimatedText
-          text="Building Lasting Relationships."
-          element="h2"
-          className="text-2xl font-bold tracking-tight text-[#222020] sm:text-3xl md:text-4xl"
-          duration={ANIMATION_DURATION}
+        <HackerEffect
+          tag="h2"
+          displayText="Building Lasting Relationships."
+          className="text-2xl font-bold tracking-tight text-[#222020] sm:text-3xl lg:text-4xl"
         />
+
         {/* description */}
         <AnimatedText
           text="Read what our customers have to say about us."

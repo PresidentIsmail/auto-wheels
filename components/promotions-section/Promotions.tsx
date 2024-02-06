@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import AnimatedText from "../AnimatedText";
 import PromoCard from "./PromoCard";
 import Carousel from "../carousel/Carousel";
+import HackerEffect from "../HackerEffect";
 
 const ANIMATION_DURATION = 0.05;
 
@@ -33,24 +34,24 @@ const Promotions: React.FC = () => {
       {/* Content */}
       <div className="z-10 shrink-0 text-center md:w-1/2 md:ps-8 md:text-start">
         {/* Heading */}
-        <header className="master-container relative z-10 flex flex-col items-center gap-y-6 md:items-start md:gap-y-8">
+        <header className="master-container relative z-10 flex flex-col items-center gap-y-4 md:items-start md:gap-y-4">
           {/* subtitle */}
           <AnimatedText
             text="promotions"
             element="h3"
-            className=" text-xs font-bold uppercase text-[#92959a] md:text-sm"
+            className=" text-xs font-medium uppercase text-[#92959a] md:text-sm"
             duration={ANIMATION_DURATION}
           />
           <div className="flex flex-col gap-y-4">
             {/* title */}
-            <AnimatedText
-              text="Special offers and promotions exclusively for you."
-              element="h2"
-              className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl"
-              duration={ANIMATION_DURATION}
+            <HackerEffect
+              tag="h2"
+              displayText="Special offers and promotions exclusively for you."
+              className="text-3xl font-bold tracking-tight text-white md:text-3xl lg:text-4xl"
             />
+
             {/* description */}
-            <p className="max-w-prose text-sm font-medium tracking-wide text-white/90">
+            <p className="max-w-prose text-sm tracking-wide text-white/90">
               Discover our exclusive specials and deals, seasonal offers, and
               bundle packages available to keep your car running smoothly all
               year round.
@@ -60,7 +61,7 @@ const Promotions: React.FC = () => {
           {/* View all promos btn */}
           <Button
             variant={"outline"}
-            className="group hidden w-max rounded-md border-white text-white hover:bg-white/10 hover:text-white md:flex"
+            className="group hidden mt-2 w-max rounded-md border-white text-white hover:bg-white/10 hover:text-white md:flex"
             asChild
           >
             <Link href={"#"} role="button" aria-label="View all promotions">

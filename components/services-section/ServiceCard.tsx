@@ -33,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   displayOption = "description",
   className,
 }) => {
-  // prepare search query for the services page, e.g. services?service-group=brake-sevices
+  // prepare search query for the services page, e.g. services?service-group=brake-sevices. used to determine which accordion item to open
   const searchQuery = buildSearchQuery(serviceGroupTitle);
 
   return (
@@ -50,6 +50,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           sizes="64px"
         />
       </CardHeader>
+      
       <CardContent className="flex flex-col gap-y-3">
         {/* title */}
         <CardTitle className="capitalize">{service.title}</CardTitle>

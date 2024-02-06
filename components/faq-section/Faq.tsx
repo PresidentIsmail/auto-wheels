@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import questionMark from "@/public/images/question-mark.png";
 import AnimatedText from "../AnimatedText";
+import HackerEffect from "../HackerEffect";
 import FaqList from "./FaqList";
 
 const ANIMATION_DURATION = 0.05;
@@ -29,27 +30,33 @@ const Faq: React.FC = () => {
 
 const Heading: React.FC = () => {
   return (
-    <header className="relative z-10 flex h-full flex-col  gap-y-6 lg:w-[40%] lg:gap-y-8">
+    <header className="relative z-10 flex h-full flex-col gap-y-2 lg:w-[40%] lg:gap-y-4">
       {/* subtitle */}
       <AnimatedText
         text="faq"
         element="h3"
-        className=" text-xs font-bold uppercase text-[#92959a] lg:text-sm"
+        className=" text-xs font-medium uppercase text-[#92959a] lg:text-sm"
         duration={ANIMATION_DURATION}
       />
       <div className="flex flex-col gap-y-4">
         {/* title */}
-        <AnimatedText
+        {/* <AnimatedText
           text="Frequently Asked Questions."
           element="h2"
           className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
           duration={ANIMATION_DURATION}
+        /> */}
+        <HackerEffect
+          tag="h2"
+          displayText="Frequently Asked Questions."
+          className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
         />
+
         {/* description */}
         <AnimatedText
           text="Find answers to common questions about our auto repair services."
           element="p"
-          className="max-w-prose text-sm font-medium tracking-wide text-white/80"
+          className="max-w-prose text-sm tracking-wide text-white/80"
           duration={ANIMATION_DURATION}
         />
 

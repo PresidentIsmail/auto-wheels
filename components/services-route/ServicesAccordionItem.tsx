@@ -28,6 +28,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
         className,
       )}
     >
+      {/* button to open accordian */}
       <AccordionTrigger
         as={"h2"}
         arrowType="right"
@@ -37,6 +38,8 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
       >
         {serviceGroup.sectionTitle}
       </AccordionTrigger>
+      
+      {/* content of the accordion */}
       <AccordionContent className="text-normal flex flex-wrap justify-center gap-8 px-0 py-6 text-base sm:justify-start md:flex-row lg:py-8">
         {/* Service cards of services in the group */}
         {serviceGroup.subsections.map((service) => (
