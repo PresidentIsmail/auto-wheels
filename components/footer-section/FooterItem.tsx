@@ -19,14 +19,18 @@ const FooterItem: React.FC<FooterItemProps> = ({ item }) => {
         duration={0.05}
       />
       <ul className="flex flex-col gap-y-1">
-        {item.links.map((link, index) => (
-          <li
-            key={index}
-            className="w-max text-sm font-normal tracking-wide text-[#E6E6E6] underline-offset-2 transition hover:text-white hover:underline"
-          >
-            <Link href={"#"}>{link}</Link>
-          </li>
-        ))}
+        {item.links.map((link, index) => {
+          const href = "/" + link.toLowerCase().replace(" ", "-");
+
+          return (
+            <li
+              key={index}
+              className="w-max text-sm font-normal tracking-wide text-[#E6E6E6] underline-offset-2 transition hover:text-white hover:underline"
+            >
+              <Link href={href}>{link}</Link>
+            </li>
+          );
+        })}
       </ul>
     </li>
   );
