@@ -7,9 +7,9 @@ export const contactInfo = [
   {
     id: generateId(),
     type: "Phone & WhatsApp",
-    value: ["018 381 7451"],
+    value: ["Tel: 018 381 7451"],
     Icon: Phone,
-    link: generateWhatsAppLink(),
+    link: null,
   },
   {
     id: generateId(),
