@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           <MobileNavItems />
 
           {/* Contact */}
-          <ContactButton />
+          {/* <ContactButton /> */}
         </div>
       </div>
       <Separator className="bg-gray-500" />

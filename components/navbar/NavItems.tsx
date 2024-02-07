@@ -9,7 +9,7 @@ const NavItems: React.FC = () => {
 
   return (
     <ul
-      className="hidden gap-x-0 text-sm text-white md:flex lg:text-base items-center"
+      className="hidden gap-x-0 text-sm text-white md:flex lg:text-base items-center h-full"
     >
       {NAV_ITEMS.map((item) => {
         if (item.label === "Services") {

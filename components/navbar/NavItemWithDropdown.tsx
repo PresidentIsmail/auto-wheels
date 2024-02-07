@@ -6,11 +6,12 @@ import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/constants";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
+import { useOnMouseLeave } from "@/hooks/useOnMouseLeave";
 
 import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
-// import DropDown from "./DropDown";
-const DropDown = dynamic(() => import("./DropDown"), { ssr: false });
+import DropDown from "./DropDown";
+// const DropDown = dynamic(() => import("./DropDown"), { ssr: false });
 
 interface NavItemWithDropDownProps {
   navItem: (typeof NAV_ITEMS)[number];
@@ -20,6 +21,8 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
   navItem,
 }) => {
   const navRef = useRef<HTMLLIElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
   const [isDropdownVisible, setDropdownVisibility] = useState(false);
 
   // Simplified the toggle function
@@ -44,22 +47,23 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
     }
   };
 
-  useOnClickOutside([navRef], () => {
+  useOnMouseLeave([navRef], () => {
     if (isDropdownVisible) {
       toggleDropdownVisibility();
     }
   });
 
   return (
-    <li ref={navRef}>
+    <li ref={navRef} className="grid h-full items-center">
       <Button
+        ref={buttonRef}
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
-        // onMouseEnter={handleMouseEnter}
-        onClick={toggleDropdownVisibility}
+        onMouseEnter={handleMouseEnter}
+        // onClick={toggleDropdownVisibility}
         variant="ghost"
         className={cn(
-          "rounded-sm text-sm hover:bg-white/10 hover:text-white focus-visible:bg-white/10 xl:text-sm",
+          "h-9 text-sm text-white/70 hover:bg-white/10 hover:text-white focus-visible:bg-white/10",
           isDropdownVisible ? "bg-white/10 text-white" : "",
         )}
       >
@@ -73,7 +77,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
         </span>
       </Button>
 
-      <DropDown isDropdownVisible={isDropdownVisible} />
+      <DropDown ref={dropDownRef} isDropdownVisible={isDropdownVisible} />
     </li>
   );
 };

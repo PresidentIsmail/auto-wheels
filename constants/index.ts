@@ -123,6 +123,10 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Services",
     href: "#",
   },
+  {
+    label: "Contact Us",
+    href: "/contact-us",
+  },
 ];
 
 // =========== FOOTER ================
