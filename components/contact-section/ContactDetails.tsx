@@ -4,6 +4,7 @@ import Link from "next/link";
 import { contactInfo } from "@/data/contactData";
 
 import { Card, CardHeader } from "@/components/ui/card";
+import WhatsappButton from "../ui/WhatsappButton";
 
 const ContactDetails: React.FC = () => {
   return (
@@ -76,6 +77,23 @@ const CardContent: React.FC<{ info: (typeof contactInfo)[0] }> = ({ info }) => {
             {text}
           </p>
         ))}
+
+        {/* whatsapp button, if there is "phone" in the info.type */}
+        {info.type.toLowerCase().includes("phone") && (
+          <div className="mt-2 space-y-2">
+             <p className="text-sm text-muted-foreground">
+              Tap below to WhatsApp us (if installed), or message us at{" "}
+              <span className="text-nowrap underline underline-offset-2">
+                018-381-5505.
+              </span>
+            </p>
+            <WhatsappButton >
+            <span className="text-xs font-medium text-white">
+              Chat on WhatsApp
+            </span>
+          </WhatsappButton>
+          </div>
+        )}
       </div>
     </CardHeader>
   );
