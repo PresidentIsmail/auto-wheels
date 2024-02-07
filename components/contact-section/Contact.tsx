@@ -1,11 +1,19 @@
 import React from "react";
 import AnimatedText from "../AnimatedText";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 import FadeInContent from "../FadeInContent";
 import ContactDetails from "./ContactDetails";
 import HackerEffect from "../HackerEffect";
-const MapDisplay = dynamic(() => import("./MapDisplay"), { ssr: false });
+const MapDisplay = dynamic(() => import("./MapDisplay"), {
+  ssr: false,
+  loading: () => (
+    <p className="flex items-center justify-center text-lg font-bold text-black">
+      Loading...
+    </p>
+  ),
+});
 
 const Contact: React.FC = () => {
   return (
@@ -19,6 +27,13 @@ const Contact: React.FC = () => {
       <div className="relative mt-12  gap-x-0  gap-y-8  overflow-hidden lg:mt-14 lg:min-h-[400px] ">
         <ContactDetails />
         <FadeInContent className="right-0 top-0 h-full w-full lg:absolute lg:w-[60%]">
+          <Suspense
+            fallback={
+              <p className="flex justify-center text-lg font-bold text-black">
+                Loading...
+              </p>
+            }
+          ></Suspense>
           <MapDisplay />
         </FadeInContent>
       </div>
