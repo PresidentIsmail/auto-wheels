@@ -49,8 +49,9 @@ const Services: FC = () => {
       {/* Services */}
       {TOP_5_SERVICES.map((serviceGroup, index) => (
         <ServiceCard
-          serviceGroupTitle={serviceGroup.serviceGroupTitle}
           key={index}
+          openModal={false}
+          serviceGroupTitle={serviceGroup.serviceGroupTitle}
           service={serviceGroup.service!}
           displayOption="services"
         />

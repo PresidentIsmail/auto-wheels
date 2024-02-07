@@ -21,6 +21,7 @@ const HackerEffect: React.FC<HackerEffectProps> = ({
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const isElementInView = useInView(paragraphRef, {
     amount: "all",
+    once: true,
   });
 
   const animateText = useCallback(() => {

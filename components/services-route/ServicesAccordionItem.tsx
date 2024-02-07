@@ -45,6 +45,7 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
         {serviceGroup.subsections.map((service) => (
           <ServiceCard
             key={service.title}
+            openModal={true}
             serviceGroupTitle={serviceGroup.sectionTitle}
             service={service}
             className="max-w-[350px] shrink-0 bg-white/50"
