@@ -24,17 +24,20 @@ const Contact: React.FC = () => {
       className=" pb-1 pt-16 lg:pt-[72px]"
     >
       <Heading />
-      <div className="relative mt-12  gap-x-0  gap-y-8  overflow-hidden lg:mt-14 lg:min-h-[400px] ">
+      <div className="relative mt-12 flex w-full flex-col gap-y-8 overflow-hidden  lg:mt-14 lg:gap-y-12">
         <ContactDetails />
-        <FadeInContent className="right-0 top-0 h-full w-full lg:absolute lg:w-[60%]">
+
+        {/* reduce CLS win min-h */}
+        <FadeInContent className="min-h-[400px]">
           <Suspense
             fallback={
               <p className="flex justify-center text-lg font-bold text-black">
                 Loading...
               </p>
             }
-          ></Suspense>
-          <MapDisplay />
+          >
+            <MapDisplay />
+          </Suspense>
         </FadeInContent>
       </div>
     </section>

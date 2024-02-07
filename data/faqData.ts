@@ -29,6 +29,6 @@ export const faqData = [
     id: generateId(),
     question: "How can I request an appointment for service?",
     answer:
-      "Booking an appointment is easy! You can call our service center during business hours, use our online appointment scheduler on our website, or visit us in person. We're here to make servicing your vehicle convenient for you.",
+      "Booking an appointment is easy! You can call our service center during business hours, or visit us in person. We're here to make servicing your vehicle convenient for you.",
   },
 ];

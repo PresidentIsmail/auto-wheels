@@ -2,23 +2,21 @@ import React from "react";
 import Link from "next/link";
 
 import { contactInfo } from "@/data/contactData";
+import { cn } from "@/lib/utils";
 
 import { Card, CardHeader } from "@/components/ui/card";
 import WhatsappButton from "../ui/WhatsappButton";
+import ContactButton from "../ui/ContactButton";
 
 const ContactDetails: React.FC = () => {
   return (
     <article
       aria-label="Contact Details"
-      className="master-container mb-8 grid min-h-[400px] w-full justify-between gap-x-4 gap-y-4 sm:grid-cols-2 lg:col-span-5 lg:mb-0 lg:grid-cols-1"
+      className="master-container mb-8 grid w-full justify-between gap-x-4 gap-y-4 md:grid-cols-2 lg:mb-0 2xl:grid-cols-3"
     >
-      {contactInfo.map((info, index) =>
-        info.link ? (
-          <LinkCard key={info.id} info={info} index={index} />
-        ) : (
-          <NormalCard key={index} info={info} index={index} />
-        ),
-      )}
+      {contactInfo.map((info, index) => (
+        <NormalCard key={index} info={info} index={index} />
+      ))}
     </article>
   );
 };
@@ -26,36 +24,25 @@ const ContactDetails: React.FC = () => {
 type ContactInfo = {
   info: (typeof contactInfo)[0];
   index: number;
+  className?: string;
 };
 
-const NormalCard: React.FC<ContactInfo> = ({ info, index }) => {
+const NormalCard: React.FC<ContactInfo> = ({ info, index, className }) => {
   return (
     <Card
-      className={`${
-        index === contactInfo.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""
-      }  lg:max-w-[30%]`}
+      className={cn("", className, {
+        "md:col-span-2 2xl:col-span-1": index === contactInfo.length - 1,
+      })}
     >
       <CardContent info={info} />
     </Card>
   );
 };
 
-const LinkCard: React.FC<ContactInfo> = ({ info, index }) => {
-  return (
-    <Link
-      href={info.link as string}
-      className={`${
-        index === contactInfo.length - 1 ? "sm:col-span-2 lg:col-span-1" : ""
-      }  rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow duration-200 ease-in-out hover:shadow-lg lg:max-w-[30%]`}
-    >
-      <CardContent info={info} />
-    </Link>
-  );
-};
 
 const CardContent: React.FC<{ info: (typeof contactInfo)[0] }> = ({ info }) => {
   return (
-    <CardHeader className="flex flex-row gap-x-4 space-y-0 p-4">
+    <CardHeader className="flex h-full flex-row gap-x-4 space-y-0 p-4">
       {/* icon */}
       <info.Icon
         aria-hidden="true"
@@ -64,35 +51,39 @@ const CardContent: React.FC<{ info: (typeof contactInfo)[0] }> = ({ info }) => {
         className="h-6 w-6 shrink-0 translate-y-[2px] text-brand"
       />
 
-      <div className="flex flex-col gap-y-2">
+      <div className="relative flex flex-col gap-y-2">
         {/* type (eg: Phone) */}
-        <h3 className="text-lg  font-bold uppercase text-black">{info.type}</h3>
+        <h3 className="mb-2 text-lg font-bold uppercase text-black">
+          {info.type}
+        </h3>
 
         {/* value (eg: 123-456-7890) */}
         {info.value.map((text) => (
-          <p
-            key={text}
-            className="text-pretty text-sm font-medium text-black/70"
-          >
+          <p key={text} className="text-pretty text-sm  text-muted-foreground">
             {text}
           </p>
         ))}
 
         {/* whatsapp button, if there is "phone" in the info.type */}
         {info.type.toLowerCase().includes("phone") && (
-          <div className="mt-2 space-y-2">
-             <p className="text-sm text-muted-foreground">
+          <div className="mt-2 space-y-4">
+            <p className="text-sm text-muted-foreground">
               Tap below to WhatsApp us (if installed), or message us at{" "}
               <span className="text-nowrap underline underline-offset-2">
                 018-381-5505.
               </span>
             </p>
-            <WhatsappButton >
-            <span className="text-xs font-medium text-white">
-              Chat on WhatsApp
-            </span>
-          </WhatsappButton>
+            <WhatsappButton>
+              <span className="text-xs font-medium text-white">
+                Chat on WhatsApp
+              </span>
+            </WhatsappButton>
           </div>
+        )}
+
+        {/* map button, if there is "address" in the info.type */}
+        {info.type.toLowerCase().includes("address") && (
+          <ContactButton contactType="maps" />
         )}
       </div>
     </CardHeader>
