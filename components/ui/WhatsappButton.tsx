@@ -39,10 +39,11 @@ const WhatsappButton: React.FC<WhatsappButtonProps> = ({
           <Image
             src={whatsappWhite}
             alt="Whatsapp Logo"
-            height={40}
-            width={40}
+            height={18}
+            width={18}
+            sizes="18px"
             priority
-            className="h-4 w-4 lg:h-5 lg:w-5"
+            className="h-[18px] w-[18px]"
           />
           {children}
         </Link>
