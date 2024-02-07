@@ -91,9 +91,8 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
             <p className="text-sm text-muted-foreground">
               Tap below to WhatsApp us (if installed), or message us at{" "}
               <span className="text-nowrap underline underline-offset-2">
-                018-381-5505
+                018-381-5505.
               </span>
-              .
             </p>
             <WhatsappButton
               className="mt-2 w-fit text-xs font-bold tracking-wider xl:text-xs"
