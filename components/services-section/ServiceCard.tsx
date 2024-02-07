@@ -41,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const searchQuery = buildSearchQuery(serviceGroupTitle);
 
   return (
-    <Card role="article" className={cn("max-w-[375px]", className)}>
+    <Card role="article" className={cn("max-w-[375px] grid", className)}>
       <CardHeader>
         {/* icon */}
         <Image
