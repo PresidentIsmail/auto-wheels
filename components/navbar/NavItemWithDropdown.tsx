@@ -3,10 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
+import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/constants";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
 
 import { ChevronDown } from "lucide-react";
+import { Button } from "../ui/button";
 // import DropDown from "./DropDown";
 const DropDown = dynamic(() => import("./DropDown"), { ssr: false });
 
@@ -50,11 +52,16 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
 
   return (
     <li ref={navRef}>
-      <button
+      <Button
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
         // onMouseEnter={handleMouseEnter}
         onClick={toggleDropdownVisibility}
+        variant="ghost"
+        className={cn(
+          "rounded-sm text-sm hover:bg-white/10 hover:text-white focus-visible:bg-white/10 xl:text-sm",
+          isDropdownVisible ? "bg-white/10 text-white" : "",
+        )}
       >
         <span className="flex items-center gap-1 ">
           {navItem.label}
@@ -64,7 +71,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
             } transition-transform duration-300`}
           />
         </span>
-      </button>
+      </Button>
 
       <DropDown isDropdownVisible={isDropdownVisible} />
     </li>
