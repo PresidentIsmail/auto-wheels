@@ -60,17 +60,16 @@ export default function RootLayout({
       >
         <Navbar />
         <main
-          className="
+        className="
         relative 
         mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))]
          flex w-full flex-1 flex-col overflow-x-hidden bg-white
          text-black
          md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
       "
-        >
-          {children}
-        </main>
-        <Footer />
+      >
+        {children}
+      </main>
       </body>
     </html>
   );
