@@ -1,17 +1,14 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/constants";
 import { useOnClickOutside } from "@/hooks/use-on-click-outiside";
-import { useOnMouseLeave } from "@/hooks/useOnMouseLeave";
 
 import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
 import DropDown from "./DropDown";
-// const DropDown = dynamic(() => import("./DropDown"), { ssr: false });
 
 interface NavItemWithDropDownProps {
   navItem: (typeof NAV_ITEMS)[number];
@@ -47,7 +44,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
     }
   };
 
-  useOnMouseLeave([navRef], () => {
+  useOnClickOutside([navRef], () => {
     if (isDropdownVisible) {
       toggleDropdownVisibility();
     }
@@ -59,8 +56,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
         ref={buttonRef}
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
-        onMouseEnter={handleMouseEnter}
-        // onClick={toggleDropdownVisibility}
+        onClick={toggleDropdownVisibility}
         variant="ghost"
         className={cn(
           "h-9 text-sm text-white/70 hover:bg-white/10 hover:text-white focus-visible:bg-white/10",
