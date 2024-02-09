@@ -10,16 +10,18 @@ const ANIMATION_DURATION = 0.05;
 const Testimonials: React.FC = () => {
   return (
     <section
+      id="testimonials"
       aria-label="Testimonials Section"
-      id="testimonials-section"
       role="region"
-      className="master-container relative my-4 flex h-max max-h-screen w-full flex-col gap-x-12 gap-y-8 overflow-hidden bg-white lg:h-[600px] lg:flex-row "
+      className=" grainy"
     >
-      {/* Heading */}
-      <Heading />
+      <div className="master-container relative my-4 flex h-max max-h-screen  w-full flex-col gap-x-12 gap-y-8 overflow-hidden lg:h-[600px] lg:flex-row">
+        {/* Heading */}
+        <Heading />
 
-      {/* Testimonials */}
-      <TestimonialList />
+        {/* Testimonials */}
+        <TestimonialList />
+      </div>
     </section>
   );
 };

@@ -6,7 +6,7 @@ import HomeScreenVideoLoader from "../HomeScreenVideoLoader";
 const Hero = () => {
   return (
     <section
-      className="flex h-hero-mobile w-full flex-shrink-0 overflow-x-hidden border-b-[1px] border-b-grayBorder
+      className="flex h-hero-mobile w-full flex-shrink-0 overflow-x-hidden
        lg:h-hero-desktop "
       aria-label="Hero section"
     >

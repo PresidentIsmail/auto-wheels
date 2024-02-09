@@ -108,20 +108,16 @@ type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   {
-    label: "Promotions",
-    href: "#",
-  },
-  {
-    label: "tyres",
-    href: "#",
-  },
-  {
-    label: "Batteries",
-    href: "#",
-  },
-  {
     label: "Services",
     href: "#",
+  },
+  {
+    label: "Testimonials",
+    href: "/#testimonials",
+  },
+  {
+    label: "FAQ",
+    href: "/#faq",
   },
   {
     label: "Contact Us",

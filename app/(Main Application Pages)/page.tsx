@@ -4,7 +4,7 @@ import Hero from "@/components/hero-section/Hero";
 // import Statistics from "@/components/statistic-section/Statistics";
 // import TireSelection from "@/components/tire-selection-section/TireSelection";
 import Services from "@/components/services-section/Services";
-import Promotions from "@/components/promotions-section/Promotions";
+// import Promotions from "@/components/promotions-section/Promotions";
 import Testimonials from "@/components/testimonials-section/Testimonial";
 import Faq from "@/components/faq-section/Faq";
 import Contact from "@/components/contact-section/Contact";
@@ -18,13 +18,13 @@ export default function Home() {
       {/* not displaying tire selection and stats anymore */}
       {/* <Statistics />
       <TireSelection /> */}
-      <InfiniteSlider>
+      <InfiniteSlider className="grainy border-b border-t">
         <BrandLogoDisplay />
       </InfiniteSlider>
       <Services />
-      <Promotions />
-      <Testimonials />
+      {/* <Promotions /> */}
       <Faq />
+      <Testimonials />
       <Contact />
     </React.Fragment>
   );

@@ -57,6 +57,7 @@ const NavItemWithDropdown: React.FC<NavItemWithDropDownProps> = ({
         aria-haspopup="true"
         aria-expanded={isDropdownVisible}
         onClick={toggleDropdownVisibility}
+        onMouseEnter={handleMouseEnter}
         variant="ghost"
         className={cn(
           "h-9 text-sm text-white/70 hover:bg-white/10 hover:text-white focus-visible:bg-white/10",

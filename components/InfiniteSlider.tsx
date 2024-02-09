@@ -3,14 +3,18 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
+import { cn } from "@/lib/utils";
+
 interface InfiniteSliderProps {
   children: React.ReactNode;
   duration?: number;
+  className?: string;
 }
 
 const InfiniteSlider: React.FC<InfiniteSliderProps> = ({
   children,
   duration = 20,
+  className,
 }) => {
   const sliderVariants: Variants = {
     initial: {
@@ -27,7 +31,7 @@ const InfiniteSlider: React.FC<InfiniteSliderProps> = ({
   };
   return (
     <section
-      className="relative flex flex-row py-6 lg:py-8"
+      className={cn("relative flex flex-row py-6 lg:py-8 ", className)}
       aria-label="Infinite Slider"
       role="region"
       aria-roledescription="infinite slider"

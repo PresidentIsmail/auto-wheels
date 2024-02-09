@@ -11,6 +11,7 @@ const ANIMATION_DURATION = 0.05;
 const Faq: React.FC = () => {
   return (
     <article
+      id="faq"
       role="region"
       aria-label="Frequently Asked Questions"
       className="overflow-hidden border border-black py-16 lg:py-0 lg:pb-[36px] lg:pt-[88px]"
