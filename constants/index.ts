@@ -131,17 +131,55 @@ type FooterItem = {
   links: string[];
 };
 
-export const FOOTER_ITEMS: FooterItem[] = [
+export const FOOTER_ITEMS = [
   {
     title: "Products",
-    links: ["tyres", "batteries", "wipers"],
+    // links: ["tyres", "batteries", "wipers"],
+    links: [
+      {
+        label: "Tyres",
+        href: "/tyres",
+      },
+      {
+        label: "Batteries",
+        href: "/batteries",
+      },
+      {
+        label: "Wipers",
+        href: "/wipers",
+      },
+    ],
   },
   {
     title: "Services",
-    links: ["suspension", "exhaust", "wheel alignment"],
+    // links: ["suspension", "exhaust", "wheel alignment"],
+    links: [
+      {
+        label: "All Services",
+        href: "/services",
+      },
+      {
+        label: "Suspension",
+        href: "/services?service-group=fuel-and-suspension",
+      },
+      {
+        label: "Exhaust",
+        href: "/services?service-group=exhaust-and-cooling",
+      },
+      {
+        label: "Wheel Alignment",
+        href: "/services?service-group=brake-and-wheel-services",
+      },
+    ],
   },
   {
     title: "Company",
-    links: ["about us", "contact us"],
+    // links: ["about us", "contact us"],
+    links: [
+      {
+        label: "Contact Us",
+        href: "/contact-us",
+      },
+    ],
   },
 ];
