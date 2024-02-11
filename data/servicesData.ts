@@ -42,7 +42,7 @@ export const SERVICES_DATA = [
           "Wheel balancing",
         ],
         description:
-          "Explore our Tyres and Wheels services. Fitting, alignment, balancing – we've got your wheels covered for a stable and safe journey.",
+          "Explore our Tyres and Wheels services. Fitting, alignment, balancing - we've got your wheels covered for a stable and safe journey.",
       },
     ],
   },
