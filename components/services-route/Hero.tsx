@@ -14,7 +14,13 @@ const ANIMATION_DURATION = 0.05;
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex h-[60vh] w-full flex-col bg-brand">
+    <section
+      className="relative flex h-[60vh] w-full flex-col"
+      style={{
+        background:
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%), #E71D00",
+      }}
+    >
       {/* Section Title And Subtitle */}
 
       <header className="master-container  relative z-[1] order-2 flex h-full w-full flex-col justify-center md:order-1 ">
@@ -23,7 +29,7 @@ const Hero: React.FC = () => {
           element="h1"
           text="Service Hub"
           duration={ANIMATION_DURATION}
-          className="text-[32px] font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl"
+          className="text-[32px] font-medium leading-tight text-white sm:text-4xl lg:text-5xl"
         />
 
         {/* Subtitle */}
@@ -31,7 +37,7 @@ const Hero: React.FC = () => {
           element="p"
           text="Discover a Spectrum of Services Tailored for Your Vehicle's Peak Performance."
           duration={ANIMATION_DURATION}
-          className="mt-4 max-w-prose  text-sm font-medium tracking-wide text-white/90 md:max-w-[30%] md:tracking-wider"
+          className="mt-4 max-w-prose text-sm font-medium tracking-wide text-white/70 md:max-w-[30%] md:tracking-wider"
         />
 
         {/* Button */}
