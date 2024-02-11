@@ -126,9 +126,15 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 // =========== FOOTER ================
-type FooterItem = {
-  title: string;
-  links: string[];
+const baseUrl = "/services";
+const serviceGroups = {
+  all: "",
+  tyres: "brake-and-wheel-services",
+  batteries: "lights-wipers-and-battery",
+  wipers: "lights-wipers-and-battery",
+  suspension: "fuel-and-suspension",
+  exhaust: "exhaust-and-cooling",
+  wheelAlignment: "brake-and-wheel-services",
 };
 
 export const FOOTER_ITEMS = [
@@ -138,37 +144,36 @@ export const FOOTER_ITEMS = [
     links: [
       {
         label: "Tyres",
-        href: "/tyres",
+        href: `${baseUrl}?service-group=${serviceGroups.tyres}`,
       },
       {
         label: "Batteries",
-        href: "/batteries",
+        href: `${baseUrl}?service-group=${serviceGroups.batteries}`,
       },
       {
         label: "Wipers",
-        href: "/wipers",
+        href: `${baseUrl}?service-group=${serviceGroups.wipers}`,
       },
     ],
   },
   {
     title: "Services",
-    // links: ["suspension", "exhaust", "wheel alignment"],
     links: [
       {
         label: "All Services",
-        href: "/services",
+        href: `${baseUrl}${serviceGroups.all}`,
       },
       {
         label: "Suspension",
-        href: "/services?service-group=fuel-and-suspension",
+        href: `${baseUrl}?service-group=${serviceGroups.suspension}`,
       },
       {
         label: "Exhaust",
-        href: "/services?service-group=exhaust-and-cooling",
+        href: `${baseUrl}?service-group=${serviceGroups.exhaust}`,
       },
       {
         label: "Wheel Alignment",
-        href: "/services?service-group=brake-and-wheel-services",
+        href: `${baseUrl}?service-group=${serviceGroups.wheelAlignment}`,
       },
     ],
   },

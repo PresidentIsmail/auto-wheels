@@ -235,18 +235,23 @@ export const TOP_5_SERVICES = [
 // ==================== FUNCTIONS ====================
 // ===================================================
 
-//  function that gets a service by its title
+// Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
+export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
+  a.sectionTitle.localeCompare(b.sectionTitle),
+);
+
+/**
+ * This function returns the service object from the SERVICES_DATA array based on the title
+ *
+ * @param {string} title
+ * @returns object
+ */
 function getServiceByTitle(title: string) {
   const services = SERVICES_DATA.map((service) => service.subsections).flat();
   return services.find(
     (service) => service.title.toLowerCase() === title.toLowerCase(),
   );
 }
-
-// Sorting the array alphabetically based on the 'label' property using the localeCompare() method and the .toSorted() method
-export const SERVICES_DATA_SORTED = SERVICES_DATA.sort((a, b) =>
-  a.sectionTitle.localeCompare(b.sectionTitle),
-);
 
 /**
  * This function that checks if a string exists as the sectionTitle in the SERVICES_DATA array

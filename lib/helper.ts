@@ -61,7 +61,13 @@ export const generateWhatsAppLink: GenerateWhatsAppLink = (
  * @returns {string} The normalized string.
  */
 export function normalizeString(input: string): string {
-  return input.replace(/\s/g, "-").toLowerCase();
+  // in some cases the input looks like "Lights, Wipers, and Battery", we need to remove the commas and replace them with hyphens
+  input = input.replace(/,/g, "");
+
+  // replace spaces with hyphens and convert to lowercase
+  input = input.replace(/\s/g, "-").toLowerCase();
+
+  return input;
 }
 
 /**

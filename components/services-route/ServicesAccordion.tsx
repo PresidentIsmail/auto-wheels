@@ -13,9 +13,13 @@ import { normalizeString } from "@/lib/helper";
 const ServicesAccordion: React.FC = () => {
   const searchParams: string | null = useSearchParams().get("service-group");
 
-  // if the user has selected a service group, open the corresponding accordion item. if not, open the first one by default. first check if the search params exist in SERVICES_DATA, if not, open the first one by default
-  const openAccordionItemId = sectionTitleExists(searchParams as string)
-    ? (searchParams as string)
+  // Normalize the searchParams once and reuse it
+  const normalizedSearchParams = normalizeString(searchParams as string);
+
+  // Determines the accordion item to open initially. If a service group is selected (indicated by search parameters) and exists in 'SERVICES_DATA',
+  // that accordion item is opened. Otherwise, the first accordion item is opened by default.
+  const openAccordionItemId = sectionTitleExists(normalizedSearchParams)
+    ? normalizedSearchParams
     : normalizeString(SERVICES_DATA[0].sectionTitle);
 
   useEffect(() => {
