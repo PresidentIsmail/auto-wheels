@@ -33,12 +33,12 @@ const ServicesAccordionItem: React.FC<ServicesAccordionItemProps> = ({
         as={"h2"}
         arrowType="right"
         className={cn(
-          "text-start text-lg font-bold tracking-wide hover:no-underline focus-visible:text-black data-[state=open]:border-b-2 data-[state=open]:text-black sm:text-xl md:text-2xl lg:text-3xl",
+          "text-start text-lg font-bold tracking-wider hover:no-underline focus-visible:text-black data-[state=open]:border-b-2 data-[state=open]:text-black sm:text-xl md:text-2xl lg:text-3xl",
         )}
       >
         {serviceGroup.sectionTitle}
       </AccordionTrigger>
-      
+
       {/* content of the accordion */}
       <AccordionContent className="text-normal flex flex-wrap justify-center gap-8 px-0 py-6 text-base sm:justify-start md:flex-row lg:py-8">
         {/* Service cards of services in the group */}

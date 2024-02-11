@@ -41,7 +41,7 @@ const Heading: React.FC = () => {
         <HackerEffect
           tag="h2"
           displayText="Building Lasting Relationships."
-          className="text-2xl font-bold tracking-tight text-[#222020] sm:text-3xl lg:text-4xl"
+          className="text-2xl font-bold text-[#222020] sm:text-3xl lg:text-4xl"
         />
 
         {/* description */}

@@ -32,7 +32,6 @@ const HackerEffect: React.FC<HackerEffectProps> = ({
     const displayTextLength = displayText.length;
 
     const animationInterval = setInterval(() => {
-      
       paragraphElement.innerText = paragraphElement.innerText
         .split("")
         .map((letter, index) => {
@@ -57,7 +56,10 @@ const HackerEffect: React.FC<HackerEffectProps> = ({
   }, [isElementInView, animateText]);
 
   return (
-    <Element ref={paragraphRef} className={cn("font-mono ", className)}>
+    <Element
+      ref={paragraphRef}
+      className={cn("font-header tracking-wider ", className)}
+    >
       {displayText}
     </Element>
   );

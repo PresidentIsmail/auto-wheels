@@ -50,7 +50,7 @@ const Heading: React.FC = () => {
         <HackerEffect
           tag="h2"
           displayText="Frequently Asked Questions."
-          className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
+          className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl"
         />
 
         {/* description */}

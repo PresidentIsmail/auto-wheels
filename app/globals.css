@@ -98,6 +98,18 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(
+    --font-masterworks-header
+  ); /* Use the header font variable */
+  letter-spacing: 0.05em; /* Add letter spacing to all headers */
+}
+
 @layer base {
   * {
     @apply border-border;

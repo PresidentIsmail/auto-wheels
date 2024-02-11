@@ -15,7 +15,7 @@ const FooterItem: React.FC<FooterItemProps> = ({ item }) => {
       <AnimatedText
         text={item.title}
         element="h3"
-        className="text-pretty text-xl font-bold tracking-wide text-white"
+        className="text-pretty text-xl font-medium tracking-wider text-white"
         duration={0.05}
       />
       <ul className="flex flex-col gap-y-1">

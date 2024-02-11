@@ -31,7 +31,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         <AnimatedText
           element="h1"
           text="Welcome to Auto Wheels & Exhaust"
-          className="text-3xl font-extrabold leading-tight text-black md:text-4xl xl:text-5xl"
+          className="font-header text-3xl font-extrabold leading-tight tracking-wider text-black md:text-4xl xl:text-5xl"
         />
 
         {/* Buttons Contact */}

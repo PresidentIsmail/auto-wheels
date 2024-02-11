@@ -58,7 +58,7 @@ const Heading: React.FC = () => {
         <HackerEffect
           tag="h2"
           displayText="Get in Touch."
-          className="justify-start text-pretty text-2xl font-bold tracking-tight text-black sm:text-3xl lg:justify-center lg:text-4xl"
+          className="justify-start text-pretty text-2xl font-bold text-black sm:text-3xl lg:justify-center lg:text-4xl"
         />
 
         {/* description */}

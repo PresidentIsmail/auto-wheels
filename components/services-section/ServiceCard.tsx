@@ -57,7 +57,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
       <CardContent className="flex flex-col gap-y-3">
         {/* title */}
-        <CardTitle className="capitalize">{service.title}</CardTitle>
+        <CardTitle className="capitalize tracking-wider">{service.title}</CardTitle>
         {/* description */}
         {displayOption === "description" ? (
           <CardDescription>{service.description}</CardDescription>

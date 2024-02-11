@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-gotham)", "Inter", "sans-serif"],
+        header: ["var(--font-masterworks-header)", "Inter", "sans-serif"],
       },
       colors: {
         brand: "#de211b",

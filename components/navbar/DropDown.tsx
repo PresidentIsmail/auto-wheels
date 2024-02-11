@@ -75,7 +75,7 @@ const DropDown = React.forwardRef<HTMLDivElement, DropDownProps>(
             className="absolute left-1/2 top-full p-2"
           >
             <nav className="flex w-max flex-col gap-y-4 rounded-md border border-grayBorder bg-special px-12 py-8">
-              <h2 className="translate-x-3 text-2xl font-bold text-white  decoration-2 underline-offset-4">
+              <h2 className="translate-x-3 text-2xl  font-medium tracking-widest  text-white underline decoration-2 underline-offset-4">
                 Services
               </h2>
 
@@ -97,7 +97,7 @@ const DropDown = React.forwardRef<HTMLDivElement, DropDownProps>(
                         onClick={() =>
                           setSelectedServiceGroup(serviceGroup.sectionTitle)
                         }
-                        className={`flex w-full items-center justify-start rounded-md border-none px-3 py-3 tracking-wider text-white/80 ring-2 ring-transparent hover:bg-white/10 hover:text-white hover:ring-white/20 focus-visible:bg-white/10 focus-visible:outline-none focus-visible:ring-white/20
+                        className={`flex w-full items-center justify-start rounded-md border-none px-3 py-3 font-medium tracking-wider text-white/80 ring-2 ring-transparent hover:bg-white/10 hover:text-white hover:ring-white/20 focus-visible:bg-white/10 focus-visible:outline-none focus-visible:ring-white/20
                    ${
                      selectedServiceGroup === serviceGroup.sectionTitle
                        ? "bg-white/10 text-white ring-white/20"
@@ -106,9 +106,7 @@ const DropDown = React.forwardRef<HTMLDivElement, DropDownProps>(
                         aria-label={`Select ${serviceGroup.sectionTitle}`}
                         tabIndex={0}
                       >
-                        <h3 className="font-bold">
-                          {serviceGroup.sectionTitle}
-                        </h3>
+                        <p className="font-bold">{serviceGroup.sectionTitle}</p>
                       </Button>
                     </motion.li>
                   ))}
@@ -127,7 +125,7 @@ const DropDown = React.forwardRef<HTMLDivElement, DropDownProps>(
                         className="flex flex-col gap-4"
                       >
                         {/* Heading */}
-                        <h3 className="text-xl font-bold text-white/80">
+                        <h3 className="text-xl font-medium text-white/80">
                           {serviceGroup.sectionTitle}
                         </h3>
 
@@ -142,10 +140,10 @@ const DropDown = React.forwardRef<HTMLDivElement, DropDownProps>(
                             >
                               <section className="flex flex-col gap-2">
                                 {/* Service Title and Services */}
-                                <h3 className="text-sm font-bold text-white underline-offset-4 group-hover:underline group-focus-visible:underline">
+                                <p className="text-sm font-medium text-white underline-offset-4 group-hover:underline group-focus-visible:underline">
                                   {service.title}
-                                </h3>
-                                <ul className="flex flex-col gap-1 text-sm text-white/80">
+                                </p>
+                                <ul className="flex flex-col gap-1 text-sm text-white/70">
                                   {service.services.map((service) => (
                                     <li key={service}>
                                       <p>&ndash; {service}</p>

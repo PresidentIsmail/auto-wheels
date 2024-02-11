@@ -42,6 +42,20 @@ const gothamSans = localFont({
   variable: "--font-gotham",
 });
 
+// configure header font (master-worksheader)
+const masterWorksHeader = localFont({
+  src: [
+    {
+      path: "../public/fonts/woff2/MasterWorks-Header.woff2",
+      style: "normal",
+      weight: "300",
+    },
+  ],
+  display: "swap",
+  adjustFontFallback: "Arial",
+  variable: "--font-masterworks-header",
+});
+
 export const metadata: Metadata = {
   title: "Auto Wheels & Exhaust",
   description:
@@ -56,20 +70,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${gothamSans.variable} flex min-h-screen w-full flex-col font-sans`}
+        className={`
+        ${gothamSans.variable} 
+        ${masterWorksHeader.variable}
+         flex min-h-screen w-full flex-col font-sans
+         `}
       >
         <Navbar />
         <main
-        className="
+          className="
         relative 
         mt-[calc(var(--navbar-mobile-height)+var(--header-info-height))]
          flex w-full flex-1 flex-col overflow-x-hidden bg-white
          text-black
          md:mt-[calc(var(--navbar-desktop-height)+var(--header-info-height))]
       "
-      >
-        {children}
-      </main>
+        >
+          {children}
+        </main>
       </body>
     </html>
   );

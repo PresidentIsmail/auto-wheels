@@ -20,7 +20,7 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
         <HackerEffect
           tag="h2"
           displayText="Find out More About Brake Services"
-          className="text-xl font-bold capitalize leading-none tracking-tight md:text-2xl"
+          className="text-xl font-medium capitalize leading-none md:text-2xl"
         />
 
         <p className="text-xs text-muted-foreground md:text-sm">
@@ -36,7 +36,9 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
           {/* phone card on mobile */}
           <Card className="grow lg:hidden">
             <div className="flex flex-col gap-y-4 p-4">
-              <h3 className="text-base font-bold">Call or WhatsApp Us</h3>
+              <h3 className="text-base font-bold tracking-widest">
+                Call or WhatsApp Us
+              </h3>
               <p className="text-sm text-muted-foreground">
                 Tel:&nbsp;
                 <span className="text-nowrap underline underline-offset-2">
@@ -60,7 +62,7 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
           {/* phone card on desktop */}
           <Card className="hidden grow lg:block">
             <div className="flex h-full flex-col justify-between p-4">
-              <h3 className="text-base font-bold">Call Us</h3>
+              <h3 className="text-base font-bold tracking-widest">Call Us</h3>
               <p className="text-sm text-muted-foreground">
                 Call us at{" "}
                 <span className="text-nowrap underline underline-offset-2">
@@ -74,7 +76,7 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
           {/* location */}
           <Card className="grow">
             <div className="flex flex-col gap-y-2 p-4">
-              <h3 className="text-base font-bold">Visit Us</h3>
+              <h3 className="text-base font-bold tracking-widest">Visit Us</h3>
               <p className="text-sm text-muted-foreground">
                 23 Nelson Mandela Dr, <br className="md:hidden lg:block" />
                 Golf View, Mahikeng.
@@ -87,7 +89,9 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
         {/* whatsapp */}
         <Card className="hidden lg:block">
           <div className="flex flex-col gap-y-2 p-4">
-            <h3 className="text-base font-bold">Chat on WhatsApp</h3>
+            <h3 className="text-base font-bold tracking-widest">
+              Chat on WhatsApp
+            </h3>
             <p className="text-sm text-muted-foreground">
               Tap below to WhatsApp us (if installed), or message us at{" "}
               <span className="text-nowrap underline underline-offset-2">

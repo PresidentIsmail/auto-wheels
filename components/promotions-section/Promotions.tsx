@@ -47,7 +47,7 @@ const Promotions: React.FC = () => {
             <HackerEffect
               tag="h2"
               displayText="Special offers and promotions exclusively for you."
-              className="text-3xl font-bold tracking-tight text-white md:text-3xl lg:text-4xl"
+              className="text-3xl font-bold text-white md:text-3xl lg:text-4xl"
             />
 
             {/* description */}

@@ -30,7 +30,7 @@ const Services: FC = () => {
         <HackerEffect
           tag="h2"
           displayText="Explore our auto repair services in detail"
-          className="text-2xl font-black tracking-tight text-[#222020] md:text-3xl lg:text-4xl"
+          className="text-2xl font-black text-[#222020] md:text-3xl lg:text-4xl"
         />
 
         {/* View all services btn */}
