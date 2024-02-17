@@ -5,7 +5,7 @@ import Link from "next/link";
 // import bg image
 import bgImage from "@/public/images/services-route/service-01.png";
 
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import AnimatedText from "../AnimatedText";
 import SlideInContent from "../SlideInContent";
 import { Button } from "../ui/button";

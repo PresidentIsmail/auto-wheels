@@ -7,7 +7,6 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import ServiceCard from "@/components/services-section/ServiceCard";
 import AnimatedText from "../AnimatedText";
-import HackerEffect from "../HackerEffect";
 
 const Services: FC = () => {
   return (
@@ -27,10 +26,11 @@ const Services: FC = () => {
           duration={0.05}
         />
         {/* title */}
-        <HackerEffect
-          tag="h2"
-          displayText="Explore our auto repair services in detail"
+        <AnimatedText
+          text="Explore our auto repair services in detail."
+          element="h2"
           className="text-2xl font-black text-[#222020] md:text-3xl lg:text-4xl"
+          duration={0.05}
         />
 
         {/* View all services btn */}

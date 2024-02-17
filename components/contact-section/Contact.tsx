@@ -5,7 +5,6 @@ import { Suspense } from "react";
 
 import FadeInContent from "../FadeInContent";
 import ContactDetails from "./ContactDetails";
-import HackerEffect from "../HackerEffect";
 const MapDisplay = dynamic(() => import("./MapDisplay"), {
   ssr: false,
   loading: () => (
@@ -55,10 +54,10 @@ const Heading: React.FC = () => {
       />
       <div className="flex flex-col gap-y-2">
         {/* title */}
-        <HackerEffect
-          tag="h2"
-          displayText="Get in Touch."
-          className="justify-start text-pretty text-2xl font-bold text-black sm:text-3xl lg:justify-center lg:text-4xl"
+        <AnimatedText
+          text="Get in Touch."
+          element="h2"
+          className=" justify-start text-pretty text-2xl font-bold text-black sm:text-3xl lg:justify-center lg:text-4xl"
         />
 
         {/* description */}

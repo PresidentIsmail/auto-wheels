@@ -1,10 +1,9 @@
 import React from "react";
 
-import HackerEffect from "@/components/HackerEffect";
-
 import { Card } from "@/components/ui/card";
 import WhatsappButton from "@/components/ui/WhatsappButton";
 import ContactButton from "@/components/ui/ContactButton";
+import AnimatedText from "./AnimatedText";
 
 interface ContactModalBodyProps {
   // Define your component props here
@@ -17,10 +16,10 @@ const ContactModalBody: React.FC<ContactModalBodyProps> = (props) => {
     <React.Fragment>
       {/* ===== Title and description ===== */}
       <div className="flex flex-col gap-2 pt-6 md:gap-4">
-        <HackerEffect
-          tag="h2"
-          displayText="Find out More About Brake Services"
-          className="text-xl font-medium capitalize leading-none md:text-2xl"
+        <AnimatedText
+          element="h2"
+          text="Find out More About Brake Services."
+          className="text-xl font-bold capitalize leading-none md:text-2xl"
         />
 
         <p className="text-xs text-muted-foreground md:text-sm">

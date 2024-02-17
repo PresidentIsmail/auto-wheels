@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import quotes from "@/public/images/quotes.png";
 import AnimatedText from "../AnimatedText";
-import HackerEffect from "../HackerEffect";
 import TestimonialList from "./TestimonialList";
 
 const ANIMATION_DURATION = 0.05;
@@ -38,10 +37,11 @@ const Heading: React.FC = () => {
       />
       <div className="flex flex-col gap-y-4">
         {/* title */}
-        <HackerEffect
-          tag="h2"
-          displayText="Building Lasting Relationships."
-          className="text-2xl font-bold text-[#222020] sm:text-3xl lg:text-4xl"
+        <AnimatedText
+          text="Building Lasting Relationships."
+          element="h2"
+          className=" text-2xl font-bold text-[#222020] sm:text-3xl lg:text-4xl"
+          duration={ANIMATION_DURATION}
         />
 
         {/* description */}

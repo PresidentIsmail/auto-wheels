@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import questionMark from "@/public/images/question-mark.png";
 import AnimatedText from "../AnimatedText";
-import HackerEffect from "../HackerEffect";
 import FaqList from "./FaqList";
 
 const ANIMATION_DURATION = 0.05;
@@ -41,16 +40,11 @@ const Heading: React.FC = () => {
       />
       <div className="flex flex-col gap-y-4">
         {/* title */}
-        {/* <AnimatedText
+        <AnimatedText
           text="Frequently Asked Questions."
           element="h2"
-          className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
-          duration={ANIMATION_DURATION}
-        /> */}
-        <HackerEffect
-          tag="h2"
-          displayText="Frequently Asked Questions."
           className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl"
+          duration={ANIMATION_DURATION}
         />
 
         {/* description */}
