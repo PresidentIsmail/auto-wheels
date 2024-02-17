@@ -39,12 +39,15 @@ const ContactButton: React.FC<ContactButtonProps> = ({
       </Link>
     </Button>
   ) : contactType === "maps" ? (
-    <Button className="mt-2 w-fit text-xs font-bold tracking-wider xl:text-xs">
-    <Link href={linkHref} target="_blank" rel="noopener noreferrer">
-      <MapPin className="mr-2 inline-block h-4 w-4" /> Open In Google Maps
-    </Link>
-  </Button>
-    ) : null;
+    <Button
+      asChild
+      className="mt-2 w-fit text-xs font-bold tracking-wider xl:text-xs"
+    >
+      <Link href={linkHref} target="_blank" rel="noopener noreferrer">
+        <MapPin className="mr-2 inline-block h-4 w-4" /> Open In Google Maps
+      </Link>
+    </Button>
+  ) : null;
 };
 
 export default ContactButton;
