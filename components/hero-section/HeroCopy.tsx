@@ -30,7 +30,7 @@ const HeroCopy: React.FC<HeroCopyProps> = ({ className, ...props }) => {
         {/* Heading */}
         <AnimatedText
           element="h1"
-          text="Welcome to Auto Wheels & Exhaust"
+          text="Auto Wheels & Exhaust"
           className="font-header text-3xl font-extrabold leading-tight tracking-wider text-black md:text-4xl xl:text-5xl"
         />
 
