@@ -17,7 +17,7 @@ const FaqList: React.FC = () => {
       type="single"
       collapsible
       className="w-full lg:w-[60%]"
-      defaultValue={faqData[0].id}
+      // defaultValue={faqData[0].id}
     >
       {faqData.map((faq, index) => (
         <SlideInContent key={faq.id} delay={index * 0.25} direction="slideUp">
