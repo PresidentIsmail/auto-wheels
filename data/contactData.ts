@@ -22,8 +22,8 @@ export const contactInfo = [
     id: generateId(),
     type: "Working Hours",
     value: [
-      "Monday - Friday: 8:00AM - 6:00PM",
-      "Saturday: 9:00AM - 4:00PM",
+      "Monday - Friday: 7:30AM - 5:00PM",
+      "Saturday: 8:00AM - 1:00PM",
       "Sunday: Closed",
     ],
     Icon: CalendarClock,
