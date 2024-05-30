@@ -17,7 +17,7 @@ const HeaderInformation: React.FC = () => {
         >
           <Clock className="h-4 w-4" aria-hidden />
           <p>
-            Mon-Fri : 07:00 - 17:00{" "}
+            Mon-Fri : 07:30 - 17:00{" "}
             <span className="hidden sm:inline-block">|</span>{" "}
             <br className="sm:hidden" /> Sat: 08:00 - 13:00
           </p>
