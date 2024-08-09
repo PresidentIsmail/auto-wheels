@@ -57,10 +57,15 @@ export const generateWhatsAppLink: GenerateWhatsAppLink = (
  * It's useful for normalizing strings to be used in contexts such as HTML IDs, CSS classes, or URL slugs.
  * For example, the string "Brake Services" would be converted to "brake-services".
  *
- * @param {string} input - The string to be normalized.
+ * @param {string | null | undefined} input - The string to be normalized.
  * @returns {string} The normalized string.
  */
-export function normalizeString(input: string): string {
+export function normalizeString(input: string | null | undefined): string {
+  // Check if input is null or undefined
+  if (input == null) {
+    return "";
+  }
+
   // in some cases the input looks like "Lights, Wipers, and Battery", we need to remove the commas and replace them with hyphens
   input = input.replace(/,/g, "");
 
